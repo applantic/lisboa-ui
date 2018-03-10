@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'main-wall-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainWallPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private route:ActivatedRoute) { }
 
   ngOnInit() {
+
+  }
+
+  OnAddAnnouncement(){
+    this.router.navigate(['../add-announcement'], { relativeTo: this.route })
   }
 
 }
