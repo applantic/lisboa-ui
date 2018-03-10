@@ -1,0 +1,19 @@
+@import 'settings/clear-style';
+@import 'settings/mixin';
+
+@import 'settings/breakpoint';
+//@import 'settings/fonts';
+@import 'settings/variables';
+@import 'settings/text-sizing';
+
+.app-icon {
+  @include icon;
+}
+
+html {
+
+}
+
+body {
+  background: color-base('white');
+}
