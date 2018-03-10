@@ -4,13 +4,15 @@ import {RouterModule} from '@angular/router/router';
 
 import {OfferResponsePageComponent} from './containers/offer-response-page/offer-response-page.component';
 import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.component';
+import {AddOfferPageComponent} from './containers/add-offer-page/add-offer-page.component';
 
 
 
 
 export const COMPONENTS = [
   OfferResponsePageComponent,
-  MainWallPageComponent
+  MainWallPageComponent,
+  AddOfferPageComponent
 ];
 
 @NgModule({
