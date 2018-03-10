@@ -5,6 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 
 import {CoreModule} from './core/core.module';
+import {AuthModule} from './auth/auth.module';
 
 import {AppComponent} from './core/containers/app/app.component';
 
@@ -17,6 +18,7 @@ import {routes} from './routes';
     HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     CoreModule.forRoot(),
+    AuthModule.forRoot(),
   ],
   bootstrap: [AppComponent]
 })
