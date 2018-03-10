@@ -3,9 +3,11 @@ import {CommonModule} from '@angular/common';
 
 
 import {AppComponent} from './containers/app/app.component';
+import {NotFoundPageComponent} from './containers/not-found-page/not-found-page.component';
 
 export const COMPONENTS = [
-  AppComponent
+  AppComponent,
+  NotFoundPageComponent
 ];
 
 @NgModule({
