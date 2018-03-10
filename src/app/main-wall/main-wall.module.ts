@@ -2,22 +2,22 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
-import {OfferResponsePageComponent} from './containers/offer-response-page/offer-response-page.component';
 import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.component';
-import {AddOfferPageComponent} from './containers/add-offer-page/add-offer-page.component';
+import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
+import {AnnouncementResponsePageComponent} from './containers/announcement-response-page/announcement-response-page.component';
 
 export const COMPONENTS = [
-  OfferResponsePageComponent,
   MainWallPageComponent,
-  AddOfferPageComponent
+  AddAnnouncementPageComponent,
+  AnnouncementResponsePageComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: 'offer-response', component: OfferResponsePageComponent },
-      { path: 'add-offer', component: AddOfferPageComponent },
+      { path: 'add-announcement', component: AddAnnouncementPageComponent },
+      { path: 'announcement-response', component: AnnouncementResponsePageComponent },
       { path: '', component: MainWallPageComponent },
     ]),
   ],
