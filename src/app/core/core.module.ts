@@ -6,6 +6,18 @@ import {AppComponent} from './containers/app/app.component';
 import {NotFoundPageComponent} from './containers/not-found-page/not-found-page.component';
 
 import {DataService} from './services/data.service';
+import {DataMockService} from './services/data-mock.service';
+
+import {environment} from '../../environments/environment';
+
+export const dataFactory = () => {
+  if (environment.mock) {
+    return new DataMockService();
+    
+  } else {
+    return new DataService();
+  }
+};
 
 export const COMPONENTS = [
   AppComponent,
@@ -25,7 +37,12 @@ export class CoreModule {
   static forRoot() {
     return {
       ngModule: CoreModule,
-      providers: [DataService],
+      providers: [
+        {
+          provide: DataService,
+          useFactory: dataFactory
+        }
+      ],
     };
   }
 }
