@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/observable';
 
 import {LocalStorageService} from './local-storage.service';
-import {MyAnnouncement} from '../../main-wall/model/my-announcement';
+import {MyAnnouncement, CategoryList} from '../../main-wall/model/my-announcement';
 
 @Injectable()
 export class DataMockService {
@@ -16,6 +16,10 @@ export class DataMockService {
 
   public getListAnnouncement(): Observable<MyAnnouncement[]> {
     return this.http.get<MyAnnouncement[]>('/data/my-announcement.json');
+  }
+
+  public getCategoryList(): Observable<CategoryList> {
+    return this.http.get<CategoryList>('/data/categories.json');
   }
 
 }

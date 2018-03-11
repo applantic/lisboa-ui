@@ -49,6 +49,7 @@ export class CoreModule {
           ]
         },
         LocalStorageService,
+        CategoryListService
       ],
     };
   }
