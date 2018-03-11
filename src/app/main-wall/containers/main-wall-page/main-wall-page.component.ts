@@ -16,7 +16,7 @@ export class MainWallPageComponent implements OnInit {
   }
 
   OnAddAnnouncement(){
-    this.router.navigate(['../add-announcement'], { relativeTo: this.route })
+    this.router.navigate(['./add-announcement'], { relativeTo: this.route })
   }
 
 }
