@@ -7,4 +7,9 @@ export interface MyAnnouncement {
   paymentDate: string;
   deliveryDate: string;
   deliveryRange: string;
+  categories: {[key:string]:Categories};
+}
+
+export interface Categories {
+  labelName: string;
 }

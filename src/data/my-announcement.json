@@ -6,5 +6,13 @@
   "delivery": true,
   "paymentDate": 123221332,
   "deliveryDate": 123221332,
-  "deliveryRange": 123221332
+  "deliveryRange": 123221332,
+  "categories": {
+    "f35002b3-db86-44fc-98b0-fa7f4dd9d92a": {
+      "labelName": "grain"
+    },
+    "2fdd8337-7684-4847-b0bb-ab70093f4b4c": {
+      "labelName": "cow"
+    }
+  }
 }
