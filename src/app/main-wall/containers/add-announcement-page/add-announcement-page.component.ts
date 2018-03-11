@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MyAnnouncementService } from '../../services/my-announcement.service';
+import { MyAnnouncement } from '../../model/my-announcement';
+
 
 @Component({
   selector: 'pt-add-announcement-page',
@@ -7,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AddAnnouncementPageComponent implements OnInit {
+  announcements: MyAnnouncement[] = [];
 
-  constructor() { }
+  constructor(private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
+    this.myAnnouncementService.getListAnnouncement()
+      .do((a) => console.log(a))
+      .subscribe((announcements) => this.announcements = announcements);
   }
-
 }

@@ -1,3 +1,9 @@
-<p>
-  add-announcement-page works!
-</p>
+<div class="row">
+  <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+    <ul>
+      <li *ngFor="let announcement of announcements">
+        <pt-card [announcement]="announcement"></pt-card>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -14,5 +14,4 @@ export class MyAnnouncementService {
     return this.dataService.getListAnnouncement()
       .do((data) => console.log('getListAnnouncement: ', data));
   }
-
 }
