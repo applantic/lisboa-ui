@@ -1,16 +1,8 @@
-@import '~@nebular/theme/styles/globals';
-@import '~@nebular/auth/styles/all';
 @import 'settings/clear-style';
 @import 'settings/mixin';
 @import 'settings/breakpoint';
 @import 'settings/variables';
 @import 'settings/text-sizing';
-@import 'theme';
-
-@include nb-install() {
-  @include nb-theme-global();
-  @include nb-auth-global();
-};
 
 .app-icon {
   @include icon;

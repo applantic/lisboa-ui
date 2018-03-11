@@ -8,9 +8,6 @@ import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
 
 import {AppComponent} from './core/containers/app/app.component';
-import {NbThemeModule} from '@nebular/theme';
-
-
 import {routes} from './routes';
 
 @NgModule({
@@ -21,7 +18,6 @@ import {routes} from './routes';
     RouterModule.forRoot(routes, { useHash: true }),
     CoreModule.forRoot(),
     AuthModule.forRoot(),
-    NbThemeModule.forRoot({ name: 'default' }),
   ],
   bootstrap: [AppComponent]
 })

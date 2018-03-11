@@ -7,13 +7,13 @@ import {AuthService} from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router:Router,
-              private authService:AuthService) {
+  constructor(private router: Router,
+              private authService: AuthService) {
   }
 
-  canActivate():Observable<boolean> {
+  canActivate(): Observable<boolean> {
     if (this.authService.authorized) {
-      return of(true)
+      return of(true);
     } else {
       this.router.navigate(['/auth']);
     }
