@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'add-announcement-page',
+  selector: 'pt-add-announcement-page',
   templateUrl: './add-announcement-page.component.html',
   styleUrls: ['./add-announcement-page.component.scss']
 })

@@ -12,9 +12,9 @@ import {LocalStorageService} from './services/local-storage.service';
 
 import {environment} from '../../environments/environment';
 
-export const dataFactory = (HttpClient, LocalStorageService) => {
+export const dataFactory = (httpClient: HttpClient, localStorageService: LocalStorageService) => {
   if (environment.mock) {
-    return new DataMockService(HttpClient, LocalStorageService);
+    return new DataMockService(httpClient, localStorageService);
 
   } else {
     return new DataService();

@@ -5,7 +5,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  public initializeLocalStorage(){
+  public initializeLocalStorage() {
     if (!localStorage.getItem('lisboaUi')) {
       localStorage.setItem('lisboaUi', '{}');
     }

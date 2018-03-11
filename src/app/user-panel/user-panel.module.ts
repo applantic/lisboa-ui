@@ -1,12 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-
-
-
-export const COMPONENTS = [
-  
-];
+export const COMPONENTS = [];
 
 @NgModule({
   imports: [

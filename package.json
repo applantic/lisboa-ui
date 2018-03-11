@@ -21,9 +21,10 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "@nebular/auth": "^2.0.0-rc.6",
-    "@nebular/theme": "^2.0.0-rc.6",
-    "bootstrap": "^4.0.0",
+    "@clr/angular": "^0.11.8",
+    "@clr/icons": "^0.11.8",
+    "@clr/ui": "^0.11.8",
+    "@webcomponents/custom-elements": "^1.0.8",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
