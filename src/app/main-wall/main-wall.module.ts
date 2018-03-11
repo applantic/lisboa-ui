@@ -6,6 +6,8 @@ import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.
 import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
 import {AnnouncementResponsePageComponent} from './containers/announcement-response-page/announcement-response-page.component';
 
+import {MyAnnouncementService} from './services/my-announcement.service';
+
 export const COMPONENTS = [
   MainWallPageComponent,
   AddAnnouncementPageComponent,
@@ -21,7 +23,10 @@ export const COMPONENTS = [
       { path: '', component: MainWallPageComponent },
     ]),
   ],
-  declarations: COMPONENTS
+  declarations: COMPONENTS,
+  providers: [
+    MyAnnouncementService
+  ]
 })
 
 export class MainWallModule {}
