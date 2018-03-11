@@ -1,39 +1,71 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
 
-import {LoginPageComponent} from './containers/login-page/login-page.component';
+import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
+import {
+  NbEmailPassAuthProvider,
+  NbAuthModule,
+  NbAuthComponent,
+  NbLoginComponent,
+  NbRegisterComponent,
+  NbLogoutComponent,
+  NbRequestPasswordComponent,
+  NbResetPasswordComponent,
+} from '@nebular/auth';
 
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
 
-export const COMPONENTS = [
-  LoginPageComponent,
-];
-
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule
+    NbLayoutModule,
+    NbSidebarModule,
+    RouterModule.forChild([{
+      path: 'auth',
+      component: NbAuthComponent,
+      children: [
+        {
+          path: '',
+          component: NbLoginComponent,
+        },
+        {
+          path: 'login',
+          component: NbLoginComponent,
+        },
+        {
+          path: 'register',
+          component: NbRegisterComponent,
+        },
+        {
+          path: 'logout',
+          component: NbLogoutComponent,
+        },
+        {
+          path: 'request-password',
+          component: NbRequestPasswordComponent,
+        },
+        {
+          path: 'reset-password',
+          component: NbResetPasswordComponent,
+        },
+      ],
+    }]),
+    NbAuthModule.forRoot({
+      providers: {
+        email: {
+          service: NbEmailPassAuthProvider,
+          config: {},
+        },
+      },
+      forms: {},
+    }),
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS,
 })
 export class AuthModule {
-  static forRoot():ModuleWithProviders {
+  static forRoot() {
     return {
-      ngModule: RootAuthModule,
-      providers: [AuthService, AuthGuard],
+      ngModule: AuthModule,
+      providers: [NbSidebarService, AuthService, AuthGuard],
     };
   }
-}
-
-@NgModule({
-  imports: [
-    AuthModule,
-    RouterModule.forChild([{path: 'login', component: LoginPageComponent}]),
-  ],
-})
-export class RootAuthModule {
 }

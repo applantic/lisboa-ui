@@ -15,7 +15,7 @@ import {environment} from '../../environments/environment';
 export const dataFactory = (HttpClient, LocalStorageService) => {
   if (environment.mock) {
     return new DataMockService(HttpClient, LocalStorageService);
-    
+
   } else {
     return new DataService();
   }
@@ -29,7 +29,7 @@ export const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
