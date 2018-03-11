@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {HttpClient} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './containers/app/app.component';
@@ -7,12 +8,13 @@ import {NotFoundPageComponent} from './containers/not-found-page/not-found-page.
 
 import {DataService} from './services/data.service';
 import {DataMockService} from './services/data-mock.service';
+import {LocalStorageService} from './services/local-storage.service';
 
 import {environment} from '../../environments/environment';
 
-export const dataFactory = () => {
+export const dataFactory = (HttpClient, LocalStorageService) => {
   if (environment.mock) {
-    return new DataMockService();
+    return new DataMockService(HttpClient, LocalStorageService);
     
   } else {
     return new DataService();
@@ -40,8 +42,13 @@ export class CoreModule {
       providers: [
         {
           provide: DataService,
-          useFactory: dataFactory
-        }
+          useFactory: dataFactory,
+          deps: [
+            HttpClient,
+            LocalStorageService
+          ]
+        },
+        LocalStorageService,
       ],
     };
   }
