@@ -21,7 +21,7 @@ import {AuthGuard} from './services/auth-guard.service';
     NbLayoutModule,
     NbSidebarModule,
     RouterModule.forChild([{
-      path: '',
+      path: 'auth',
       component: NbAuthComponent,
       children: [
         {
@@ -65,7 +65,7 @@ export class AuthModule {
   static forRoot() {
     return {
       ngModule: AuthModule,
-      providers: [NbSidebarService],
+      providers: [NbSidebarService, AuthService, AuthGuard],
     };
   }
 }
