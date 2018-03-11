@@ -1,0 +1,10 @@
+{
+  "id": "test",
+  "price": 10,
+  "minQuantity": 1,
+  "description": "test_2",
+  "delivery": true,
+  "paymentDate": 123221332,
+  "deliveryDate": 123221332,
+  "deliveryRange": 123221332
+}
