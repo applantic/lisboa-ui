@@ -1,5 +1,3 @@
-import {Categories} from '../../config';
-
 export interface MyAnnouncement {
   id: string;
   category: string;

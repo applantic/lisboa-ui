@@ -22,7 +22,7 @@ export class DataMockService {
   }
 
   public getCategoryList(): Observable<Category[]> {
-    return this.http.get<CategoryList>('/data/categories.json');
+    return this.http.get<Category[]>('/data/categories.json');
   }
 
 }

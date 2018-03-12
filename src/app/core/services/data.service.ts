@@ -3,7 +3,8 @@ import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/observable';
 
 import {MyAnnouncement} from '../../main-wall/model/my-announcement';
-import {CategoryList} from '../../config';
+import {Category} from '../../config';
+
 
 @Injectable()
 export class DataService {
@@ -16,7 +17,7 @@ export class DataService {
     return of([]);
   }
   
-  public getCategoryList(): Observable<CategoryList> {
-    return of({});
+  public getCategoryList(): Observable<Category[]> {
+    return of([]);
   }
 }
