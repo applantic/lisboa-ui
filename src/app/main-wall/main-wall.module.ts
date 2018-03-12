@@ -28,9 +28,9 @@ export const COMPONENTS = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'add-announcement', component: AddAnnouncementPageComponent },
-      { path: 'announcement-response', component: AnnouncementResponsePageComponent },
-      { path: '', component: MainWallPageComponent },
+      {path: 'new-announcement', component: AddAnnouncementPageComponent},
+      {path: 'announcement-response', component: AnnouncementResponsePageComponent},
+      {path: '', component: MainWallPageComponent},
     ]),
   ],
   declarations: COMPONENTS,
@@ -39,4 +39,5 @@ export const COMPONENTS = [
   ]
 })
 
-export class MainWallModule {}
+export class MainWallModule {
+}
