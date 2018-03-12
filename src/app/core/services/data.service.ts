@@ -17,8 +17,9 @@ export class DataService {
     };
   }
 
-  public getListAnnouncement(): Observable<MyAnnouncement[]> {
-    return of([]);
+  public getListAnnouncement(page: number, size: number): Observable<MyAnnouncement[]> {
+    return this.http.get<any>(`${BASE_URL}announcement?page=${page}&size=${size}`, this.option)
+      .map((data) => data.content);
   }
 
   public addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
