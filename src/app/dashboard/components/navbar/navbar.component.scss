@@ -8,3 +8,12 @@
   text-transform: uppercase;
   color: color-base('white');
 }
+
+.button {
+  align-self: center;
+}
+
+.clr-dropdown button,
+.button {
+  outline: none;
+}
