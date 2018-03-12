@@ -1,0 +1,10 @@
+@import '~scss/settings/variables';
+
+.app-name {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  align-self: center;
+  text-transform: uppercase;
+  color: color-base('white');
+}

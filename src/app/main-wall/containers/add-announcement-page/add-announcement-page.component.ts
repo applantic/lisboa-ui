@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MyAnnouncementService } from '../../services/my-announcement.service';
 import { MyAnnouncement } from '../../model/my-announcement';
 
@@ -9,14 +9,4 @@ import { MyAnnouncement } from '../../model/my-announcement';
   styleUrls: ['./add-announcement-page.component.scss']
 })
 
-export class AddAnnouncementPageComponent implements OnInit {
-  announcements: MyAnnouncement[] = [];
-
-  constructor(private myAnnouncementService: MyAnnouncementService) { }
-
-  ngOnInit() {
-    this.myAnnouncementService.getListAnnouncement()
-      .do((a) => console.log(a))
-      .subscribe((announcements) => this.announcements = announcements);
-  }
-}
+export class AddAnnouncementPageComponent {}
