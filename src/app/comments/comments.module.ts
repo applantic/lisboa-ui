@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {UserCommentsComponent} from './components/containers/user-comments.component';
+import {UserCommentsComponent} from './containers/user-comments.component';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import {ClarityModule} from '@clr/angular';
       },
     ]),
   ],
-  declarations: [UserCommentsComponent]
+  declarations: [UserCommentsComponent, CommentComponent]
 })
 export class CommentsModule { }
