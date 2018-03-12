@@ -18,6 +18,7 @@ import {CommentsModule} from '../comments/comments.module';
         path: '',
         component: DashboardComponent,
         children: [
+          {path: '', redirectTo: '/main-wall', pathMatch: 'full'},
           {
             path: 'main-wall',
             loadChildren: () => MainWallModule,

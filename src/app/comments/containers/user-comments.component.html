@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-no-shadow">
+      <div class="card-block">
+        <div class="card-title">
+          <h3>Profil użytkownika</h3>
+        </div>
+        <div class="card-text">
+          <div class="row">
+            <div class="offset-md-4 col-md-4 username">
+              <clr-icon shape="user" size="96"></clr-icon>
+              <h4>Janusz Andrzej Nowak</h4>
+              <div class="row">
+                <div class="offset-xs-3 col-xs-3 positive">
+                  <clr-icon shape="thumbs-up" size="32"></clr-icon>
+                  <div>{{positiveCount}}</div>
+                </div>
+                <div class="col-xs-3 negative">
+                  <clr-icon shape="thumbs-down" size="32"></clr-icon>
+                  <div>{{negativeCount}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-no-shadow">
+      <div class="card-block">
+        <div class="card-title">
+          <h3>Komentarze</h3>
+        </div>
+        <div class="card-text">
+          <pt-comment *ngFor="let comment of comments" [comment]="comment"></pt-comment>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
