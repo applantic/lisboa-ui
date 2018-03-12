@@ -12,26 +12,26 @@ import {MyAnnouncement} from '../../main-wall/model/my-announcement';
 @Injectable()
 export class DataMockService {
 
-  constructor(private http:HttpClient,
-              private localStorageService:LocalStorageService) {
+  constructor(private http: HttpClient,
+              private localStorageService: LocalStorageService) {
     this.localStorageService.initializeLocalStorage();
   }
 
-  public getListAnnouncement():Observable<MyAnnouncement[]> {
+  public getListAnnouncement(): Observable<MyAnnouncement[]> {
     return this.http.get<MyAnnouncement[]>('/data/my-announcement.json');
   }
 
-  public addNewAnnouncement(myAnnouncement:MyAnnouncement):Observable<MyAnnouncement> {
+  public addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
     return this.localStorageService.setAnnouncementToLocalStorage(Object.assign({}, myAnnouncement, {id: guid()}));
   }
 
-  public getCategoryList():Observable<Category[]> {
+  public getCategoryList(): Observable<Category[]> {
     return this.http.get<Category[]>('/data/categories.json');
   }
 
 }
 
-function guid():string {
+function guid(): string {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)

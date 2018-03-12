@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {MyAnnouncement} from '../../main-wall/model/my-announcement';
-import {Observable} from 'rxjs/Rx';
-import {of} from 'rxjs/observable/of';
+import { Injectable } from '@angular/core';
+import { MyAnnouncement } from '../../main-wall/model/my-announcement';
+import { Observable } from 'rxjs/observable';
+import { of } from 'rxjs/observable/of';
 
-const NAME_DATA:string = 'lisboaUi';
+const NAME_DATA = 'lisboaUi';
 
 @Injectable()
 export class LocalStorageService {
@@ -17,14 +17,14 @@ export class LocalStorageService {
     }
   }
 
-  public setAnnouncementToLocalStorage(myAnnouncement:MyAnnouncement):Observable<MyAnnouncement> {
+  public setAnnouncementToLocalStorage(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
     const lisboaUiDate = this.getDataFromLocalStorage();
 
     const newAnnouncementList = changeAnnouncement(lisboaUiDate.announcementList, myAnnouncement);
 
-    localStorage.setItem(NAME_DATA, JSON.stringify(Object.assign({}, lisboaUiDate, {announcementList: newAnnouncementList})));
+    localStorage.setItem(NAME_DATA, JSON.stringify(Object.assign({}, lisboaUiDate, { announcementList: newAnnouncementList })));
 
-    return of(myAnnouncement)
+    return of(myAnnouncement);
   }
 
   private getDataFromLocalStorage() {
@@ -32,14 +32,18 @@ export class LocalStorageService {
   }
 }
 
-function changeAnnouncement(announcementList:{[key:string]:MyAnnouncement} = {}, myAnnouncement:MyAnnouncement):{[key:string]:MyAnnouncement} {
-  let newAnnouncementList = Object.assign({}, announcementList);
+function changeAnnouncement(announcementList: MyAnnouncementMap = {}, myAnnouncement: MyAnnouncement): MyAnnouncementMap {
+  const newAnnouncementList = Object.assign({}, announcementList);
 
   if (announcementList[myAnnouncement.id]) {
     newAnnouncementList[myAnnouncement.id] = Object.assign({}, newAnnouncementList[myAnnouncement.id], myAnnouncement);
   } else {
-    newAnnouncementList[myAnnouncement.id] = Object.assign({}, myAnnouncement)
+    newAnnouncementList[myAnnouncement.id] = Object.assign({}, myAnnouncement);
   }
 
-  return newAnnouncementList
+  return newAnnouncementList;
+}
+
+interface MyAnnouncementMap {
+  [key: string]: MyAnnouncement;
 }

@@ -7,15 +7,15 @@ import {DataService} from '../../core/services/data.service';
 @Injectable()
 export class MyAnnouncementService {
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService: DataService) {
   }
 
-  getListAnnouncement():Observable<MyAnnouncement[]> {
+  getListAnnouncement(): Observable<MyAnnouncement[]> {
     return this.dataService.getListAnnouncement()
       .do((data) => console.log('getListAnnouncement: ', data));
   }
 
-  addNewAnnouncement(myAnnouncement:MyAnnouncement):Observable<MyAnnouncement> {
+  addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
     return this.dataService.addNewAnnouncement(myAnnouncement)
       .do((data) => console.log('addNewAnnouncement: ', data));
   }

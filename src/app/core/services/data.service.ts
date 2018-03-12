@@ -9,19 +9,19 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  option:Option;
+  option: Option;
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.option = {
       headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
-    }
+    };
   }
 
-  public getListAnnouncement():Observable<MyAnnouncement[]> {
+  public getListAnnouncement(): Observable<MyAnnouncement[]> {
     return of([]);
   }
 
-  public addNewAnnouncement(myAnnouncement:MyAnnouncement) :Observable<MyAnnouncement> {
+  public addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
     const {
       id,
       createData,
@@ -30,16 +30,16 @@ export class DataService {
       ...payload
     } = myAnnouncement;
 
-    return this.http.post<MyAnnouncement>(`${BASE_URL}announcement`, payload, this.option)
+    return this.http.post<MyAnnouncement>(`${BASE_URL}announcement`, payload, this.option);
   }
 
-  public getCategoryList():Observable<Category[]> {
-    return this.http.get<Category[]>(`${BASE_URL}category`, this.option)
+  public getCategoryList(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${BASE_URL}category`, this.option);
   }
 }
 
 interface Option {
-  headers?:HttpHeaders | {
-    [header:string]:string | string[];
+  headers?: HttpHeaders | {
+    [header: string]: string | string[];
   };
 }

@@ -3,7 +3,7 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
 
 import {PERIOD_LIST, DeliveryTypeMap, DELIVERY_TYPE, Category, Product} from '../../../config';
@@ -20,28 +20,28 @@ import {MyAnnouncementService} from '../../services/my-announcement.service';
 })
 
 export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
-  public categoryList:Category[];
+  public categoryList: Category[];
   public periodList = PERIOD_LIST;
-  public deliveryType:DeliveryTypeItem[] = mapToDeliveryTypeList(DELIVERY_TYPE);
-  public deliveryFlag:boolean;
-  public choseProductName:string;
-  public form:FormGroup;
+  public deliveryType: DeliveryTypeItem[] = mapToDeliveryTypeList(DELIVERY_TYPE);
+  public deliveryFlag: boolean;
+  public choseProductName: string;
+  public form: FormGroup;
 
-  private ngUnsubscribe:Subject<void> = new Subject<void>();
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  constructor(private categoryListService:CategoryListService,
-              private myAnnouncementService:MyAnnouncementService,
-              private formBuilder:FormBuilder) {
+  constructor(private categoryListService: CategoryListService,
+              private myAnnouncementService: MyAnnouncementService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    console.log(DELIVERY_TYPE)
+    console.log(DELIVERY_TYPE);
     this.categoryListService.getCategoryList()
       .takeUntil(this.ngUnsubscribe)
       // .map((data) => mapToCategoryList(data))
       .subscribe((data) => this.categoryList = data);
 
-    this.initForm()
+    this.initForm();
   }
 
   ngOnDestroy() {
@@ -63,7 +63,7 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       zipCode: ['']
     });
 
-    this.actualDeliveryFlag(this.form.get("delivery").value);
+    this.actualDeliveryFlag(this.form.get('delivery').value);
 
     this.form.valueChanges
       .takeUntil(this.ngUnsubscribe)
@@ -72,29 +72,29 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       .subscribe((data) => console.log('this form: ', data));
   }
 
-  private actualChoseProduct(productKey:string) {
-    this.choseProductName = getProductNameByKey(this.categoryList, productKey)
+  private actualChoseProduct(productKey: string) {
+    this.choseProductName = getProductNameByKey(this.categoryList, productKey);
   }
 
-  private actualDeliveryFlag(deliveryTypeKey:DeliveryEnum) {
-    this.deliveryFlag = deliveryTypeKey === DeliveryEnum.WITH_DELIVERY
+  private actualDeliveryFlag(deliveryTypeKey: DeliveryEnum) {
+    this.deliveryFlag = deliveryTypeKey === DeliveryEnum.WITH_DELIVERY;
   }
 
   public clickedSave() {
-    this.myAnnouncementService.addNewAnnouncement(this.form.value)
+    this.myAnnouncementService.addNewAnnouncement(this.form.value);
   }
 
 }
 
-function validateType(control:AbstractControl):ValidationErrors | null {
+function validateType(control: AbstractControl): ValidationErrors | null {
   if (!Object.keys(DELIVERY_TYPE).some((key) => key === control.value)) {
-    return {validUrl: true}
+    return {validUrl: true};
   } else {
-    return null
+    return null;
   }
 }
 
-function getProductNameByKey(list:Item[] = [], productKey):string {
+function getProductNameByKey(list: Item[] = [], productKey): string {
   const newList = [...list];
 
   return newList.reduce((acc, item, i, arr) => {
@@ -105,7 +105,7 @@ function getProductNameByKey(list:Item[] = [], productKey):string {
     } else {
 
       if (item.products && acc === '') {
-        acc += getProductNameByKey(item.products, productKey)
+        acc += getProductNameByKey(item.products, productKey);
       }
 
       return acc;
@@ -113,20 +113,20 @@ function getProductNameByKey(list:Item[] = [], productKey):string {
   }, '');
 }
 
-function mapToCategoryList(categoryList:Category[]):Category[] {
+function mapToCategoryList(categoryList: Category[]): Category[] {
   return Object.keys(categoryList).map((id) => Object.assign({}, categoryList[id], {id}));
 }
 
-function mapToDeliveryTypeList(deliveryTypeMap:DeliveryTypeMap):DeliveryTypeItem[] {
+function mapToDeliveryTypeList(deliveryTypeMap: DeliveryTypeMap): DeliveryTypeItem[] {
   return Object.keys(deliveryTypeMap).map((id) => ({id, labelName: deliveryTypeMap[String(id)]}));
 }
 
 interface DeliveryTypeItem {
-  id:string;
-  labelName:string;
+  id: string;
+  labelName: string;
 }
 
 
 export interface Item extends Product {
-  products?:Item[];
+  products?: Item[];
 }

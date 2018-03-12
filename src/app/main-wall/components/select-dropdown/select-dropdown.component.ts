@@ -30,18 +30,18 @@ export class SelectDropdownComponent implements ControlValueAccessor {
     this.propagateChange(this.choseValue);
   }
 
-  public setNewValue(value:any) {
-    this.ChoseValue = value
+  public setNewValue(value: any) {
+    this.ChoseValue = value;
   }
 
-  writeValue(value:any) {
+  writeValue(value: any) {
     if (value !== undefined) {
       this.choseValue = value;
     }
   }
 
-  propagateChange = (_:any) => {
-  };
+  propagateChange = (_: any) => {
+  }
 
   registerOnChange(fn) {
     this.propagateChange = fn;

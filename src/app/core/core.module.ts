@@ -13,7 +13,7 @@ import {CategoryListService} from './services/category-list.service';
 
 import {environment} from '../../environments/environment';
 
-export const dataFactory = (httpClient:HttpClient, localStorageService:LocalStorageService) => {
+export const dataFactory = (httpClient: HttpClient, localStorageService: LocalStorageService) => {
   if (environment.mock) {
     return new DataMockService(httpClient, localStorageService);
 
