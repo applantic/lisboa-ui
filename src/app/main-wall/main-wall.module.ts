@@ -11,6 +11,7 @@ import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.
 import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
 import {AnnouncementResponsePageComponent} from './containers/announcement-response-page/announcement-response-page.component';
 import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
+import { PtDate } from '../pipes/pt-date.pipe';
 
 import {MyAnnouncementService} from './services/my-announcement.service';
 import {AnnouncementGuardService} from './services/announcement-guard.service';
@@ -41,7 +42,10 @@ export const COMPONENTS = [
       },
     ]),
   ],
-  declarations: COMPONENTS,
+  declarations: [
+    ...COMPONENTS,
+    PtDate
+  ],
   providers: [
     MyAnnouncementService,
     AnnouncementGuardService

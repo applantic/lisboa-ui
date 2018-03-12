@@ -1,18 +1,24 @@
 <a class="card clickable" (click)="clickedCard()">
   <div class="card-block">
+    <span class="card-id">Ogłoszenie {{announcement.id}}</span>
     <div class="card-title">
-      <h3 class="announcement-title">{{announcement.description}}</h3>
-      <h3 class="announcement-price">{{announcement.price}} PLN</h3>
+      <h3 class="announcement-title">Tytuł</h3>
+      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType}}</h3>
     </div>
     <div class="card-text">
-      <b>Numer ogłoszenia:</b> {{announcement.id}}<br>
-      <b>Termin zapłaty:</b> {{announcement.paymentDate | date: 'dd.MM.yyyy'}}<br>
-      <b>Termin dostarczenia:</b> {{announcement.deliveryDate | date: 'dd.MM.yyyy'}}<br>
-      <b>Zasięg dostarczenia:</b> {{announcement.deliveryRange | date: 'dd.MM.yyyy'}}<br>
-      <span *ngIf="announcement.delivery">
-        <clr-icon shape="truck"></clr-icon>
-        Z Dostawą
-      </span>
+      <div class="card-left">
+        <span>{{announcement.description}}</span><br>
+        <b>Termin zapłaty:</b> {{announcement.paymentDate | ptDate }}<br>
+        <b>Termin dostarczenia:</b> {{announcement.deliveryDate | ptDate }}<br>
+        <b>Zasięg dostarczenia:</b> {{announcement.deliveryRange | ptDate }}<br>
+      </div>
+
+      <div class="card-right">
+        <span *ngIf="announcement.delivery">
+          <clr-icon shape="truck"></clr-icon>
+          Z Dostawą
+        </span>
+      </div>
     </div>
   </div>
 </a>

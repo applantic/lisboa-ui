@@ -3,6 +3,19 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-id {
+    opacity: 0.5;
+  }
 }
 
 .announcement {

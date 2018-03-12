@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
@@ -12,6 +12,9 @@ import {AppComponent} from './core/containers/app/app.component';
 import {routes} from './routes';
 
 @NgModule({
+  providers: [
+    DatePipe
+  ],
   imports: [
     BrowserModule,
     ClarityModule,
@@ -28,4 +31,3 @@ export class AppModule {
   constructor() {
   }
 }
-
