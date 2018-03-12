@@ -13,15 +13,17 @@
 
             <clr-dropdown>
               <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
-                {{choseProductName ? choseProductName : 'select a category'}}
+                {{choseProductName ? choseProductName : 'wybierz kategorie'}}
                 <clr-icon shape="caret down"></clr-icon>
               </button>
               <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
                 <clr-dropdown *ngFor="let item of categoryList">
                   <button type="button" clrDropdownTrigger>{{item.name}}</button>
                   <clr-dropdown-menu>
-                    <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>{{product.name}}>
+                    <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>
+                      {{product.name}}
                     </button>
+
                   </clr-dropdown-menu>
                 </clr-dropdown>
               </clr-dropdown-menu>
@@ -32,22 +34,23 @@
 
         <div class="form-group price">
           <label for="gForm_1">Cena:</label>
-          <input class="form-control" type="text" id="gForm_1" placeholder="Enter value here" formControlName="price">
+          <input type="text" id="gForm_1" placeholder="Np. 30" formControlName="price">
+          <span>PLN</span>
         </div>
 
         <div class="form-group price">
-          <label for="gForm_1">Ilosc:</label>
+          <label for="gForm_1">Ilość:</label>
           <div class="delivery__range-sub-label">
             <label for="gForm_2">MIN: </label>
           </div>
           <div class="delivery__range-input">
-            <input class="form-control" type="text" id="gForm_2" placeholder="quantity" formControlName="minQuantity">
+            <input class="form-control" type="text" id="gForm_2" formControlName="minQuantity">
           </div>
           <div class="delivery__range-sub-label">
             <label for="gForm_3">MAX: </label>
           </div>
           <div class="delivery__range-input">
-            <input class="form-control" type="text" id="gForm_3" placeholder="quantity" formControlName="maxQuantity">
+            <input class="form-control" type="text" id="gForm_3" formControlName="maxQuantity">
           </div>
         </div>
 
@@ -78,14 +81,14 @@
 
         <div class="form-group delivery">
           <label for="gForm_5">ZipCode:</label>
-          <input class="form-control" type="text" id="gForm_5" placeholder="Enter value here" formControlName="zipCode">
+          <input class="form-control" type="text" id="gForm_5" placeholder="Wprowadź wartość" formControlName="zipCode">
 
           <div class="delivery__range-sub-label" *ngIf="!deliveryFlag">
-            <label for="gForm_6">to: </label>
+            <label for="gForm_6">Do: </label>
           </div>
 
           <div class="delivery__range-input" *ngIf="!deliveryFlag">
-            <input class="form-control" type="text" id="gForm_6" placeholder="Enter value here" formControlName="deliveryRange">
+            <input class="form-control" type="text" id="gForm_6" placeholder="Wprowadź wartość" formControlName="deliveryRange">
           </div>
         </div>
         <div class="form-group delivery">
