@@ -16,7 +16,7 @@ export class DataService {
   public getListAnnouncement(): Observable<MyAnnouncement[]> {
     return of([]);
   }
-  
+
   public getCategoryList(): Observable<Category[]> {
     return of([]);
   }

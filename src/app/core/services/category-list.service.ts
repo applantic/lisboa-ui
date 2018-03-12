@@ -9,11 +9,11 @@ import {DataService} from './data.service';
 @Injectable()
 export class CategoryListService {
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService: DataService) {
 
   }
 
-  getCategoryList():Observable<Category[]> {
+  getCategoryList(): Observable<Category[]> {
     return this.dataService.getCategoryList()
       .do((data) => console.log('getCategoryList: ', data));
   }
