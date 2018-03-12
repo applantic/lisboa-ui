@@ -10,7 +10,6 @@ import {AuthModule} from './auth/auth.module';
 
 import {AppComponent} from './core/containers/app/app.component';
 import {routes} from './routes';
-import { DanceComponent } from './dance/dance.component';
 
 @NgModule({
   imports: [
@@ -23,7 +22,7 @@ import { DanceComponent } from './dance/dance.component';
     AuthModule.forRoot(),
   ],
   bootstrap: [AppComponent],
-  declarations: [DanceComponent]
+  declarations: []
 })
 export class AppModule {
   constructor() {
