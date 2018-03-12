@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.component';
 import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
@@ -17,6 +18,8 @@ export const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'add-announcement', component: AddAnnouncementPageComponent },
       { path: 'announcement-response', component: AnnouncementResponsePageComponent },

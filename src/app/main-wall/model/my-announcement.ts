@@ -1,17 +1,20 @@
+import {Categories} from '../../config';
+
 export interface MyAnnouncement {
   id: string;
-  price: number;
-  minQuantity: number;
-  description: string;
-  delivery: boolean;
-  paymentDate: string;
-  deliveryDate: string;
-  deliveryRange: string;
-  categories: Categories;
+  category: string;
+  createData: string;
+  lastUpdated: string;
+  price?: number;
+  minQuantity?: number;
+  maxQuantity?: number;
+  period?: string;
+  description?: string;
+  delivery: DeliveryType;
+  paymentDate?: string;
+  deliveryDate?: string;
+  deliveryRange?: string;
+  zipCode?: string;
 }
 
-export interface CategoryList {[key:string]:Categories}
-
-export interface Categories {
-  labelName: string;
-}
+export type DeliveryType = 'WITH_DELIVERY' | 'WITHOUT_DELIVERY' | 'BOTH_DELIVERIES';

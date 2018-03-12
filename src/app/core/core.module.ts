@@ -9,6 +9,7 @@ import {NotFoundPageComponent} from './containers/not-found-page/not-found-page.
 import {DataService} from './services/data.service';
 import {DataMockService} from './services/data-mock.service';
 import {LocalStorageService} from './services/local-storage.service';
+import {CategoryListService} from './services/category-list.service';
 
 import {environment} from '../../environments/environment';
 

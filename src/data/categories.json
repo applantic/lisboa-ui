@@ -1,8 +1,161 @@
-{
-  "f35002b3-db86-44fc-98b0-fa7f4dd9d92a": {
-    "labelName": "grain"
+[
+  {
+    "key": "ZBOZA",
+    "name": "Zboża",
+    "products": [
+      {
+        "key": "GRYKA",
+        "name": "Gryka"
+      },
+      {
+        "key": "JECZMIEN_PASZ",
+        "name": "Jęczmień paszowy"
+      },
+      {
+        "key": "JECZMIEN_BRO",
+        "name": "Jeczmień browarny"
+      },
+      {
+        "key": "JECZMIEN_KONSUM",
+        "name": "Jęczmień konsumpcyjny"
+      },
+      {
+        "key": "OWIES",
+        "name": "Owies"
+      },
+      {
+        "key": "KUKURYDZA",
+        "name": "Kukurydza"
+      },
+      {
+        "key": "PROSO",
+        "name": "Proso"
+      }
+    ]
   },
-  "2fdd8337-7684-4847-b0bb-ab70093f4b4c": {
-    "labelName": "cow"
+  {
+    "key": "OLEISTE",
+    "name": "Oleiste",
+    "products": [
+      {
+        "key": "GORCZYCA",
+        "name": "Gorczyca"
+      },
+      {
+        "key": "MAKUCH_SOJ",
+        "name": "Makuch sojowy"
+      },
+      {
+        "key": "MAKUCH_SŁO",
+        "name": "Makuch słonecznikowy"
+      },
+      {
+        "key": "MAKUCH_RZEP",
+        "name": "Makuch rzepakowy"
+      }
+    ]
+  },
+  {
+    "key": "MOTYLKOWE",
+    "name": "Motylkowe",
+    "products": []
+  },
+  {
+    "key": "OLEJE",
+    "name": "Oleje",
+    "products": [
+      {
+        "key": "SOJOWY",
+        "name": "Sojowy"
+      },
+      {
+        "key": "RZEPAKOWY",
+        "name": "Rzepakowy"
+      },
+      {
+        "key": "SLONECZNIKOWY",
+        "name": "Słonecznikowy"
+      }
+    ]
+  },
+  {
+    "key": "ZIEMNIAKI",
+    "name": "Ziemniaki",
+    "products": [
+      {
+        "key": "CHIPSOWE",
+        "name": "Chipsowe/Frytkowe"
+      },
+      {
+        "key": "PASTEWNE",
+        "name": "Pastewne"
+      },
+      {
+        "key": "JADALNE",
+        "name": "Jadalne"
+      }
+    ]
+  },
+  {
+    "key": "OWOCE",
+    "name": "Owoce",
+    "products": [
+      {
+        "key": "ARONIA",
+        "name": "Aronia"
+      },
+      {
+        "key": "AGREST",
+        "name": "Agrest"
+      },
+      {
+        "key": "ARBUZ",
+        "name": "Arbuz"
+      },
+      {
+        "key": "BOROWKA",
+        "name": "Borówka"
+      }
+    ]
+  },
+  {
+    "key": "WARZYWA",
+    "name": "Warzywa",
+    "products": [
+      {
+        "key": "BROKUL",
+        "name": "Brokuł"
+      },
+      {
+        "key": "BAKLAZAN",
+        "name": "Bakłażan"
+      },
+      {
+        "key": "BURAK_PASTEW",
+        "name": "Burak pastewny"
+      },
+      {
+        "key": "BURAK_CZERW",
+        "name": "Burak czerwony"
+      }
+    ]
+  },
+  {
+    "key": "NASIONA",
+    "name": "Materiał siewny",
+    "products": [
+      {
+        "key": "PSZENICA_OZIM",
+        "name": "Pszenica ozima"
+      },
+      {
+        "key": "PSZENICA_JARA",
+        "name": "Pszenica jara"
+      },
+      {
+        "key": "ZYTO",
+        "name": "Żyto"
+      }
+    ]
   }
-}
+]
