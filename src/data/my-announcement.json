@@ -24,7 +24,7 @@
     "price": 2140,
     "minQuantity": 3,
     "description": "Chętnie odkupię młodą żonę!",
-    "delivery": true,
+    "delivery": false,
     "paymentDate": 123221332,
     "deliveryDate": 123221332,
     "deliveryRange": 123221332
