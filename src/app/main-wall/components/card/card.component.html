@@ -1,0 +1,18 @@
+<a href="" class="card clickable">
+  <div class="card-block">
+    <div class="card-title">
+      <h3 class="announcement-title">{{announcement.description}}</h3>
+      <h3 class="announcement-price">{{announcement.price}} PLN</h3>
+    </div>
+    <div class="card-text">
+      <b>Numer ogłoszenia:</b> {{announcement.id}}<br>
+      <b>Termin zapłaty:</b> {{announcement.paymentDate | date: 'dd.MM.yyyy'}}<br>
+      <b>Termin dostarczenia:</b> {{announcement.deliveryDate | date: 'dd.MM.yyyy'}}<br>
+      <b>Zasięg dostarczenia:</b> {{announcement.deliveryRange | date: 'dd.MM.yyyy'}}<br>
+      <span *ngIf="announcement.delivery">
+        <clr-icon shape="truck"></clr-icon>
+        Z Dostawą
+      </span>
+    </div>
+  </div>
+</a>

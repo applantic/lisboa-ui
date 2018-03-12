@@ -1,1 +1,9 @@
-<button (click)="OnAddAnnouncement()" >add announcement !</button>
+<div class="row">
+  <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+    <ul>
+      <li *ngFor="let announcement of announcements">
+        <pt-card [announcement]="announcement"></pt-card>
+      </li>
+    </ul>
+  </div>
+</div>

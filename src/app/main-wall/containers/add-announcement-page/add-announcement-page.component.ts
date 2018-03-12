@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MyAnnouncementService } from '../../services/my-announcement.service';
+import { MyAnnouncement } from '../../model/my-announcement';
+
 
 @Component({
   selector: 'pt-add-announcement-page',
@@ -6,11 +9,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-announcement-page.component.scss']
 })
 
-export class AddAnnouncementPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class AddAnnouncementPageComponent {}
