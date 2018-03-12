@@ -1,4 +1,4 @@
-@import '~scss/settings/variables';
+@import '~scss/base';
 
 .app-name {
   margin: 0;
@@ -6,7 +6,21 @@
   letter-spacing: 1px;
   align-self: center;
   text-transform: uppercase;
-  color: color-base('white');
+  color: color-base('black');
+
+  @include respond-above('large') {
+    color: color-base('white');
+  }
+}
+
+.mobile-btn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+
+  @include respond-above('large') {
+    display: none;
+  }
 }
 
 .button {
@@ -16,4 +30,23 @@
 .clr-dropdown button,
 .button {
   outline: none;
+}
+
+.header-nav {
+  &-mobile {
+    display: block;
+    color: color-base('black');
+
+    @include respond-above('large') {
+      display: none;
+    }
+  }
+
+  &-desktop {
+    display: none;
+
+    @include respond-above('large') {
+      display: flex;
+    }
+  }
 }

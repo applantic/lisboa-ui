@@ -1,8 +1,4 @@
-@import 'settings/clear-style';
-@import 'settings/mixin';
-@import 'settings/breakpoint';
-@import 'settings/variables';
-@import 'settings/text-sizing';
+@import 'base';
 
 .app-icon {
   @include icon;
