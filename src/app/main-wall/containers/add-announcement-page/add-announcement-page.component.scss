@@ -1,0 +1,22 @@
+:host {
+  section {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .delivery, .price {
+
+    &__range-sub-label {
+      text-align: right;
+    }
+
+    &__range-input {
+      padding: 0;
+    }
+
+  }
+}

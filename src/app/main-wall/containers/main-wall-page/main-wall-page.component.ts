@@ -21,8 +21,4 @@ export class MainWallPageComponent implements OnInit {
       .subscribe((announcements) => this.announcements = announcements);
   }
 
-  OnAddAnnouncement() {
-    this.router.navigate(['./add-announcement'], { relativeTo: this.route });
-  }
-
 }
