@@ -1,16 +1,43 @@
-.main-container > * {
-  position: relative;
+@import '~scss/base';
+
+.main-container {
+  height: auto;
 }
 
-.main-container:before {
-  background: url('../../../../assets/wheat-bg.jpeg');
-  background-size: cover;
-  background-position: center center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.3;
-  content: '';
+.container {
+  flex-grow: 1;
+}
+
+.bg-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-container {
+  background-color: color-base('wheat');
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:before {
+    background: url('../../../../assets/wheat-bg.jpeg');
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.8;
+  }
+
+  &:after {
+    background: linear-gradient(to top, color-base('wheat'), transparent);
+  }
 }

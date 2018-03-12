@@ -2,7 +2,9 @@ $colors-map-base: (
   'white': #FFFFFF,
   'dark':#2a2a2a,
   'black': #232323,
-  'creamy': #b9874c
+  'navy': #002638,
+  'creamy': #b9874c,
+  'wheat': #dedfd3
 );
 
 @function color-base($color-name) {

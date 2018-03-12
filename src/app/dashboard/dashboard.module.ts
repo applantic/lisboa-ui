@@ -8,6 +8,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {MainWallModule} from '../main-wall/main-wall.module';
 import {DashboardComponent} from './containers/dashboard/dashboard.component';
 import {CommentsModule} from '../comments/comments.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import {CommentsModule} from '../comments/comments.module';
     ]),
   ],
   providers: [],
-  declarations: [NavbarComponent, DashboardComponent]
+  declarations: [NavbarComponent, DashboardComponent, FooterComponent]
 })
 
 export class DashboardModule {
