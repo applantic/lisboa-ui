@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ClarityModule } from '@clr/angular';
-import { AuthGuard } from '../auth/services/auth-guard.service';
-import { UserPanelModule } from '../user-panel/user-panel.module';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { MainWallModule } from '../main-wall/main-wall.module';
-import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {ClarityModule} from '@clr/angular';
+import {AuthGuard} from '../auth/services/auth-guard.service';
+import {UserPanelModule} from '../user-panel/user-panel.module';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {MainWallModule} from '../main-wall/main-wall.module';
+import {DashboardComponent} from './containers/dashboard/dashboard.component';
+import {CommentsModule} from '../comments/comments.module';
 
 @NgModule({
   imports: [
@@ -18,10 +19,6 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
         component: DashboardComponent,
         children: [
           {
-            path: '',
-            redirectTo: '/main-wall',
-          },
-          {
             path: 'main-wall',
             loadChildren: () => MainWallModule,
           },
@@ -29,6 +26,10 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
             path: 'user-panel',
             loadChildren: () => UserPanelModule,
             canActivate: [AuthGuard],
+          },
+          {
+            path: 'comments',
+            loadChildren: () => CommentsModule,
           },
         ]
       },
@@ -38,4 +39,5 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
   declarations: [NavbarComponent, DashboardComponent]
 })
 
-export class DashboardModule { }
+export class DashboardModule {
+}
