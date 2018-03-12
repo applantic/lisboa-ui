@@ -17,7 +17,7 @@ import {routes} from './routes';
     ClarityModule,
     CommonModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes,  { enableTracing: true }),
     CoreModule.forRoot(),
     AuthModule.forRoot(),
   ],
