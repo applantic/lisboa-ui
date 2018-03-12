@@ -1,124 +1,100 @@
-<form>
-  <section [formGroup]="form" class="form-block">
+<div class="card">
+  <div class="card-header">
     <h1>Add announcement</h1>
+  </div>
+  <div class="card-block">
+    <form>
+      <section [formGroup]="form" class="form-block">
 
-    <div class="form-group row">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"><label class="required">Category: </label></div>
-      <pt-select-dropdown formControlName="productKey" #selectDropdownRef>
 
-        <clr-dropdown>
-          <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
-            {{choseProductName ? choseProductName : 'select a category'}}
-            <clr-icon shape="caret down"></clr-icon>
-          </button>
-          <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
-            <clr-dropdown *ngFor="let item of categoryList">
-              <button type="button" clrDropdownTrigger>{{item.name}}</button>
-              <clr-dropdown-menu>
-                <button *ngFor="let product of item.products"
-                        (click)="selectDropdownRef.setNewValue(product.key)"
-                        type="button" clrDropdownItem>{{product.name}}
-                </button>
+        <div class="form-group">
+          <label class="required">Kategoria: </label>
+          <pt-select-dropdown formControlName="productKey" #selectDropdownRef>
+
+            <clr-dropdown>
+              <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
+                {{choseProductName ? choseProductName : 'select a category'}}
+                <clr-icon shape="caret down"></clr-icon>
+              </button>
+              <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                <clr-dropdown *ngFor="let item of categoryList">
+                  <button type="button" clrDropdownTrigger>{{item.name}}</button>
+                  <clr-dropdown-menu>
+                    <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>{{product.name}}>
+                    </button>
+                  </clr-dropdown-menu>
+                </clr-dropdown>
               </clr-dropdown-menu>
             </clr-dropdown>
-          </clr-dropdown-menu>
-        </clr-dropdown>
-      </pt-select-dropdown>
+          </pt-select-dropdown>
 
-    </div>
-    <div class="form-group row price">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <label for="gForm_1">Price:</label>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <input class="form-control"
-               type="text"
-               id="gForm_1"
-               placeholder="Enter value here"
-               formControlName="price"></div>
+        </div>
 
-      <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12 delivery__range-sub-label">
-        <label for="gForm_2">min:</label>
-      </div>
-      <div class="col-lg-1 col-md-4 col-sm-12 col-xs-12 delivery__range-input">
-        <input class="form-control"
-               type="text"
-               id="gForm_2"
-               placeholder="quantity"
-               formControlName="minQuantity">
-      </div>
-      <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12 delivery__range-sub-label">
-        <label for="gForm_3">max:</label>
-      </div>
-      <div class="col-lg-1 col-md-4 col-sm-12 col-xs-12 delivery__range-input">
-        <input class="form-control"
-               type="text"
-               id="gForm_3"
-               placeholder="quantity"
-               formControlName="maxQuantity">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"><label>Period:</label></div>
-      <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
-        <div class="select form-control">
-          <select id="exampleSelect2" formControlName="period">
-            <option value="default">select a period</option>
-            <option *ngFor="let period of periodList" value="period">{{period}}</option>
-          </select>
+        <div class="form-group price">
+          <label for="gForm_1">Cena:</label>
+          <input class="form-control" type="text" id="gForm_1" placeholder="Enter value here" formControlName="price">
         </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <label for="gForm_4">Description:</label>
-      </div>
-      <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
-        <textarea id="gForm_4"
-                  rows="5"
-                  class="form-control"
-                  formControlName="description"></textarea>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <label>Delivery:</label>
-      </div>
-      <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12" *ngFor="let delivery of deliveryType; let i = index">
-        <div class="radio-inline">
-          <input type="radio" id="{{delivery.id}}" value='{{delivery.id}}' name="delivery" formControlName="delivery">
-          <label for="{{delivery.id}}">{{delivery.labelName}}</label>
+
+        <div class="form-group price">
+          <label for="gForm_1">Ilosc:</label>
+          <div class="delivery__range-sub-label">
+            <label for="gForm_2">MIN: </label>
+          </div>
+          <div class="delivery__range-input">
+            <input class="form-control" type="text" id="gForm_2" placeholder="quantity" formControlName="minQuantity">
+          </div>
+          <div class="delivery__range-sub-label">
+            <label for="gForm_3">MAX: </label>
+          </div>
+          <div class="delivery__range-input">
+            <input class="form-control" type="text" id="gForm_3" placeholder="quantity" formControlName="maxQuantity">
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group row delivery">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <label for="gForm_5">ZipCode:</label>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-        <input class="form-control"
-               type="text"
-               id="gForm_5"
-               placeholder="Enter value here"
-               formControlName="zipCode"></div>
-      <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12 delivery__range-sub-label" *ngIf="!deliveryFlag">
-        <label for="gForm_6">to: </label>
-      </div>
-      <div class="col-lg-1 col-md-4 col-sm-12 col-xs-12 delivery__range-input" *ngIf="!deliveryFlag">
-        <input class="form-control"
-               type="text"
-               id="gForm_6"
-               placeholder="Enter value here" formControlName="deliveryRange">
-      </div>
-    </div>
-    <div class="form-group row delivery">
-      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-        <label>delivery date</label>
-      </div>
-      <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
-        <input type="date" clrDate formControlName="deliveryDate">
-      </div>
-    </div>
-    <button class="btn btn-primary" (click)="clickedSave()">Button</button>
-  </section>
-</form>
+
+        <div class="form-group">
+          <label>Termin płatnosci:</label>
+          <div class="select form-control">
+            <select id="exampleSelect2" formControlName="period">
+              <option value="default">Wybierz termin</option>
+              <option *ngFor="let period of periodList" value="period">{{period}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="gForm_4">Opis:</label>
+          <textarea id="gForm_4" rows="5" class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery:</label>
+          <div *ngFor="let delivery of deliveryType; let i = index">
+            <div class="radio-inline">
+              <input type="radio" id="{{delivery.id}}" value='{{delivery.id}}' name="delivery" formControlName="delivery">
+              <label for="{{delivery.id}}">{{delivery.labelName}} </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group delivery">
+          <label for="gForm_5">ZipCode:</label>
+          <input class="form-control" type="text" id="gForm_5" placeholder="Enter value here" formControlName="zipCode">
+
+          <div class="delivery__range-sub-label" *ngIf="!deliveryFlag">
+            <label for="gForm_6">to: </label>
+          </div>
+
+          <div class="delivery__range-input" *ngIf="!deliveryFlag">
+            <input class="form-control" type="text" id="gForm_6" placeholder="Enter value here" formControlName="deliveryRange">
+          </div>
+        </div>
+        <div class="form-group delivery">
+          <label>Data dostawy</label>
+          <input type="date" clrDate formControlName="deliveryDate">
+        </div>
+
+        <button class="btn btn-primary" (click)="clickedSave()">Button</button>
+      </section>
+    </form>
+  </div>
+</div>

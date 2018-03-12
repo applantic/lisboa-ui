@@ -81,7 +81,7 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   public clickedSave() {
-    this.myAnnouncementService.addNewAnnouncement(this.form.value);
+    this.myAnnouncementService.addNewAnnouncement(this.form.value).subscribe();
   }
 
 }
