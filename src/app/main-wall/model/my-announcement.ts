@@ -15,6 +15,10 @@ export interface MyAnnouncement {
   zipCode?:string;
 }
 
-export enum DeliveryType{
-  WITH_DELIVERY, WITHOUT_DELIVERY, BOTH_DELIVERIES
+export type DeliveryType = DeliveryEnum.BOTH_DELIVERIES | DeliveryEnum.WITH_DELIVERY | DeliveryEnum.WITHOUT_DELIVERY
+
+export enum DeliveryEnum{
+  WITH_DELIVERY = "WITH_DELIVERY",
+  WITHOUT_DELIVERY = "WITHOUT_DELIVERY",
+  BOTH_DELIVERIES = "BOTH_DELIVERIES"
 }

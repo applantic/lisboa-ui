@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} f
 import {Subject} from 'rxjs/Subject';
 
 import {PERIOD_LIST, DeliveryTypeMap, DELIVERY_TYPE, Category, Product} from '../../../config';
-import {DeliveryType} from '../../model/my-announcement';
+import {DeliveryEnum} from '../../model/my-announcement';
 
 import {CategoryListService} from '../../../core/services/category-list.service';
 import {MyAnnouncementService} from '../../services/my-announcement.service';
@@ -57,7 +57,7 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       maxQuantity: [''],
       period: ['default'],
       description: [''],
-      delivery: [String(DeliveryType.WITH_DELIVERY), [Validators.required, validateType]],
+      delivery: [String(DeliveryEnum.WITH_DELIVERY), [Validators.required, validateType]],
       deliveryDate: [''],
       deliveryRange: [''],
       zipCode: ['']
@@ -76,8 +76,8 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
     this.choseProductName = getProductNameByKey(this.categoryList, productKey)
   }
 
-  private actualDeliveryFlag(deliveryTypeKey:DeliveryType) {
-    this.deliveryFlag = String(deliveryTypeKey) === String(DeliveryType.WITH_DELIVERY)
+  private actualDeliveryFlag(deliveryTypeKey:DeliveryEnum) {
+    this.deliveryFlag = deliveryTypeKey === DeliveryEnum.WITH_DELIVERY
   }
 
   public clickedSave() {
