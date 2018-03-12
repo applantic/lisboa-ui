@@ -11,7 +11,7 @@ export class MyAnnouncementService {
   }
 
   getListAnnouncement(): Observable<MyAnnouncement[]> {
-    return this.dataService.getListAnnouncement()
+    return this.dataService.getListAnnouncement(0, 10)
       .do((data) => console.log('getListAnnouncement: ', data));
   }
 
