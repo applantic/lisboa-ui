@@ -3,9 +3,9 @@
     <h3 class="app-name">Lisboa UI</h3>
   </div>
   <div class="header-nav">
-    <a href="#" class="active nav-link nav-text">Ogłoszenia</a>
-    <a href="#" class="nav-link nav-text">Moje Ogłoszenia</a>
-    <a href="#" class="nav-link nav-text">Moje Oferty</a>
+    <a routerLink="/main-wall" routerLinkActive="active" class="nav-link nav-text">Ogłoszenia</a>
+    <a routerLink="/my-announcements" routerLinkActive="active" class="nav-link nav-text">Moje Ogłoszenia</a>
+    <a routerLink="/my-offers" routerLinkActive="active" class="nav-link nav-text">Moje Oferty</a>
   </div>
 
   <div class="header-actions">
@@ -15,8 +15,8 @@
         <clr-icon shape="caret down"></clr-icon>
       </button>
       <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-        <a href="#" clrDropdownItem>Ustawienia</a>
-        <a href="#" clrDropdownItem>Wyloguj</a>
+        <a routerLink="/user-panel" routerLinkActive="active" clrDropdownItem>Ustawienia</a>
+        <a routerLink="/logout" clrDropdownItem>Wyloguj</a>
       </clr-dropdown-menu>
     </clr-dropdown>
   </div>
