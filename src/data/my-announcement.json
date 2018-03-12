@@ -1,42 +1,30 @@
 [
   {
-    "id": 10,
-    "price": 240,
-    "minQuantity": 10,
-    "description": "Kupię 50 kóz",
-    "delivery": true,
+    "id": "32ou5847",
+    "price": 10,
+    "minQuantity": 1,
+    "maxQuantity": 10,
+    "description": "test_2",
+    "zipCode": "03-772",
+    "delivery": "BOTH_DELIVERIES",
     "paymentDate": 123221332,
     "deliveryDate": 123221332,
-    "deliveryRange": 123221332
+    "deliveryRange": 200,
+    "period": "delivery day",
+    "productKey": "GRYKA"
   },
   {
-    "id": 124,
-    "price": 2140,
-    "minQuantity": 3,
-    "description": "Kupię 2 krowy",
-    "delivery": true,
+    "id": "2o8quwar98u",
+    "price": 49,
+    "minQuantity": 1,
+    "maxQuantity": 104,
+    "description": "Koze trzeba odebrac samemu",
+    "zipCode": "03-772",
+    "delivery": "BOTH_DELIVERIES",
     "paymentDate": 123221332,
     "deliveryDate": 123221332,
-    "deliveryRange": 123221332
-  },
-  {
-    "id": 124,
-    "price": 2140,
-    "minQuantity": 3,
-    "description": "Chętnie odkupię młodą żonę!",
-    "delivery": false,
-    "paymentDate": 123221332,
-    "deliveryDate": 123221332,
-    "deliveryRange": 123221332
-  },
-  {
-    "id": 124,
-    "price": 2140,
-    "minQuantity": 3,
-    "description": "Sprzedam opla",
-    "delivery": true,
-    "paymentDate": 123221332,
-    "deliveryDate": 123221332,
-    "deliveryRange": 123221332
+    "deliveryRange": 300,
+    "period": "delivery day",
+    "productKey": "GRYKA"
   }
 ]
