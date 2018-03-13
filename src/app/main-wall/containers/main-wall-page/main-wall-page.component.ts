@@ -17,12 +17,13 @@ export class MainWallPageComponent implements OnInit {
               private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
-    this.myAnnouncementService.listAnnouncementLoadedSubject
-      .subscribe((loaded) => this.loaded = loaded);
-
     this.myAnnouncementService.getListAnnouncement()
       .do((a) => console.log(a))
       .subscribe((announcements) => this.announcements = announcements);
+
+    this.myAnnouncementService.listAnnouncementLoadedSubject
+      .do((loaded) => console.log('loaded: ', loaded))
+      .subscribe((loaded) => this.loaded = loaded);
   }
 
   public clickedAnnouncementCard(id: string) {
