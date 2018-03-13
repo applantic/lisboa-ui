@@ -1,5 +1,4 @@
 import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/forkJoin';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
@@ -34,4 +33,12 @@ export class MyAnnouncementService {
     return this.dataService.addNewAnnouncement(myAnnouncement)
       .do((data) => console.log('addNewAnnouncement: ', data));
   }
+
+  getAnnouncementDetails(id: string): Observable<MyAnnouncement> {
+    // return this.dataService.getAnnouncementDetails(id)
+    //   .do((data) => console.log('getAnnouncementDetails: ', data));
+
+    return this.listAnnouncement[id];
+  }
+
 }
