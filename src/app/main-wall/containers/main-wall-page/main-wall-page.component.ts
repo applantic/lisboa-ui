@@ -9,16 +9,26 @@ import { MyAnnouncementService } from '../../services/my-announcement.service';
   styleUrls: ['./main-wall-page.component.scss']
 })
 export class MainWallPageComponent implements OnInit {
-  announcements: MyAnnouncement[] = [];
+  public announcements: MyAnnouncement[] = [];
+  public loaded = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
-    this.myAnnouncementService.getListAnnouncement()
+    this.myAnnouncementService.getListAnnouncement();
+
+    this.myAnnouncementService.listAnnouncementLoadedSubject
+      .subscribe((loaded) => this.loaded = loaded);
+
+    this.myAnnouncementService.listAnnouncementSubject
       .do((a) => console.log(a))
       .subscribe((announcements) => this.announcements = announcements);
+  }
+
+  public clickedAnnouncementCard(id: string) {
+    this.router.navigate([`./announcement/${id}`], {relativeTo: this.route});
   }
 
 }
