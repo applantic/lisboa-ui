@@ -10,6 +10,7 @@ import {SelectDropdownComponent} from './components/select-dropdown/select-dropd
 import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.component';
 import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
 import {AnnouncementResponsePageComponent} from './containers/announcement-response-page/announcement-response-page.component';
+import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
 
 import {MyAnnouncementService} from './services/my-announcement.service';
 
@@ -18,6 +19,7 @@ export const COMPONENTS = [
   MainWallPageComponent,
   AddAnnouncementPageComponent,
   AnnouncementResponsePageComponent,
+  AnnouncementPageComponent,
   SelectDropdownComponent
 ];
 
@@ -28,9 +30,10 @@ export const COMPONENTS = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
+      {path: '', component: MainWallPageComponent},
       {path: 'new-announcement', component: AddAnnouncementPageComponent},
       {path: 'announcement-response', component: AnnouncementResponsePageComponent},
-      {path: '', component: MainWallPageComponent},
+      {path: 'announcement/:id', component: AnnouncementPageComponent},
     ]),
   ],
   declarations: COMPONENTS,
