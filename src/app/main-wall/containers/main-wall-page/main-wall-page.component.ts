@@ -16,7 +16,9 @@ export class MainWallPageComponent implements OnInit {
               private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
-    this.myAnnouncementService.getListAnnouncement()
+    this.myAnnouncementService.getListAnnouncement();
+
+    this.myAnnouncementService.listAnnouncementSubject
       .do((a) => console.log(a))
       .subscribe((announcements) => this.announcements = announcements);
   }
