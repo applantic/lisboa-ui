@@ -18,7 +18,10 @@ export class AnnouncementGuardService implements CanActivate {
     return this.myAnnouncementService
       .getAnnouncementDetails(id)
       .map(() => true)
-      .catch((error) => of(false));
+      .catch((error) => {
+        this.router.navigate(['./main-wall']);
+        return of(false);
+      });
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
