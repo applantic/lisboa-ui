@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'pt-card',
@@ -7,4 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() announcement;
+
+  @Output() clickCard = new EventEmitter();
+
+  public clickedCard() {
+    this.clickCard.emit();
+  }
 }
