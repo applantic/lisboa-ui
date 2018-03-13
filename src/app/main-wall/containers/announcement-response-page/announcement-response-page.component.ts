@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MyAnnouncementService} from '../../services/my-announcement.service';
-import {MyAnnouncement} from '../../model/my-announcement';
 
 @Component({
   selector: 'pt-announcement-response-page',
@@ -8,14 +6,11 @@ import {MyAnnouncement} from '../../model/my-announcement';
   styleUrls: ['./announcement-response-page.component.scss']
 })
 export class AnnouncementResponsePageComponent implements OnInit {
-  public listAnnouncement: MyAnnouncement[];
 
-  constructor(private myAnnouncementService: MyAnnouncementService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.myAnnouncementService.getListAnnouncement()
-      .subscribe((data) => this.listAnnouncement = data);
 
   }
 
