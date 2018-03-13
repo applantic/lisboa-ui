@@ -10,11 +10,11 @@
       <div class="cloud col-lg-12">
         <div class="row positive" *ngIf="comment.sentiment===positive">
           <clr-icon shape="thumbs-up"></clr-icon>
-          <h3 class="sentiment-text">Pozytywny</h3>
+          <h3 class="positive sentiment-text">Pozytywny</h3>
         </div>
         <div class="row negative" *ngIf="comment.sentiment===negative">
           <clr-icon shape="thumbs-down"></clr-icon>
-          <h3 class="sentiment-text">Negatywny</h3>
+          <h3 class="negative sentiment-text">Negatywny</h3>
         </div>
         <div class="row">
           {{comment.content}}
