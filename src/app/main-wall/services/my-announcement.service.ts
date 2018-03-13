@@ -1,8 +1,10 @@
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 import {MyAnnouncement} from '../model/my-announcement';
 import {DataService} from '../../core/services/data.service';
 
@@ -14,14 +16,12 @@ export class MyAnnouncementService {
   constructor(private dataService: DataService) {
   }
 
-  getListAnnouncement() {
+  getListAnnouncement(): Observable<MyAnnouncement[]> {
     this.listAnnouncementLoadedSubject.next(false);
 
-    this.dataService.getListAnnouncement(0, 10)
+    return this.dataService.getListAnnouncement(0, 10)
       .do((data) => this.listAnnouncementSubject.next(data))
-      .subscribe((data) => {
-        this.listAnnouncementLoadedSubject.next(true);
-      });
+      .do((data) => this.listAnnouncementLoadedSubject.next(true));
   }
 
   addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
@@ -34,7 +34,15 @@ export class MyAnnouncementService {
     //   .do((data) => console.log('getAnnouncementDetails: ', data));
 
     return this.listAnnouncementSubject
-      .map((data) => data.find((el) => el.id === id));
+      .switchMap((announcementList) => {
+        const announcement = announcementList.find((el) => el.id === id);
+        if (announcement) {
+          return of(announcement);
+        } else {
+          return this.getListAnnouncement()
+            .map((data) => data.find((el) => el.id === id));
+        }
+      });
   }
 
 }
