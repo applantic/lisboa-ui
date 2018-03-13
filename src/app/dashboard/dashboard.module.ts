@@ -2,12 +2,15 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
-import {AuthGuard} from '../auth/services/auth-guard.service';
+
 import {UserPanelModule} from '../user-panel/user-panel.module';
-import {NavbarComponent} from './components/navbar/navbar.component';
 import {MainWallModule} from '../main-wall/main-wall.module';
-import {DashboardComponent} from './containers/dashboard/dashboard.component';
 import {CommentsModule} from '../comments/comments.module';
+
+import {AuthGuard} from '../auth/services/auth-guard.service';
+
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {DashboardComponent} from './containers/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
