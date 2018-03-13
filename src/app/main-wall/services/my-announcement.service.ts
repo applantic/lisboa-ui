@@ -1,30 +1,25 @@
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import {MyAnnouncement} from '../model/my-announcement';
 import {DataService} from '../../core/services/data.service';
 
 @Injectable()
 export class MyAnnouncementService {
-  private listAnnouncement: MyAnnouncement[];
-  private listAnnouncementLoaded = false;
-
-  public listAnnouncementSubject: Subject<MyAnnouncement[]> = new Subject();
-  public listAnnouncementLoadedSubject: Subject<boolean> = new Subject();
+  public listAnnouncementSubject: BehaviorSubject<MyAnnouncement[]> = new BehaviorSubject([]);
+  public listAnnouncementLoadedSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private dataService: DataService) {
   }
 
   getListAnnouncement() {
     this.listAnnouncementLoadedSubject.next(false);
-    this.listAnnouncementLoaded = false;
 
     this.dataService.getListAnnouncement(0, 10)
-      .do((data) => this.listAnnouncement = data)
       .do((data) => this.listAnnouncementSubject.next(data))
       .subscribe((data) => {
-        this.listAnnouncementLoaded = true;
         this.listAnnouncementLoadedSubject.next(true);
       });
   }
@@ -38,7 +33,8 @@ export class MyAnnouncementService {
     // return this.dataService.getAnnouncementDetails(id)
     //   .do((data) => console.log('getAnnouncementDetails: ', data));
 
-    return this.listAnnouncement[id];
+    return this.listAnnouncementSubject
+      .map((data) => data.find((el) => el.id === id));
   }
 
 }
