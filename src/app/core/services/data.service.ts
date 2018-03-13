@@ -37,6 +37,10 @@ export class DataService {
   public getCategoryList(): Observable<Category[]> {
     return this.http.get<Category[]>(`${BASE_URL}category`, this.option);
   }
+
+  public getAnnouncementDetails(id: string): Observable<MyAnnouncement> {
+    return of(({} as MyAnnouncement));
+  }
 }
 
 interface Option {
