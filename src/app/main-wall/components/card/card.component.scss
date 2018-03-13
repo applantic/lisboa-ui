@@ -11,10 +11,25 @@
 
   &-right {
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   &-id {
     opacity: 0.5;
+  }
+}
+
+.button {
+  margin: 0;
+}
+
+.table {
+  &-title {
+    font-weight: 600;
+    padding-right: 15px;
   }
 }
 

@@ -1,23 +1,61 @@
 <a class="card clickable" (click)="clickedCard()">
   <div class="card-block">
-    <span class="card-id">Ogłoszenie {{announcement.id}}</span>
+    <span class="card-id">Ogłoszenie nr
+      <b>{{announcement.number || '42'}}</b>
+    </span>
     <div class="card-title">
-      <h3 class="announcement-title">Tytuł</h3>
-      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType}}</h3>
+      <h3 class="announcement-title">{{announcement.product || 'Category'}}</h3>
+      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
     </div>
     <div class="card-text">
       <div class="card-left">
-        <span>{{announcement.description}}</span><br>
-        <b>Termin zapłaty:</b> {{announcement.paymentDate | ptDate }}<br>
-        <b>Termin dostarczenia:</b> {{announcement.deliveryDate | ptDate }}<br>
-        <b>Zasięg dostarczenia:</b> {{announcement.deliveryRange | ptDate }}<br>
+        <span *ngIf="announcement.remarks">
+          {{announcement.remarks}}
+          <br>
+          <br>
+        </span>
+        <table>
+          <tr>
+            <td class="table-title">Zasięg dostarczenia:</td>
+            <td>{{announcement.deliveryRange}} KM</td>
+          </tr>
+          <tr>
+            <td class="table-title">Ilość:</td>
+            <td>{{announcement.minQuantity}} {{announcement.unitType || 'kg'}} - {{announcement.maxQuantity}} {{announcement.unitType
+              || 'kg'}}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Termin zapłaty:</td>
+            <td>{{announcement.paymentDate | ptDate }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Termin dostarczenia:</td>
+            <td>{{announcement.deliveryDate | ptDate }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Kod pocztowy:</td>
+            <td>{{announcement.zipCode}}</td>
+          </tr>
+        </table>
       </div>
 
       <div class="card-right">
-        <span *ngIf="announcement.delivery">
+        <span *ngIf="announcement.deliveryType === deliveryOptions.WITH_DELIVERY">
           <clr-icon shape="truck"></clr-icon>
           Z Dostawą
         </span>
+
+        <span *ngIf="announcement.deliveryType === deliveryOptions.WITHOUT_DELIVERY">
+          <clr-icon shape="user"></clr-icon>
+          Odbiór osobisty
+        </span>
+
+        <span *ngIf="announcement.deliveryType === deliveryOptions.BOTH_DELIVERIES">
+          <clr-icon shape="info-standard"></clr-icon>
+          Do ustalenia
+        </span>
+
+        <a routerLink="/main-wall/new-announcement" class="button btn btn-primary">ZŁÓŻ OFERTĘ</a>
       </div>
     </div>
   </div>

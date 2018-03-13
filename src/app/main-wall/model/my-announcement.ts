@@ -8,7 +8,7 @@ export interface MyAnnouncement {
   minQuantity?: number;
   maxQuantity?: number;
   period?: string;
-  description?: string;
+  remarks?: string;
   delivery: DeliveryType;
   paymentDate?: string;
   deliveryDate?: string;

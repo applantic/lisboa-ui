@@ -56,7 +56,7 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       minQuantity: [''],
       maxQuantity: [''],
       period: ['default'],
-      description: [''],
+      remarks: [''],
       delivery: [String(DeliveryEnum.WITH_DELIVERY), [Validators.required, validateType]],
       deliveryDate: [''],
       deliveryRange: [''],
