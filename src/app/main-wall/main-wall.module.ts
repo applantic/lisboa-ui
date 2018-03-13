@@ -43,7 +43,8 @@ export const COMPONENTS = [
   ],
   declarations: COMPONENTS,
   providers: [
-    MyAnnouncementService
+    MyAnnouncementService,
+    AnnouncementGuardService
   ]
 })
 
