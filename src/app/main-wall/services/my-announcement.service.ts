@@ -9,18 +9,25 @@ import {DataService} from '../../core/services/data.service';
 @Injectable()
 export class MyAnnouncementService {
   private listAnnouncement: MyAnnouncement[];
+  private listAnnouncementLoaded = false;
 
   public listAnnouncementSubject: Subject<MyAnnouncement[]> = new Subject();
+  public listAnnouncementLoadedSubject: Subject<boolean> = new Subject();
 
   constructor(private dataService: DataService) {
   }
 
   getListAnnouncement() {
+    this.listAnnouncementLoadedSubject.next(false);
+    this.listAnnouncementLoaded = false;
+
     this.dataService.getListAnnouncement(0, 10)
       .do((data) => this.listAnnouncement = data)
       .do((data) => this.listAnnouncementSubject.next(data))
-      .do((data) => console.log('getListAnnouncement: ', data))
-      .subscribe((data) => {});
+      .subscribe((data) => {
+        this.listAnnouncementLoaded = true;
+        this.listAnnouncementLoadedSubject.next(true);
+      });
   }
 
   addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
