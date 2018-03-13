@@ -6,7 +6,10 @@
   <div class="col-lg-12">
     <ul>
       <li *ngFor="let announcement of announcements">
-        <pt-card [announcement]="announcement" (clickCard)="clickedAnnouncementCard(announcement.id)"></pt-card>
+        <pt-card [announcement]="announcement"
+                 (clickCard)="clickedAnnouncementCard(announcement.id)"
+                 (clickPrimaryButton)="clickedMakeAnOffer(announcement.id)"
+        ></pt-card>
       </li>
     </ul>
   </div>

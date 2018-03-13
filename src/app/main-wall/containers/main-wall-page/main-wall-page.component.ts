@@ -17,17 +17,19 @@ export class MainWallPageComponent implements OnInit {
               private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
-    this.myAnnouncementService.getListAnnouncement();
-
     this.myAnnouncementService.listAnnouncementLoadedSubject
       .subscribe((loaded) => this.loaded = loaded);
 
-    this.myAnnouncementService.listAnnouncementSubject
+    this.myAnnouncementService.getListAnnouncement()
       .do((a) => console.log(a))
       .subscribe((announcements) => this.announcements = announcements);
   }
 
   public clickedAnnouncementCard(id: string) {
+    this.router.navigate([`./announcement/${id}`], {relativeTo: this.route});
+  }
+
+  public clickedMakeAnOffer(id: string) {
     this.router.navigate([`./announcement/${id}`], {relativeTo: this.route});
   }
 
