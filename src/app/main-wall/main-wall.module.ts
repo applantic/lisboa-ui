@@ -13,6 +13,7 @@ import {AnnouncementResponsePageComponent} from './containers/announcement-respo
 import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
 
 import {MyAnnouncementService} from './services/my-announcement.service';
+import {AnnouncementGuardService} from './services/announcement-guard.service';
 
 export const COMPONENTS = [
   CardComponent,
@@ -33,7 +34,11 @@ export const COMPONENTS = [
       {path: '', component: MainWallPageComponent},
       {path: 'new-announcement', component: AddAnnouncementPageComponent},
       {path: 'announcement-response', component: AnnouncementResponsePageComponent},
-      {path: 'announcement/:id', component: AnnouncementPageComponent},
+      {
+        path: 'announcement/:id',
+        component: AnnouncementPageComponent,
+        canActivate: [AnnouncementGuardService]
+      },
     ]),
   ],
   declarations: COMPONENTS,
