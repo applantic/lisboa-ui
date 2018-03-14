@@ -15,14 +15,13 @@ export class AuthService {
   }
 
   getToken() {
-    this.localStorageService.get(this.TOKEN_KEY);
+    return this.localStorageService.get(this.TOKEN_KEY);
   }
 
   login({ username, password }: Authenticate) {
-    return this.http.post('login', { username, password })
+    return this.http.post('auth/login', { username, password }, { observe: 'response' })
       .do((res) => {
-        console.log(res);
-        // this.localStorageService.set(this.TOKEN_KEY, res.headers.token)
+        this.localStorageService.set(this.TOKEN_KEY, res.headers.get('Authorization'));
       });
   }
 
@@ -34,7 +33,7 @@ export class AuthService {
   }
 
   logout() {
-    // this.localStorageService.remove(this.TOKEN_KEY);
+    this.localStorageService.remove(this.TOKEN_KEY);
     return of(true);
   }
 }

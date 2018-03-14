@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pt-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
 
   constructor(private authService: AuthService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private router: Router) {}
 
   ngOnInit() {
     this.initForm();
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
 
     this.authService
       .login(this.form.value)
+      .do(() => this.router.navigate(['main-wall']))
       .subscribe();
   }
 
