@@ -22,11 +22,19 @@ export class AuthService {
     return this.http.post('login', { username, password })
       .do((res) => {
         console.log(res);
-        // this.localStorageService.set(this.TOKEN_KEY, )
+        // this.localStorageService.set(this.TOKEN_KEY, res.headers.token)
+      });
+  }
+
+  register({ username, password, repeatPassword }) {
+    return this.http.post('register', { username, password, repeatPassword })
+      .do((res) => {
+        console.log(res);
       });
   }
 
   logout() {
+    // this.localStorageService.remove(this.TOKEN_KEY);
     return of(true);
   }
 }

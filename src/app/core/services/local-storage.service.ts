@@ -17,6 +17,10 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem(key));
   }
 
+  public remove(key: string) {
+    localStorage.removeItem(key);
+  }
+
   public initialize() {
     if (!localStorage.getItem(NAME_DATA)) {
       localStorage.setItem(NAME_DATA, '{}');
