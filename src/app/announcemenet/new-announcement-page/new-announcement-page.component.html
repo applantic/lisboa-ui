@@ -9,27 +9,7 @@
 
         <div class="form-group">
           <label class="required">Kategoria: </label>
-          <pt-select-dropdown formControlName="productKey" #selectDropdownRef>
-
-            <clr-dropdown>
-              <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
-                {{choseProductName ? choseProductName : 'wybierz kategorie'}}
-                <clr-icon shape="caret down"></clr-icon>
-              </button>
-              <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
-                <clr-dropdown *ngFor="let item of categoryList">
-                  <button type="button" clrDropdownTrigger>{{item.name}}</button>
-                  <clr-dropdown-menu>
-                    <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>
-                      {{product.name}}
-                    </button>
-
-                  </clr-dropdown-menu>
-                </clr-dropdown>
-              </clr-dropdown-menu>
-            </clr-dropdown>
-          </pt-select-dropdown>
-
+          <pt-select-dropdown formControlName="productKey" #selectDropdownRef></pt-select-dropdown>
         </div>
 
         <div class="form-group price">

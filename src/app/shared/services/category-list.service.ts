@@ -15,5 +15,4 @@ export class CategoryListService {
     return this.httpClient.get<Category[]>(`category`)
       .do((data) => console.log('getCategoryList: ', data));
   }
-
 }

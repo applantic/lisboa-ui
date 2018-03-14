@@ -35,12 +35,6 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(DELIVERY_TYPE);
-    this.categoryListService.getCategoryList()
-      .takeUntil(this.ngUnsubscribe)
-      // .map((data) => mapToCategoryList(data))
-      .subscribe((data) => this.categoryList = data);
-
     this.initForm();
   }
 
@@ -68,12 +62,7 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
     this.form.valueChanges
       .takeUntil(this.ngUnsubscribe)
       .do((data) => this.actualDeliveryFlag(data.deliveryType))
-      .do((data) => this.actualChoseProduct(data.productKey))
       .subscribe((data) => console.log('this form: ', data));
-  }
-
-  private actualChoseProduct(productKey: string) {
-    this.choseProductName = getProductNameByKey(this.categoryList, productKey);
   }
 
   private actualDeliveryFlag(deliveryTypeKey: DeliveryEnum) {
@@ -95,25 +84,6 @@ function validateType(control: AbstractControl): ValidationErrors | null {
   }
 }
 
-function getProductNameByKey(list: Item[] = [], productKey): string {
-  const newList = [...list];
-
-  return newList.reduce((acc, item, i, arr) => {
-    if (item.key === productKey && acc === '') {
-
-      arr.splice(1);
-      return item.name;
-    } else {
-
-      if (item.products && acc === '') {
-        acc += getProductNameByKey(item.products, productKey);
-      }
-
-      return acc;
-    }
-  }, '');
-}
-
 function mapToCategoryList(categoryList: Category[]): Category[] {
   return Object.keys(categoryList).map((id) => Object.assign({}, categoryList[id], {id}));
 }
@@ -125,9 +95,4 @@ function mapToDeliveryTypeList(deliveryTypeMap: DeliveryTypeMap): DeliveryTypeIt
 interface DeliveryTypeItem {
   id: string;
   labelName: string;
-}
-
-
-export interface Item extends Product {
-  products?: Item[];
 }

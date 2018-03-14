@@ -1,0 +1,16 @@
+<clr-dropdown>
+  <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
+    {{chosenProductName ? chosenProductName : 'wybierz kategorie'}}
+    <clr-icon shape="caret down"></clr-icon>
+  </button>
+  <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+    <clr-dropdown *ngFor="let item of categoryList">
+      <button type="button" clrDropdownTrigger>{{item.name}}</button>
+      <clr-dropdown-menu>
+        <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>
+          {{product.name}}
+        </button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </clr-dropdown-menu>
+</clr-dropdown>

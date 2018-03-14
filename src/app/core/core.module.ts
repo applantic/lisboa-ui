@@ -7,10 +7,10 @@ import {AppComponent} from './containers/app/app.component';
 import {NotFoundPageComponent} from './containers/not-found-page/not-found-page.component';
 
 import {LocalStorageService} from './services/local-storage.service';
-import {CategoryListService} from './services/category-list.service';
-import {BaseUrlInterceptor} from './interceptors/base-url.interceptor';
-import {HeadersInterceptor} from './interceptors/headers.interceptor';
-import {UnauthorizedInterceptor} from './interceptors/unauthorized.interceptor';
+import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
+import {environment} from '../../environments/environment';
+import { HeadersInterceptor } from './interceptors/headers.interceptor';
+import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
 
 export const COMPONENTS = [
   AppComponent,
@@ -47,7 +47,6 @@ export class CoreModule {
           multi: true
         },
         LocalStorageService,
-        CategoryListService
       ],
     };
   }
