@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Validators, FormBuilder, FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pt-register',
@@ -11,7 +12,8 @@ export class RegisterComponent implements OnInit {
   public form: FormGroup;
 
   constructor(private authService: AuthService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private router: Router) {}
 
   ngOnInit() {
     this.initForm();
@@ -21,14 +23,13 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      repeatPassword: ['', [Validators.required]]
     });
   }
 
   register() {
     this.authService
       .register(this.form.value)
+      .do(() => this.router.navigate(['login']))
       .subscribe();
   }
-
 }

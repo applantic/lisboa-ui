@@ -26,10 +26,7 @@ export class AuthService {
   }
 
   register({ username, password, repeatPassword }) {
-    return this.http.post('register', { username, password, repeatPassword })
-      .do((res) => {
-        console.log(res);
-      });
+    return this.http.post('user/sign-up', { username, password, repeatPassword });
   }
 
   logout() {
