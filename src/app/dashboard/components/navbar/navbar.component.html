@@ -33,7 +33,7 @@
             <a routerLink="/my-offers" routerLinkActive="active" clrDropdownItem>Moje Oferty</a>
             <a routerLink="/user-panel" routerLinkActive="active" clrDropdownItem>Ustawienia</a>
             <a routerLink="/comments" routerLinkActive="active" clrDropdownItem>Komentarze</a>
-            <a routerLink="/logout" clrDropdownItem>Wyloguj</a>
+            <span (click)="logout()" clrDropdownItem>Wyloguj</span>
           </clr-dropdown-menu>
         </clr-dropdown>
         <a routerLink="/main-wall/new-announcement" class="button btn btn-success">DODAJ OGŁOSZENIE +</a>

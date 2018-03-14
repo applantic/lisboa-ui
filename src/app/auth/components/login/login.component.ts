@@ -27,11 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // const userData = {
-    //   username: 'jedynakpoczta@gmail.com',
-    //   password: 'Pass123!'
-    // };
-
     this.authService
       .login(this.form.value)
       .do(() => this.router.navigate(['main-wall']))
