@@ -78,3 +78,19 @@
     </div>
   </div>
 </div>
+<div class="card" *ngIf="makeAnOfferFlag">
+  <div class="card-header">
+    <h3>Twoja oferta</h3>
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      < form tag >
+    </div>
+  </div>
+</div>
+<button class="btn"
+        [ngClass]="{'btn-secondary': makeAnOfferFlag, 'btn-primary': !makeAnOfferFlag}"
+        (click)="clickedMakeAnOffer()">{{makeAnOfferFlag ? 'Cancel' : 'ZŁÓŻ OFERTĘ'}}</button>
+<button class="btn btn-primary"
+        *ngIf="makeAnOfferFlag"
+        (click)="submitOffer()">Zatwierdź</button>

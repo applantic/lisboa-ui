@@ -12,6 +12,8 @@ export class AnnouncementPageComponent implements OnInit {
   public announcement: MyAnnouncement;
   public deliveryOptions = DeliveryEnum;
 
+  public makeAnOfferFlag = false;
+
   constructor(private route: ActivatedRoute,
               private myAnnouncementService: MyAnnouncementService) { }
 
@@ -22,4 +24,11 @@ export class AnnouncementPageComponent implements OnInit {
       .subscribe((announcement) => this.announcement = announcement);
   }
 
+  clickedMakeAnOffer() {
+    this.makeAnOfferFlag = !this.makeAnOfferFlag;
+  }
+
+  submitOffer() {
+    console.log('submitOffer (!)');
+  }
 }
