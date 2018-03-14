@@ -18,6 +18,8 @@ export class AnnouncementPageComponent implements OnInit {
               private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
+    this.makeAnOfferFlag = this.route.snapshot.paramMap.get('makeAnOffer') === 'true';
+
     const id = this.route.snapshot.paramMap.get('id');
     this.myAnnouncementService.getAnnouncementDetails(id)
       .do((announcement) => console.log('announcement: ', announcement))
