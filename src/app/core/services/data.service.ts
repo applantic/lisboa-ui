@@ -3,7 +3,7 @@ import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/observable';
 
 import {MyAnnouncement} from '../../main-wall/model/my-announcement';
-import {Category, BASE_URL} from '../../config';
+import {Category} from '../../config';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 
 
@@ -18,7 +18,7 @@ export class DataService {
   }
 
   public getListAnnouncement(page: number, size: number): Observable<MyAnnouncement[]> {
-    return this.http.get<any>(`${BASE_URL}announcement?page=${page}&size=${size}`, this.option)
+    return this.http.get<any>(`/announcement?page=${page}&size=${size}`, this.option)
       .map((data) => data.content);
   }
 
@@ -31,11 +31,11 @@ export class DataService {
       ...payload
     } = myAnnouncement;
 
-    return this.http.post<MyAnnouncement>(`${BASE_URL}announcement`, payload, this.option);
+    return this.http.post<MyAnnouncement>(`/announcement`, payload, this.option);
   }
 
   public getCategoryList(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${BASE_URL}category`, this.option);
+    return this.http.get<Category[]>(`/category`, this.option);
   }
 
   public getAnnouncementDetails(id: string): Observable<MyAnnouncement> {

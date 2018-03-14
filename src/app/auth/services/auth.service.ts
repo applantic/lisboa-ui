@@ -1,25 +1,29 @@
-import {Injectable} from '@angular/core';
-import {of} from 'rxjs/observable/of';
-import {_throw} from 'rxjs/observable/throw';
-import {User, Authenticate} from '../models/user';
+import { Injectable } from '@angular/core';
+import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
+import { User, Authenticate } from '../models/user';
+import { HttpClient } from '@angular/common/http';
+import { LocalStorageService } from '../../core/services/local-storage.service';
 
 @Injectable()
 export class AuthService {
+  TOKEN_KEY = 'token';
   public authorized = true;
 
-  constructor() {
+  constructor(private http: HttpClient,
+    private localStorageService: LocalStorageService) {
   }
 
-  login({username, password}: Authenticate) {
-    /**
-     * Simulate a failed login to display the error
-     * message for the login form.
-     */
-    if (username !== 'test') {
-      return _throw('Invalid username or password');
-    }
+  getToken() {
+    this.localStorageService.get(this.TOKEN_KEY);
+  }
 
-    return of({name: 'User'});
+  login({ username, password }: Authenticate) {
+    return this.http.post('/login', { username, password })
+      .do((res) => {
+        console.log(res);
+        // this.localStorageService.set(this.TOKEN_KEY, )
+      });
   }
 
   logout() {
