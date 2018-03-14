@@ -73,7 +73,7 @@
           <label>Delivery:</label>
           <div *ngFor="let delivery of deliveryType; let i = index">
             <div class="radio-inline">
-              <input type="radio" id="{{delivery.id}}" value='{{delivery.id}}' name="delivery" formControlName="delivery">
+              <input type="radio" id="{{delivery.id}}" value='{{delivery.id}}' name="deliveryType" formControlName="deliveryType">
               <label for="{{delivery.id}}">{{delivery.labelName}} </label>
             </div>
           </div>

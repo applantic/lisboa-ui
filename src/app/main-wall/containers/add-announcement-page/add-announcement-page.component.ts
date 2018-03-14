@@ -60,17 +60,17 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       maxQuantity: [''],
       period: ['default'],
       remarks: [''],
-      delivery: [String(DeliveryEnum.WITH_DELIVERY), [Validators.required, validateType]],
+      deliveryType: [String(DeliveryEnum.WITH_DELIVERY), [Validators.required, validateType]],
       deliveryDate: [''],
       deliveryRange: [''],
       zipCode: ['']
     });
 
-    this.actualDeliveryFlag(this.form.get('delivery').value);
+    this.actualDeliveryFlag(this.form.get('deliveryType').value);
 
     this.form.valueChanges
       .takeUntil(this.ngUnsubscribe)
-      .do((data) => this.actualDeliveryFlag(data.delivery))
+      .do((data) => this.actualDeliveryFlag(data.deliveryType))
       .do((data) => this.actualChoseProduct(data.productKey))
       .subscribe((data) => console.log('this form: ', data));
   }
