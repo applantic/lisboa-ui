@@ -19,6 +19,7 @@ import { CategoryListService } from './services/category-list.service';
     SelectDropdownComponent,
   ],
   exports: [
+    ClarityModule,
     PtDate,
     SelectDropdownComponent
   ]
