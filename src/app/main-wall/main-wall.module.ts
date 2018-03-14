@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule} from '@clr/angular';
 
+import {SharedModule} from '../shared/shared.module';
+
 import {CardComponent} from './components/card/card.component';
 import {SelectDropdownComponent} from './components/select-dropdown/select-dropdown.component';
 
@@ -13,11 +15,10 @@ import {AnnouncementResponsePageComponent} from './containers/announcement-respo
 import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
 import {AddedAnnouncementPageComponent} from './containers/added-announcement-page/added-announcement-page.component';
 
-import {PtDate} from '../pipes/pt-date.pipe';
-
 import {MyAnnouncementService} from './services/my-announcement.service';
 import {AnnouncementGuardService} from './services/announcement-guard.service';
 import { FiltersComponent } from './containers/filters/filters.component';
+import { PtDate } from '../shared/pipes/pt-date.pipe';
 
 export const COMPONENTS = [
   CardComponent,
@@ -35,6 +36,7 @@ export const COMPONENTS = [
     ClarityModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([
       {path: '', component: MainWallPageComponent},
       {path: 'new-announcement', component: AddAnnouncementPageComponent},
