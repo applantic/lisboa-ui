@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   mock: false,
-  BASE_URL: 'https://protected-crag-77697.herokuapp.com/v1/'
+  // BASE_URL: 'https://protected-crag-77697.herokuapp.com/v1/'
+  BASE_URL: 'http://localhost:8090/v1/'
 };

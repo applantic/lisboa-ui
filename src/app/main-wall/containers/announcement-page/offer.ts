@@ -3,4 +3,5 @@ export interface Offer {
   price: number;
   zipCode: string;
   city: string;
+  announcementId: string;
 }

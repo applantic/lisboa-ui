@@ -48,7 +48,7 @@ export class AnnouncementPageComponent implements OnInit {
   }
 
   submitOffer() {
-    this.offerService.addOffer(this.form.value)
+    this.offerService.addOffer({...this.form.value, announcementId: this.announcement.id})
       .subscribe(offer => console.log(offer));
   }
 }
