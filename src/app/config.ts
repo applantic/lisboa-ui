@@ -22,5 +22,3 @@ export interface Category {
   name: string;
   products: Product[];
 }
-
-export const BASE_URL = 'https://protected-crag-77697.herokuapp.com/v1/';
