@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pt-navbar',
@@ -8,10 +10,10 @@ import {Component, OnInit} from '@angular/core';
 export class NavbarComponent implements OnInit {
   public openDropdownFlag = false;
 
-  constructor() {}
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   mouseEnterDropdown() {
     this.openDropdownFlag = true;
@@ -19,5 +21,10 @@ export class NavbarComponent implements OnInit {
 
   mouseLeaveDropdown() {
     this.openDropdownFlag = false;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 }

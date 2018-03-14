@@ -7,18 +7,28 @@ const NAME_DATA = 'lisboaUi';
 
 @Injectable()
 export class LocalStorageService {
+  constructor() {}
 
-  constructor() {
+  public set(key: string, val: any) {
+    localStorage.setItem(key, JSON.stringify(val));
   }
 
-  public initializeLocalStorage() {
+  public get(key: string): any {
+    return JSON.parse(localStorage.getItem(key));
+  }
+
+  public remove(key: string) {
+    localStorage.removeItem(key);
+  }
+
+  public initialize() {
     if (!localStorage.getItem(NAME_DATA)) {
       localStorage.setItem(NAME_DATA, '{}');
     }
   }
 
-  public setAnnouncementToLocalStorage(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
-    const lisboaUiDate = this.getDataFromLocalStorage();
+  public setAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
+    const lisboaUiDate = this.getData();
 
     const newAnnouncementList = changeAnnouncement(lisboaUiDate.announcementList, myAnnouncement);
 
@@ -27,7 +37,7 @@ export class LocalStorageService {
     return of(myAnnouncement);
   }
 
-  private getDataFromLocalStorage() {
+  private getData() {
     return JSON.parse(localStorage.getItem(NAME_DATA));
   }
 }

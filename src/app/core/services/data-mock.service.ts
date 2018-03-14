@@ -14,7 +14,7 @@ export class DataMockService {
 
   constructor(private http: HttpClient,
               private localStorageService: LocalStorageService) {
-    this.localStorageService.initializeLocalStorage();
+    this.localStorageService.initialize();
   }
 
   public getListAnnouncement(): Observable<MyAnnouncement[]> {
@@ -22,7 +22,7 @@ export class DataMockService {
   }
 
   public addNewAnnouncement(myAnnouncement: MyAnnouncement): Observable<MyAnnouncement> {
-    return this.localStorageService.setAnnouncementToLocalStorage(Object.assign({}, myAnnouncement, {id: guid()}));
+    return this.localStorageService.setAnnouncement(Object.assign({}, myAnnouncement, {id: guid()}));
   }
 
   public getCategoryList(): Observable<Category[]> {
