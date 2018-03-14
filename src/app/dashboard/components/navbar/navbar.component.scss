@@ -23,13 +23,20 @@
   }
 }
 
-.button {
-  align-self: center;
-}
 
-.clr-dropdown button,
-.button {
-  outline: none;
+
+.clr-dropdown {
+  display: flex;
+  align-self: stretch;
+
+  a{
+    align-self: center;
+  }
+
+  button,
+  .button {
+    outline: none;
+  }
 }
 
 .header-nav {
