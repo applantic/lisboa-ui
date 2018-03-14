@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'pt-added-announcement-page',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./added-announcement-page.component.scss']
 })
 export class AddedAnnouncementPageComponent implements OnInit {
+  public idAnnouncement: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.idAnnouncement = this.route.snapshot.paramMap.get('id');
   }
 
 }

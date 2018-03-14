@@ -3,6 +3,7 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
 
@@ -29,7 +30,9 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
 
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  constructor(private categoryListService: CategoryListService,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private categoryListService: CategoryListService,
               private myAnnouncementService: MyAnnouncementService,
               private formBuilder: FormBuilder) {
   }
@@ -81,7 +84,9 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   public clickedSave() {
-    this.myAnnouncementService.addNewAnnouncement(this.form.value).subscribe();
+    this.myAnnouncementService.addNewAnnouncement(this.form.value)
+      .do((data) => this.router.navigate([`/main-wall/added-announcement`, {id: data.id}], {relativeTo: this.route}))
+      .subscribe();
   }
 
 }
