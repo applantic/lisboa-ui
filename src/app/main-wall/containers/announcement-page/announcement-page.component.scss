@@ -1,0 +1,77 @@
+@import '~scss/base';
+
+:host{
+  .card {
+    &-title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-text {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-left {
+      flex: 1;
+    }
+
+    &-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    h3{
+      margin-top: 0;
+    }
+
+    &-id {
+      @include responsive-text-size('description');
+      opacity: 0.5;
+    }
+  }
+
+  .pt-table{
+    display: flex;
+    flex-wrap: wrap;
+
+    &-column{
+      flex: 0 0 100%;
+
+      @include respond-above('large') {
+        flex: 1;
+      }
+    }
+
+    &-row{
+      display: flex;
+      flex: 1;
+
+      padding: 5px 0;
+    }
+
+    &-cell{
+      flex: 1;
+
+      &:first-of-type{
+        font-weight: 500;
+        max-width: 150px;
+      }
+    }
+  }
+
+  .announcement {
+    &-title,
+    &-price {
+      margin: 0;
+    }
+
+    &-price {
+      margin-left: 40px;
+      flex-shrink: 0;
+    }
+  }
+}

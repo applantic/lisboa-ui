@@ -12,9 +12,7 @@ export class MainWallPageComponent implements OnInit {
   public announcements: MyAnnouncement[] = [];
   public loaded = false;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private myAnnouncementService: MyAnnouncementService) { }
+  constructor(private myAnnouncementService: MyAnnouncementService) { }
 
   ngOnInit() {
     this.myAnnouncementService.getListAnnouncement()
@@ -24,14 +22,6 @@ export class MainWallPageComponent implements OnInit {
     this.myAnnouncementService.listAnnouncementLoadedSubject
       .do((loaded) => console.log('loaded: ', loaded))
       .subscribe((loaded) => this.loaded = loaded);
-  }
-
-  public clickedAnnouncementCard(id: string) {
-    this.router.navigate([`./announcement/${id}`], {relativeTo: this.route});
-  }
-
-  public clickedMakeAnOffer(id: string) {
-    this.router.navigate([`./announcement/${id}`], {relativeTo: this.route});
   }
 
 }

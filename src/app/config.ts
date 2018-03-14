@@ -8,7 +8,7 @@ export const PERIOD_LIST = ['przedpłata', 'w dniu dostawy', '1', '3', '7', '14'
 
 export const DELIVERY_TYPE: DeliveryTypeMap = {
   [DeliveryEnum.WITH_DELIVERY]: 'z dostawą',
-  [DeliveryEnum.WITHOUT_DELIVERY]: 'bez dostawy',
+  [DeliveryEnum.WITHOUT_DELIVERY]: 'odbiór osobisty',
   [DeliveryEnum.BOTH_DELIVERIES]: 'do ustalenia',
 };
 

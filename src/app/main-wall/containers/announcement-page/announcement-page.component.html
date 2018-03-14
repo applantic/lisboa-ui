@@ -1,25 +1,80 @@
 <div class="card">
   <div class="card-header">
-    <h1>Podgląd</h1>
+    <span class="card-id">Ogłoszenie nr
+      <b>{{announcement.number || '42'}}</b>
+    </span>
+    <div class="card-title">
+      <h3 class="announcement-title">{{announcement.product || 'Category'}}</h3>
+      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
+    </div>
   </div>
   <div class="card-block">
-    <div class="card-title">
-      <p>announcement id: {{announcement.id}}</p>
-    </div>
     <div class="card-text">
-      <p>announcement productKey: {{announcement.productKey}}</p>
-      <p>announcement createData: {{announcement.createData}}</p>
-      <p>announcement lastUpdated: {{announcement.lastUpdated}}</p>
-      <p>announcement price: {{announcement.price}}</p>
-      <p>announcement minQuantity: {{announcement.minQuantity}}</p>
-      <p>announcement maxQuantity: {{announcement.maxQuantity}}</p>
-      <p>announcement period: {{announcement.period}}</p>
-      <p>announcement description: {{announcement.description}}</p>
-      <p>announcement delivery: {{announcement.delivery}}</p>
-      <p>announcement paymentDate: {{announcement.paymentDate}}</p>
-      <p>announcement deliveryDate: {{announcement.deliveryDate}}</p>
-      <p>announcement deliveryRange: {{announcement.deliveryRange}}</p>
-      <p>announcement zipCode: {{announcement.zipCode}}</p>
+      <div class="card-left">
+        <div class="pt-table">
+          <div class="pt-table-column">
+            <div class="pt-table-row">
+              <div class="pt-table-cell">Ilość:</div>
+              <div class="pt-table-cell">{{announcement.minQuantity}} {{announcement.unitType || 'kg'}} -
+                {{announcement.maxQuantity}} {{announcement.unitType
+                || 'kg'}}
+              </div>
+            </div>
+
+            <div class="pt-table-row">
+              <div class="pt-table-cell">Okres zapłaty:</div>
+              <div class="pt-table-cell">{{announcement.period || '7 dni' }}</div>
+            </div>
+
+            <div class="pt-table-row">
+              <div class="pt-table-cell">Termin dostarczenia:</div>
+              <div class="pt-table-cell">{{announcement.deliveryDate | ptDate }}</div>
+            </div>
+          </div>
+          <div class="pt-table-column">
+            <div class="pt-table-row">
+              <div class="pt-table-cell">Kod pocztowy:</div>
+              <div class="pt-table-cell">{{announcement.zipCode}}</div>
+            </div>
+
+            <div class="pt-table-row">
+              <div class="pt-table-cell">Miasto:</div>
+              <div class="pt-table-cell">{{announcement.city || 'Lublin'}}</div>
+            </div>
+
+            <div class="pt-table-row" *ngIf="announcement.deliveryType !== deliveryOptions.WITH_DELIVERY">
+              <div class="pt-table-cell">Zasięg odbioru:</div>
+              <div class="pt-table-cell">{{announcement.deliveryRange}} KM</div>
+            </div>
+          </div>
+        </div>
+        <div class="pt-table-row">
+          <div class="pt-table-cell">Uwagi:</div>
+          <div class="pt-table-cell">{{announcement.remarks || '
+            The Flexbox Layout (Flexible Box) module (currently a W3C Last Call Working Draft) aims at providing a more efficient way to lay out, align and distribute space among items in a container, even when their size is unknown and/or dynamic (thus the word "flex").
+            '}}
+          </div>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="pt-table-row">
+          <span *ngIf="announcement.deliveryType === deliveryOptions.WITH_DELIVERY">
+          <clr-icon shape="truck"></clr-icon>
+          Z Dostawą
+        </span>
+
+          <span *ngIf="announcement.deliveryType === deliveryOptions.WITHOUT_DELIVERY">
+          <clr-icon shape="user"></clr-icon>
+          Odbiór osobisty
+        </span>
+
+          <span *ngIf="announcement.deliveryType === deliveryOptions.BOTH_DELIVERIES">
+          <clr-icon shape="info-standard"></clr-icon>
+          Do ustalenia
+        </span>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

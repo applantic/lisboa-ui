@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MyAnnouncementService} from '../../services/my-announcement.service';
-import {MyAnnouncement} from '../../model/my-announcement';
+import {DeliveryEnum, MyAnnouncement} from '../../model/my-announcement';
 
 @Component({
   selector: 'pt-announcement-page',
@@ -10,6 +10,7 @@ import {MyAnnouncement} from '../../model/my-announcement';
 })
 export class AnnouncementPageComponent implements OnInit {
   public announcement: MyAnnouncement;
+  public deliveryOptions = DeliveryEnum;
 
   constructor(private route: ActivatedRoute,
               private myAnnouncementService: MyAnnouncementService) { }
@@ -17,6 +18,7 @@ export class AnnouncementPageComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.myAnnouncementService.getAnnouncementDetails(id)
+      .do((announcement) => console.log('announcement: ', announcement))
       .subscribe((announcement) => this.announcement = announcement);
   }
 
