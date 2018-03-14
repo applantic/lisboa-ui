@@ -9,16 +9,5 @@ import { DeliveryEnum } from '../../model/my-announcement';
 export class CardComponent {
   @Input() announcement;
 
-  @Output() clickCard = new EventEmitter();
-  @Output() clickPrimaryButton = new EventEmitter();
-
   deliveryOptions = DeliveryEnum;
-
-  public clickedCard() {
-    this.clickCard.emit();
-  }
-
-  public clickedPrimaryButton() {
-    this.clickPrimaryButton.emit();
-  }
 }

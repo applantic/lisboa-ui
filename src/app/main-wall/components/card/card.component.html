@@ -1,10 +1,10 @@
-<a class="card clickable" (click)="clickedCard()">
+<div class="card" >
   <div class="card-block">
     <span class="card-id">Ogłoszenie nr
       <b>{{announcement.number || '42'}}</b>
     </span>
     <div class="card-title">
-      <h3 class="announcement-title">{{announcement.product || 'Category'}}</h3>
+      <a [routerLink]="['./announcement', announcement.id]"><h3 class="announcement-title">{{announcement.product || 'Category'}}</h3></a>
       <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
     </div>
     <div class="card-text">
@@ -16,17 +16,13 @@
         </span>
         <table>
           <tr>
-            <td class="table-title">Zasięg dostarczenia:</td>
-            <td>{{announcement.deliveryRange}} KM</td>
-          </tr>
-          <tr>
             <td class="table-title">Ilość:</td>
             <td>{{announcement.minQuantity}} {{announcement.unitType || 'kg'}} - {{announcement.maxQuantity}} {{announcement.unitType
               || 'kg'}}</td>
           </tr>
           <tr>
-            <td class="table-title">Termin zapłaty:</td>
-            <td>{{announcement.paymentDate | ptDate }}</td>
+            <td class="table-title">Okres zapłaty:</td>
+            <td>{{announcement.period || '7 dni' }}</td>
           </tr>
           <tr>
             <td class="table-title">Termin dostarczenia:</td>
@@ -35,6 +31,10 @@
           <tr>
             <td class="table-title">Kod pocztowy:</td>
             <td>{{announcement.zipCode}}</td>
+          </tr>
+          <tr *ngIf="announcement.deliveryType !== deliveryOptions.WITH_DELIVERY">
+            <td class="table-title">Zasięg odbioru:</td>
+            <td>{{announcement.deliveryRange}} KM</td>
           </tr>
         </table>
       </div>
@@ -55,8 +55,11 @@
           Do ustalenia
         </span>
 
-        <a (click)="clickedPrimaryButton()" class="button btn btn-primary">ZŁÓŻ OFERTĘ</a>
-      </div>
+        <div class="button-container">
+          <a [routerLink]="['./announcement', announcement.id]" routerLinkActive="active" class="button btn btn-secondary">Podgląd</a>
+          <a [routerLink]="['./announcement', announcement.id]" routerLinkActive="active" class="button btn btn-primary">ZŁÓŻ OFERTĘ</a>
+        </div>
+        </div>
     </div>
   </div>
-</a>
+</div>
