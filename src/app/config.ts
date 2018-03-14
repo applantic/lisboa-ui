@@ -1,4 +1,4 @@
-import { DeliveryEnum } from './main-wall/model/my-announcement';
+import { DeliveryEnum } from './announcmenet/announcement.model';
 
 export interface DeliveryTypeMap {
   [key: string]: string;

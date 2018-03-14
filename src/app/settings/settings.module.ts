@@ -4,12 +4,16 @@ import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
 
 import {SettingsPageComponent} from './settings-page/settings-page.component';
+import {UserProfileComponent} from '../user-profile/user-profile-page/user-profile-page.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
-    RouterModule.forChild([]),
+    RouterModule.forChild([{
+      path: '',
+      component: SettingsPageComponent,
+    }]),
   ],
   declarations: [
     SettingsPageComponent

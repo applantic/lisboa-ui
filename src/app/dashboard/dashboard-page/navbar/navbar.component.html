@@ -1,0 +1,45 @@
+<clr-header class="header-6">
+  <div class="header-nav header-nav-mobile" [clr-nav-level]="1">
+    <div class="branding">
+      <a routerLink="/oferty">
+        <h3 class="app-name">Lisboa UI</h3>
+      </a>
+    </div>
+
+    <a routerLink="/my-announcements" routerLinkActive="active" class="nav-link nav-text">Moje ogloszenia</a>
+    <a routerLink="/my-offers" routerLinkActive="active" class="nav-link nav-text">Moje Oferty</a>
+    <a routerLink="/ustawienia" routerLinkActive="active" class="nav-link nav-text">Ustawienia</a>
+    <a routerLink="/profil" routerLinkActive="active" class="nav-link nav-text">Komentarze</a>
+    <a routerLink="/logout" routerLinkActive="active" class="nav-link nav-text">Wyloguj</a>
+  </div>
+
+  <a routerLink="/ogloszenia/dodaj" class="button btn btn-success mobile-btn">DODAJ OGŁOSZENIE +</a>
+
+  <div class="header-nav container header-nav-desktop">
+      <div class="branding">
+        <a routerLink="/oferty">
+          <h3 class="app-name">Lisboa UI</h3>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <clr-dropdown class="clr-dropdown"
+                      (mouseenter) ="mouseEnterDropdown()"
+                      (mouseleave) ="mouseLeaveDropdown()">
+          <a class="nav-text"
+                  routerLink="/profil" routerLinkActive="active">
+            rolnik@janusz.com
+            <clr-icon shape="caret down"></clr-icon>
+          </a>
+          <clr-dropdown-menu *clrIfOpen="openDropdownFlag" clrPosition="bottom-right">
+            <a routerLink="/my-announcements" routerLinkActive="active" clrDropdownItem>Moje ogloszenia</a>
+            <a routerLink="/my-offers" routerLinkActive="active" clrDropdownItem>Moje Oferty</a>
+            <a routerLink="/ustawienia" routerLinkActive="active" clrDropdownItem>Ustawienia</a>
+            <a routerLink="/profil" routerLinkActive="active" clrDropdownItem>Komentarze</a>
+            <span (click)="logout()" clrDropdownItem>Wyloguj</span>
+          </clr-dropdown-menu>
+        </clr-dropdown>
+        <a routerLink="/ogloszenia/dodaj" class="button btn btn-success">DODAJ OGŁOSZENIE +</a>
+      </div>
+  </div>
+</clr-header>

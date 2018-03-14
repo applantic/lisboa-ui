@@ -1,0 +1,33 @@
+:host{
+  .card.card-image{
+    margin-top: calc(60px + 1rem);
+    padding-top: calc(87px + .5rem);
+
+    position: relative;
+
+    text-align: center;
+
+    &:before{
+      background: url('../../../assets/add-confirm.png');
+
+      width: 146px;
+      height: 147px;
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      margin-left: -73px;
+      content: '';
+    }
+  }
+
+  .card.card-transparent{
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+
+    p{
+      font-weight: 500;
+    }
+  }
+}

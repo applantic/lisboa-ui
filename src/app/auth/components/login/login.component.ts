@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService
       .login(this.form.value)
-      .do(() => this.router.navigate(['main-wall']))
+      .do(() => this.router.navigate(['ogloszenia']))
       .subscribe();
   }
 

@@ -3,49 +3,50 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
 
-import {UserPanelModule} from '../user-panel/user-panel.module';
-import {MainWallModule} from '../main-wall/main-wall.module';
-import {CommentsModule} from '../comments/comments.module';
+import {SettingsModule} from '../settings/settings.module';
+import {OfferModule} from '../offer/offer.module';
+import {UserProfileModule} from '../user-profile/user-profile.module';
+import {AnnouncementModule} from '../announcmenet/announcement.module';
 
-import {AuthGuard} from '../auth/services/auth-guard.service';
-
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {DashboardComponent} from './containers/dashboard/dashboard.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {NavbarComponent} from './dashboard-page/navbar/navbar.component';
+import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';
+import {FooterComponent} from './dashboard-page/footer/footer.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: DashboardComponent,
-        children: [
-          {path: '', redirectTo: '/main-wall', pathMatch: 'full'},
-          {
-            path: 'main-wall',
-            loadChildren: () => MainWallModule,
-          },
-          {
-            path: 'user-panel',
-            loadChildren: () => UserPanelModule,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'comments',
-            loadChildren: () => CommentsModule,
-          },
-        ]
-      },
+    RouterModule.forChild([{
+      path: '',
+      component: DashboardPageComponent,
+      children: [
+        {path: '', redirectTo: '/oferty', pathMatch: 'full'},
+        {
+          path: 'oferty',
+          loadChildren: () => OfferModule,
+        },
+        {
+          path: 'ustawienia',
+          loadChildren: () => SettingsModule,
+        },
+        {
+          path: 'profil',
+          loadChildren: () => UserProfileModule,
+        },
+        {
+          path: 'ogloszenia',
+          loadChildren: () => AnnouncementModule,
+        },
+      ]
+    },
     ]),
   ],
-  providers: [],
   declarations: [
     NavbarComponent,
-    DashboardComponent,
+    DashboardPageComponent,
     FooterComponent
-  ]
+  ],
+  providers: [],
 })
 
 export class DashboardModule {
