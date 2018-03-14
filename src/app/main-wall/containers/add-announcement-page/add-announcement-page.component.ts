@@ -88,7 +88,6 @@ export class AddAnnouncementPageComponent implements OnInit, OnDestroy {
       .do((data) => this.router.navigate([`/main-wall/added-announcement`, {id: data.id}], {relativeTo: this.route}))
       .subscribe();
   }
-
 }
 
 function validateType(control: AbstractControl): ValidationErrors | null {

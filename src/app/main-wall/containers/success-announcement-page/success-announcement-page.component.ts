@@ -3,10 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'pt-added-announcement-page',
-  templateUrl: './added-announcement-page.component.html',
-  styleUrls: ['./added-announcement-page.component.scss']
+  templateUrl: './success-announcement-page.component.html',
+  styleUrls: ['./success-announcement-page.component.scss']
 })
-export class AddedAnnouncementPageComponent implements OnInit {
+export class SuccessAnnouncementPageComponent implements OnInit {
   public idAnnouncement: string;
 
   constructor(private route: ActivatedRoute) {}

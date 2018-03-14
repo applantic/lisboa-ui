@@ -38,7 +38,7 @@
             </div>
 
             <div class="pt-table-row">
-              <div class="pt-table-cell">Miasto:</div>
+              <div class="pt-table-cell">Miejscowość:</div>
               <div class="pt-table-cell">{{announcement.city || 'Lublin'}}</div>
             </div>
 
@@ -51,7 +51,9 @@
         <div class="pt-table-row">
           <div class="pt-table-cell">Uwagi:</div>
           <div class="pt-table-cell">{{announcement.remarks || '
-            The Flexbox Layout (Flexible Box) module (currently a W3C Last Call Working Draft) aims at providing a more efficient way to lay out, align and distribute space among items in a container, even when their size is unknown and/or dynamic (thus the word "flex").
+            The Flexbox Layout (Flexible Box) module (currently a W3C Last Call Working Draft) aims at providing a more
+            efficient way to lay out, align and distribute space among items in a container, even when their size is
+            unknown and/or dynamic (thus the word "flex").
             '}}
           </div>
         </div>
@@ -84,13 +86,53 @@
   </div>
   <div class="card-block">
     <div class="card-text">
-      < form tag >
+      <form style="width: 100%;" [formGroup]="form">
+        <section class="form-block">
+          <div class="form-group row">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <label for="quantity">Ilość:</label>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <input class="form-control" type="text" id="quantity" formControlName="quantity">
+            </div>
+          </div>
+          <div class="form-group row" *ngIf="announcement.price == null">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <label for="price">Cena:</label>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <input class="form-control" type="text" id="price" formControlName="price">
+            </div>
+          </div>
+        </section>
+        <section class="form-block" *ngIf="announcement.delivery == deliveryOptions.WITHOUT_DELIVERY || announcement.delivery == deliveryOptions.BOTH_DELIVERIES ">
+          <label>Adres</label>
+          <div class="form-group row">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <label for="zipCode">Kod pocztowy:</label>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <input class="form-control" type="text" id="zipCode" formControlName="zipCode">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+              <label for="city">Miejscowość:</label>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <input class="form-control" type="text" id="city" formControlName="city">
+            </div>
+          </div>
+        </section>
+      </form>
     </div>
   </div>
 </div>
 <button class="btn"
         [ngClass]="{'btn-secondary': makeAnOfferFlag, 'btn-primary': !makeAnOfferFlag}"
-        (click)="clickedMakeAnOffer()">{{makeAnOfferFlag ? 'Cancel' : 'ZŁÓŻ OFERTĘ'}}</button>
+        (click)="clickedMakeAnOffer()">{{makeAnOfferFlag ? 'Anuluj' : 'ZŁÓŻ OFERTĘ'}}
+</button>
 <button class="btn btn-primary"
         *ngIf="makeAnOfferFlag"
-        (click)="submitOffer()">Zatwierdź</button>
+        (click)="submitOffer()">Zatwierdź
+</button>
