@@ -11,7 +11,9 @@ import {MainWallPageComponent} from './containers/main-wall-page/main-wall-page.
 import {AddAnnouncementPageComponent} from './containers/add-announcement-page/add-announcement-page.component';
 import {AnnouncementResponsePageComponent} from './containers/announcement-response-page/announcement-response-page.component';
 import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
-import { PtDate } from '../pipes/pt-date.pipe';
+import {AddedAnnouncementPageComponent} from './containers/added-announcement-page/added-announcement-page.component';
+
+import {PtDate} from '../pipes/pt-date.pipe';
 
 import {MyAnnouncementService} from './services/my-announcement.service';
 import {AnnouncementGuardService} from './services/announcement-guard.service';
@@ -20,6 +22,7 @@ export const COMPONENTS = [
   CardComponent,
   MainWallPageComponent,
   AddAnnouncementPageComponent,
+  AddedAnnouncementPageComponent,
   AnnouncementResponsePageComponent,
   AnnouncementPageComponent,
   SelectDropdownComponent
@@ -34,6 +37,7 @@ export const COMPONENTS = [
     RouterModule.forChild([
       {path: '', component: MainWallPageComponent},
       {path: 'new-announcement', component: AddAnnouncementPageComponent},
+      {path: 'added-announcement', component: AddedAnnouncementPageComponent},
       {path: 'announcement-response', component: AnnouncementResponsePageComponent},
       {
         path: 'announcement/:id',
