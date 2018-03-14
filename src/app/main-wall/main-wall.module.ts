@@ -18,7 +18,6 @@ import {AddedAnnouncementPageComponent} from './containers/added-announcement-pa
 import {MyAnnouncementService} from './services/my-announcement.service';
 import {AnnouncementGuardService} from './services/announcement-guard.service';
 import { FiltersComponent } from './containers/filters/filters.component';
-import { PtDate } from '../shared/pipes/pt-date.pipe';
 
 export const COMPONENTS = [
   CardComponent,
@@ -51,7 +50,6 @@ export const COMPONENTS = [
   ],
   declarations: [
     ...COMPONENTS,
-    PtDate,
     FiltersComponent
   ],
   providers: [
