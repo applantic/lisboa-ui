@@ -17,6 +17,7 @@ import {PtDate} from '../pipes/pt-date.pipe';
 
 import {MyAnnouncementService} from './services/my-announcement.service';
 import {AnnouncementGuardService} from './services/announcement-guard.service';
+import { FiltersComponent } from './containers/filters/filters.component';
 
 export const COMPONENTS = [
   CardComponent,
@@ -48,7 +49,8 @@ export const COMPONENTS = [
   ],
   declarations: [
     ...COMPONENTS,
-    PtDate
+    PtDate,
+    FiltersComponent
   ],
   providers: [
     MyAnnouncementService,
