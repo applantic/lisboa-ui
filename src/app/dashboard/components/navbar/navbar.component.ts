@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'pt-navbar',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  public openDropdownFlag = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
 
+  mouseEnterDropdown() {
+    this.openDropdownFlag = true;
+  }
+
+  mouseLeaveDropdown() {
+    this.openDropdownFlag = false;
+  }
 }
