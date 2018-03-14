@@ -4,9 +4,12 @@ import {AuthService} from './services/auth.service';
 import {AuthGuard} from './services/auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'logout', redirectTo: 'login' },
       { path: 'login', component: LoginComponent },
