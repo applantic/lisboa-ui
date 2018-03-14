@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   login({ username, password }: Authenticate) {
-    return this.http.post('/login', { username, password })
+    return this.http.post('login', { username, password })
       .do((res) => {
         console.log(res);
         // this.localStorageService.set(this.TOKEN_KEY, )

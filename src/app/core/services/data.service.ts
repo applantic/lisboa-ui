@@ -9,16 +9,10 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  option: Option;
-
-  constructor(private http: HttpClient) {
-    this.option = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
-    };
-  }
+  constructor(private http: HttpClient) {}
 
   public getListAnnouncement(page: number, size: number): Observable<MyAnnouncement[]> {
-    return this.http.get<any>(`/announcement?page=${page}&size=${size}`, this.option)
+    return this.http.get<any>(`announcement?page=${page}&size=${size}`)
       .map((data) => data.content);
   }
 
@@ -31,11 +25,11 @@ export class DataService {
       ...payload
     } = myAnnouncement;
 
-    return this.http.post<MyAnnouncement>(`/announcement`, payload, this.option);
+    return this.http.post<MyAnnouncement>(`announcement`, payload);
   }
 
   public getCategoryList(): Observable<Category[]> {
-    return this.http.get<Category[]>(`/category`, this.option);
+    return this.http.get<Category[]>(`category`);
   }
 
   public getAnnouncementDetails(id: string): Observable<MyAnnouncement> {
@@ -43,8 +37,3 @@ export class DataService {
   }
 }
 
-interface Option {
-  headers?: HttpHeaders | {
-    [header: string]: string | string[];
-  };
-}
