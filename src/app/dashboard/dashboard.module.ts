@@ -41,7 +41,11 @@ import { FooterComponent } from './components/footer/footer.component';
     ]),
   ],
   providers: [],
-  declarations: [NavbarComponent, DashboardComponent, FooterComponent]
+  declarations: [
+    NavbarComponent,
+    DashboardComponent,
+    FooterComponent
+  ]
 })
 
 export class DashboardModule {

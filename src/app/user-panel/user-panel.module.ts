@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
 
+import {SharedModule} from '../shared/shared.module';
+
 import {UserPanelPageComponent} from './containers/user-panel-page/user-panel-page.component';
 import {AnnouncementPageComponent} from './containers/announcement-page/announcement-page.component';
 
@@ -15,6 +17,7 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     ClarityModule,
+    SharedModule,
     RouterModule.forChild([
       {path: '', component: UserPanelPageComponent},
       {
