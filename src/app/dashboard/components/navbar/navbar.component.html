@@ -26,11 +26,11 @@
         <clr-dropdown class="clr-dropdown"
                       (mouseenter) ="mouseEnterDropdown()"
                       (mouseleave) ="mouseLeaveDropdown()">
-          <button class="nav-text"
-                  clrDropdownTrigger>
+          <a class="nav-text"
+                  routerLink="/user-panel" routerLinkActive="active">
             rolnik@janusz.com
             <clr-icon shape="caret down"></clr-icon>
-          </button>
+          </a>
           <clr-dropdown-menu *clrIfOpen="openDropdownFlag" clrPosition="bottom-right">
             <a routerLink="/my-announcements" routerLinkActive="active" clrDropdownItem>Moje Ogłoszenia</a>
             <a routerLink="/my-offers" routerLinkActive="active" clrDropdownItem>Moje Oferty</a>
