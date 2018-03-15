@@ -1,7 +1,9 @@
-import {NgModule} from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {PtDate} from './pipes/pt-date.pipe';
+import {CategoryListService} from './services/category-list.service';
+import {CircleIconTitleComponent} from './components/circle-icon-title/circle-icon-title.component';
 import { PrettyDropdownComponent } from './components/pretty-dropdown/pretty-dropdown.component';
 import { ClarityModule } from '@clr/angular';
 import { FormControlAdapterComponent } from './components/form-control-adapter/form-control-adapter.component';
@@ -15,12 +17,15 @@ import { FormControlAdapterComponent } from './components/form-control-adapter/f
     PtDate,
     PrettyDropdownComponent,
     FormControlAdapterComponent,
+    CircleIconTitleComponent
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   exports: [
     ClarityModule,
     PtDate,
     PrettyDropdownComponent,
-    FormControlAdapterComponent
+    FormControlAdapterComponent,
+    CircleIconTitleComponent
   ]
 })
 
