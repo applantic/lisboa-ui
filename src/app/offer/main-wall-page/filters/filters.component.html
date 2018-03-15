@@ -1,12 +1,16 @@
 <div class="card card-no-shadow">
-  <div class="card-block">
+  <form [formGroup]="form" class="card-block">
     <div class="filter-section">
       <span class="filter-label">Produkt:</span>
-      <pt-select-dropdown placeholder="Wybierz" [options]="categoryList"></pt-select-dropdown>
+      <pt-select-dropdown-form formControlName="productKey" #productSelectRef>
+        <pt-select-dropdown [options]="categoryList" (selectedOptionEmitter)="productSelectRef.setNewValue($event)"></pt-select-dropdown>
+      </pt-select-dropdown-form>
     </div>
     <div class="filter-section">
       <span class="filter-label">Województwo:</span>
-      <pt-select-dropdown placeholder="Wybierz" [options]="regions"></pt-select-dropdown>
+      <pt-select-dropdown-form formControlName="region" #regionsSelectRef>
+        <pt-select-dropdown [options]="regions" (selectedOptionEmitter)="regionsSelectRef.setNewValue($event)"></pt-select-dropdown>
+      </pt-select-dropdown-form>
     </div>
-  </div>
+  </form>
 </div>

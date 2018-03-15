@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Option } from '../../../config';
 import { CategoryListService } from '../../../shared/services/category-list.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'pt-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, OnDestroy {
   public categoryList: Option[] = [];
+  public form: FormGroup;
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   public regions: Option[] = [
     { label: 'dolnośląskie', value: '02' },
     { label: 'kujawsko-pomorskie', value: '04' },
@@ -27,16 +32,40 @@ export class FiltersComponent implements OnInit {
     { label: 'wielkopolskie', value: '30' },
     { label: 'zachodniopomorskie', value: '32' },
   ];
-  constructor(private categoryListService: CategoryListService) { }
+  constructor(private categoryListService: CategoryListService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.categoryListService.getCategoryList()
       .map((item) => transformCategoryList(item))
       .do(list => console.log(list))
       .subscribe((list) => this.categoryList = list);
-  }
-}
 
+    this.initForm();
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  private initForm() {
+    this.form = this.formBuilder.group({
+      region: [''],
+      productKey: ['']
+    });
+
+    this.form.valueChanges
+      .takeUntil(this.ngUnsubscribe)
+      .do(this.loadFilteredValues)
+      .subscribe();
+  }
+
+  private loadFilteredValues(data) {
+    console.log('Load new values for', data);
+  }
+
+}
 
 function transformCategoryList(list) {
   return list.map(item => ({

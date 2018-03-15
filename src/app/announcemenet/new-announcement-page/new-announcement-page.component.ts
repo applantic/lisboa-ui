@@ -6,7 +6,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
-import {Category, DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST, Product} from '../../config';
+import {Category, DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST, Product, Option} from '../../config';
 import {CategoryListService} from '../../core/services/category-list.service';
 import {AnnouncementService} from '../announcement.service';
 import {DeliveryEnum, NewAnnouncement} from '../announcement.model';
@@ -18,7 +18,7 @@ import {DeliveryEnum, NewAnnouncement} from '../announcement.model';
 })
 
 export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
-  public categoryList: Category[];
+  public categoryList: Option[];
   public periodList = PERIOD_LIST;
   public deliveryType: DeliveryTypeItem[] = mapToDeliveryTypeList(DELIVERY_TYPE);
   public deliveryFlag: boolean;
@@ -35,6 +35,11 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.categoryListService.getCategoryList()
+      .map((item) => transformCategoryList(item))
+      .do(list => console.log(list))
+      .subscribe((list) => this.categoryList = list);
+
     this.initForm();
   }
 
@@ -95,4 +100,12 @@ function mapToDeliveryTypeList(deliveryTypeMap: DeliveryTypeMap): DeliveryTypeIt
 interface DeliveryTypeItem {
   id: string;
   labelName: string;
+}
+
+function transformCategoryList(list) {
+  return list.map(item => ({
+    value: item.key,
+    label: item.name,
+    options: item.products && transformCategoryList(item.products)
+  }));
 }
