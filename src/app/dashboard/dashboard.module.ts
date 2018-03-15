@@ -20,9 +20,9 @@ import {FooterComponent} from './dashboard-page/footer/footer.component';
       path: '',
       component: DashboardPageComponent,
       children: [
-        {path: '', redirectTo: '/oferty', pathMatch: 'full'},
+        {path: '', redirectTo: '/tablica', pathMatch: 'full'},
         {
-          path: 'oferty',
+          path: 'tablica',
           loadChildren: () => OfferModule,
         },
         {

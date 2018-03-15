@@ -12,9 +12,9 @@ import {RegisterComponent} from './components/register/register.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      {path: 'logout', redirectTo: 'login'},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'wyloguj', redirectTo: 'logowanie'},
+      {path: 'logowanie', component: LoginComponent},
+      {path: 'rejestracja', component: RegisterComponent}
     ]),
   ],
   declarations: [LoginComponent, RegisterComponent],

@@ -4,7 +4,7 @@
       <b>{{announcement.number || '42'}}</b>
     </span>
     <div class="card-title">
-      <a [routerLink]="['/oferty', announcement.id, {makeAnOffer:false}]"><h3 class="announcement-title">{{announcement.product || 'Category'}}</h3></a>
+      <a [routerLink]="['/tablica', announcement.id, {makeAnOffer:false}]"><h3 class="announcement-title">{{announcement.product || 'Category'}}</h3></a>
       <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
     </div>
     <div class="card-text">
@@ -56,8 +56,8 @@
         </span>
 
         <div class="button-container">
-          <a [routerLink]="['/oferty', announcement.id, {makeAnOffer:false}]" routerLinkActive="active" class="button btn btn-secondary">Podgląd</a>
-          <a [routerLink]="['/oferty', announcement.id, {makeAnOffer:true}]" routerLinkActive="active" class="button btn btn-primary">ZŁÓŻ OFERTĘ</a>
+          <a [routerLink]="['/tablica', announcement.id, {makeAnOffer:false}]" routerLinkActive="active" class="button btn btn-secondary">Podgląd</a>
+          <a [routerLink]="['/tablica', announcement.id, {makeAnOffer:true}]" routerLinkActive="active" class="button btn btn-primary">ZŁÓŻ OFERTĘ</a>
         </div>
         </div>
     </div>

@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService
       .login(this.form.value)
-      .do(() => this.router.navigate(['ogloszenia']))
+      .do(() => this.router.navigate(['tablica']))
       .subscribe();
   }
-
 }

@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.authService
       .register(this.form.value)
-      .do(() => this.router.navigate(['login']))
+      .do(() => this.router.navigate(['logowanie']))
       .subscribe();
   }
 }
