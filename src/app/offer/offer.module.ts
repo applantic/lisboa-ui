@@ -6,10 +6,10 @@ import {ClarityModule} from '@clr/angular';
 
 import {SharedModule} from '../shared/shared.module';
 
-import {FiltersComponent} from './offer-list-page/filters/filters.component';
-import {CardComponent} from './offer-list-page/card/card.component';
+import {FiltersComponent} from './main-wall-page/filters/filters.component';
+import {CardComponent} from './main-wall-page/card/card.component';
 
-import {OfferListPageComponent} from './offer-list-page/offer-list-page.component';
+import {MainWallPageComponent} from './main-wall-page/main-wall-page.component';
 import {MakeOfferPageComponent} from './make-offer-page/make-offer-page.component';
 
 import {OfferService} from './offer.service';
@@ -23,14 +23,14 @@ import {OfferService} from './offer.service';
     ReactiveFormsModule,
     RouterModule.forChild([{
       path: '',
-      component: OfferListPageComponent,
+      component: MainWallPageComponent,
     }, {
       path: ':id',
       component: MakeOfferPageComponent,
     }]),
   ],
   declarations: [
-    OfferListPageComponent,
+    MainWallPageComponent,
     MakeOfferPageComponent,
     FiltersComponent,
     CardComponent

@@ -3,11 +3,11 @@ import {MyAnnouncement} from '../../announcemenet/announcement.model';
 import {OfferService} from '../offer.service';
 
 @Component({
-  selector: 'pt-offer-list-page',
-  templateUrl: './offer-list-page.component.html',
-  styleUrls: ['./offer-list-page.component.scss']
+  selector: 'pt-main-wall-page',
+  templateUrl: './main-wall-page.component.html',
+  styleUrls: ['./main-wall-page.component.scss']
 })
-export class OfferListPageComponent implements OnInit {
+export class MainWallPageComponent implements OnInit {
   public announcements: MyAnnouncement[] = [];
   public loaded = false;
 
@@ -15,7 +15,7 @@ export class OfferListPageComponent implements OnInit {
 
   ngOnInit() {
     this.offerService.getListAnnouncement()
-      .do((a) => console.log(a))
+      .do((announcement) => console.log(announcement))
       .subscribe((announcements) => this.announcements = announcements);
 
     this.offerService.listAnnouncementLoadedSubject
