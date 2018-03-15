@@ -7,9 +7,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
 import {Category, DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST, Product, Option} from '../../config';
-import {CategoryListService} from '../../core/services/category-list.service';
 import {AnnouncementService} from '../announcement.service';
 import {DeliveryEnum, NewAnnouncement} from '../announcement.model';
+import { CategoryListService } from '../../shared/services/category-list.service';
 
 @Component({
   selector: 'pt-new-announcement-page',
