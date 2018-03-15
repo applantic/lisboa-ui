@@ -11,6 +11,8 @@ export interface Offer {
 
 export interface PublicAnnouncementDetail {
   id: string;
+  number: string;
+  city: string;
   productKey: string;
   unitType: UnitType;
   price?: number;
