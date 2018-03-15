@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 import {Offer} from './offer.model';
-import {MyAnnouncement} from '../announcmenet/announcement.model';
+import {MyAnnouncement} from '../announcemenet/announcement.model';
 
 @Injectable()
 export class OfferService {
