@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Announcement, NewAnnouncement} from './announcement.model';
 import {HttpClient} from '@angular/common/http';
+import {PublicAnnouncementDetail} from '../offer/make-offer-page/offer.model';
 
 @Injectable()
 export class AnnouncementService {
@@ -15,5 +16,10 @@ export class AnnouncementService {
   addNewAnnouncement(newAnnouncement: NewAnnouncement): Observable<Announcement> {
     return this.httpClient.post<Announcement>(`announcement`, newAnnouncement)
       .do((data) => console.log('addNewAnnouncement: ', data));
+  }
+
+  getAnnouncementDetails(id: string): Observable<Announcement> {
+    return this.httpClient.get<any>(`announcement/${id}`)
+      .do((data) => console.log('getAnnouncementDetails: ', data));
   }
 }
