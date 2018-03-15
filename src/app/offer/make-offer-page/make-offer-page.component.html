@@ -133,5 +133,5 @@
 </button>
 <button class="btn btn-primary"
         *ngIf="makeAnOfferFlag"
-        (click)="submitOffer()">Zatwierdź
+        (click)="submitOffer()" [disabled]="isOfferSaved">Zatwierdź
 </button>

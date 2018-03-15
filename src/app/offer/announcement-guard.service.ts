@@ -5,7 +5,7 @@ import {CanActivate, Router, ActivatedRouteSnapshot} from '@angular/router';
 import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/Observable';
 
-import {OfferService} from './offer.service';
+import {OfferService} from './make-offer-page/offer.service';
 
 @Injectable()
 export class AnnouncementGuardService implements CanActivate {

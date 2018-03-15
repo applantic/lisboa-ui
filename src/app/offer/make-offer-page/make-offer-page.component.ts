@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {OfferService} from '../offer.service';
+import {OfferService} from './offer.service';
 import {DeliveryEnum, MyAnnouncement} from '../../announcemenet/announcement.model';
 
 @Component({
@@ -15,6 +15,7 @@ export class MakeOfferPageComponent implements OnInit {
 
   public makeAnOfferFlag = false;
   public form: FormGroup;
+  public isOfferSaved = false;
 
   constructor(private route: ActivatedRoute,
               private offerService: OfferService,
@@ -34,10 +35,22 @@ export class MakeOfferPageComponent implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
-      quantity: ['', [Validators.required]],
-      price: [''],
-      zipCode: [''],
-      city: [''],
+      quantity: [{
+        value: '',
+        disabled: this.isOfferSaved,
+      }, [Validators.required]],
+      price: [{
+        value: '',
+        disabled: this.isOfferSaved,
+      }],
+      zipCode: [{
+        value: '',
+        disabled: this.isOfferSaved,
+      }],
+      city: [{
+        value: '',
+        disabled: this.isOfferSaved,
+      }],
     });
   }
 
@@ -46,7 +59,7 @@ export class MakeOfferPageComponent implements OnInit {
   }
 
   submitOffer() {
-    this.offerService.addOffer({...this.form.value, announcementId: this.announcement.id})
-      .subscribe(offer => console.log(offer));
+    this.offerService.makeOffer({...this.form.value, announcementId: this.announcement.id})
+      .subscribe(offer => this.isOfferSaved = true);
   }
 }

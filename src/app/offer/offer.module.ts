@@ -12,7 +12,7 @@ import {CardComponent} from './main-wall-page/card/card.component';
 import {MainWallPageComponent} from './main-wall-page/main-wall-page.component';
 import {MakeOfferPageComponent} from './make-offer-page/make-offer-page.component';
 
-import {OfferService} from './offer.service';
+import {OfferService} from './make-offer-page/offer.service';
 
 @NgModule({
   imports: [

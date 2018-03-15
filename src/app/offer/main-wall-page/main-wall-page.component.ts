@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MyAnnouncement} from '../../announcemenet/announcement.model';
-import {OfferService} from '../offer.service';
+import {OfferService} from '../make-offer-page/offer.service';
 
 @Component({
   selector: 'pt-main-wall-page',
