@@ -59,20 +59,12 @@
       </div>
       <div class="card-right">
         <div class="pt-table-row">
-          <span *ngIf="announcement.deliveryType === deliveryOptions.WITH_DELIVERY">
-          <clr-icon shape="truck"></clr-icon>
-          Z Dostawą
-        </span>
-
-          <span *ngIf="announcement.deliveryType === deliveryOptions.WITHOUT_DELIVERY">
-          <clr-icon shape="user"></clr-icon>
-          Odbiór osobisty
-        </span>
-
-          <span *ngIf="announcement.deliveryType === deliveryOptions.BOTH_DELIVERIES">
-          <clr-icon shape="info-standard"></clr-icon>
-          Do ustalenia
-        </span>
+          <div class="pt-table-row">
+            <pt-circle-icon-title
+              [items]="circleShapeTitleConfig"
+              [mainConditionArgument]="announcement.deliveryType"
+            ></pt-circle-icon-title>
+          </div>
         </div>
 
       </div>

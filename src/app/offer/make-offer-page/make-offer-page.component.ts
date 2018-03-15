@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from './offer.service';
-import {DeliveryEnum} from '../../announcemenet/announcement.model';
+import {CIRCLE_SHAPE_TITLE_CONFIG, DeliveryEnum} from '../../announcemenet/announcement.model';
 import {PublicAnnouncementDetail} from './offer.model';
+import {CircleIconTitleItem} from '../../shared/components/circle-icon-title/circle-icon-title.component';
 
 @Component({
   selector: 'pt-make-offer-page',
@@ -12,7 +13,10 @@ import {PublicAnnouncementDetail} from './offer.model';
 })
 export class MakeOfferPageComponent implements OnInit {
   public announcement: PublicAnnouncementDetail;
+
   public deliveryOptions = DeliveryEnum;
+
+  public circleShapeTitleConfig: CircleIconTitleItem[] = CIRCLE_SHAPE_TITLE_CONFIG;
 
   public makeAnOfferFlag = false;
   public form: FormGroup;

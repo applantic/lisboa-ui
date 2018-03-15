@@ -1,5 +1,6 @@
-import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
-import { DeliveryEnum } from '../../../announcemenet/announcement.model';
+import {Component, Input} from '@angular/core';
+import {CIRCLE_SHAPE_TITLE_CONFIG, DeliveryEnum} from '../../../announcemenet/announcement.model';
+import {CircleIconTitleItem} from '../../../shared/components/circle-icon-title/circle-icon-title.component';
 
 @Component({
   selector: 'pt-card',
@@ -9,5 +10,6 @@ import { DeliveryEnum } from '../../../announcemenet/announcement.model';
 export class CardComponent {
   @Input() announcement;
 
-  deliveryOptions = DeliveryEnum;
+  public circleShapeTitleConfig: CircleIconTitleItem[] = CIRCLE_SHAPE_TITLE_CONFIG;
+  public deliveryOptions = DeliveryEnum;
 }
