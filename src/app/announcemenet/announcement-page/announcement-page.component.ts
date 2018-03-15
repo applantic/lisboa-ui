@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AnnouncementService} from '../announcement.service';
-import {Announcement} from '../announcement.model';
+import {MyAnnouncement} from '../announcement.model';
 
 @Component({
   selector: 'pt-announcement-page',
@@ -9,7 +9,7 @@ import {Announcement} from '../announcement.model';
   styleUrls: ['./announcement-page.component.scss']
 })
 export class AnnouncementPageComponent implements OnInit {
-  public announcement: Announcement;
+  public announcement: MyAnnouncement;
 
   constructor(private route: ActivatedRoute,
               private announcementService: AnnouncementService) {

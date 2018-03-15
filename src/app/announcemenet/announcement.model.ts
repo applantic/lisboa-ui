@@ -1,7 +1,3 @@
-export interface Announcement extends NewAnnouncement{
-  id: string;
-}
-
 export interface NewAnnouncement {
   productKey: string;
   unitType: UnitType;
@@ -17,22 +13,26 @@ export interface NewAnnouncement {
   zipCode?: string;
 }
 
-export interface MyAnnouncement {
+export interface MyAnnouncement extends NewAnnouncement{
   id: string;
-  productKey: string;
-  createData: string;
-  unitType: UnitType;
-  lastUpdated: string;
-  price?: number;
-  minQuantity?: number;
-  maxQuantity?: number;
-  period?: string;
-  remarks?: string;
-  deliveryType: DeliveryType;
-  paymentDate?: string;
-  deliveryDate?: string;
-  deliveryRange?: string;
-  zipCode?: string;
+  version: string;
+  number: string;
+  product: string;
+  category: string;
+  createdDateTime: string;
+  ownerId: string;
+  offers: Offers[];
+}
+
+export interface Offers {
+  id: string;
+  price: string;
+  quantity: string;
+  zipCode: string;
+  city: string;
+  announcementId: string;
+  ownerId: string;
+  ownerUsername: string;
 }
 
 export type DeliveryType = DeliveryEnum.BOTH_DELIVERIES | DeliveryEnum.WITH_DELIVERY | DeliveryEnum.WITHOUT_DELIVERY;
