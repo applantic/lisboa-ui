@@ -6,7 +6,7 @@ import {ClarityModule} from '@clr/angular';
 import {SettingsModule} from '../settings/settings.module';
 import {OfferModule} from '../offer/offer.module';
 import {UserProfileModule} from '../user-profile/user-profile.module';
-import {AnnouncementModule} from '../announcemenet/announcement.module';
+import {AnnouncementModule} from '../announcement/announcement.module';
 
 import {NavbarComponent} from './dashboard-page/navbar/navbar.component';
 import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';

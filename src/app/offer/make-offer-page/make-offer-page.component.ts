@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from './offer.service';
-import {CIRCLE_SHAPE_TITLE_CONFIG, DeliveryEnum} from '../../announcemenet/announcement.model';
+import {CIRCLE_SHAPE_TITLE_CONFIG, DeliveryEnum} from '../../announcement/announcement.model';
 import {PublicAnnouncementDetail} from './offer.model';
 import {CircleIconTitleItem} from '../../shared/components/circle-icon-title/circle-icon-title.component';
 
