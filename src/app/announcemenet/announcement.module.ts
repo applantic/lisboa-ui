@@ -4,20 +4,21 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule} from '@clr/angular';
 
+import {SharedModule} from '../shared/shared.module';
+
 import {NewAnnouncementPageComponent} from './new-announcement-page/new-announcement-page.component';
 import {SuccessAnnouncementPageComponent} from './success-announcement-page/success-announcement-page.component';
 import {AnnouncementPageComponent} from './announcement-page/announcement-page.component';
 
 import {AnnouncementService} from './announcement.service';
-import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
     FormsModule,
-    ReactiveFormsModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild([{
       path: 'dodaj',
       component: NewAnnouncementPageComponent,
