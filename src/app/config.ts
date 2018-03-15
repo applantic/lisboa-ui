@@ -22,3 +22,10 @@ export interface Category {
   name: string;
   products: Product[];
 }
+
+export interface Option {
+  label: string;
+  value: string;
+  options?: Option[];
+}
+

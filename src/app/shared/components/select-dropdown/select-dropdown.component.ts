@@ -8,53 +8,16 @@ import { Category, Product } from '../../../config';
   templateUrl: './select-dropdown.component.html',
   styleUrls: ['./select-dropdown.component.scss'],
 })
-export class SelectDropdownComponent implements OnInit, OnDestroy {
-  constructor(private categoryListService: CategoryListService) {}
-
-  public categoryList: Category[];
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
-  public chosenProductName: string;
+export class SelectDropdownComponent {
+  private selectedOption;
   @Input() choseValue = '';
+  @Input() placeholder = 'Wybierz';
+  @Input() options;
 
-  ngOnInit() {
-    this.categoryListService.getCategoryList()
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe((data) => this.categoryList = data);
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
-
-  private actualChosenProduct(productKey: string) {
-    this.chosenProductName = getProductNameByKey(this.categoryList, productKey);
+  public onClick(option) {
+    this.selectedOption = option;
   }
 }
-
-function getProductNameByKey(list: Item[] = [], productKey): string {
-  const newList = [...list];
-
-  return newList.reduce((acc, item, i, arr) => {
-    if (item.key === productKey && acc === '') {
-
-      arr.splice(1);
-      return item.name;
-    } else {
-
-      if (item.products && acc === '') {
-        acc += getProductNameByKey(item.products, productKey);
-      }
-
-      return acc;
-    }
-  }, '');
-}
-
-export interface Item extends Product {
-  products?: Item[];
-}
-
 
 // import {Component, forwardRef, Input} from '@angular/core';
 // import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';

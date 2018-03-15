@@ -17,7 +17,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
       .handle(request)
       .catch((err) => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
+          if (err.status === 403) {
             this.router.navigate(['logowanie']);
           }
         }

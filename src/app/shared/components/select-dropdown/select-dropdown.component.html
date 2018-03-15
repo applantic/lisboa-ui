@@ -1,16 +1,18 @@
 <clr-dropdown>
   <button type="button" class="dropdown-toggle btn btn-link" clrDropdownTrigger>
-    {{chosenProductName ? chosenProductName : 'wybierz kategorie'}}
+    {{selectedOption ? selectedOption.label : placeholder}}
     <clr-icon shape="caret down"></clr-icon>
   </button>
   <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
-    <clr-dropdown *ngFor="let item of categoryList">
-      <button type="button" clrDropdownTrigger>{{item.name}}</button>
-      <clr-dropdown-menu>
-        <button *ngFor="let product of item.products" (click)="selectDropdownRef.setNewValue(product.key)" type="button" clrDropdownItem>
-          {{product.name}}
+    <clr-dropdown *ngFor="let option of options">
+      <button *ngIf="!option.options" type="button" clrDropdownItem (click)="onClick(option)">{{option.label}}</button>
+      <button *ngIf="option.options" clrDropdownTrigger>{{option.label}}</button>
+      <clr-dropdown-menu *ngIf="option.options">
+        <button *ngFor="let nestedOption of option.options" (click)="onClick(nestedOption)" type="button" clrDropdownItem>
+          {{nestedOption.label}}
         </button>
       </clr-dropdown-menu>
     </clr-dropdown>
   </clr-dropdown-menu>
 </clr-dropdown>
+
