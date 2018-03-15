@@ -1,4 +1,5 @@
-import {DeliveryType, UnitType} from '../../announcement/announcement.model';
+import {DeliveryType} from '../../dictionary/delivery.model';
+import {UnitType} from '../../dictionary/unit.model';
 
 export interface Offer {
   quantity: number;

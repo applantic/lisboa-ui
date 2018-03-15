@@ -2,7 +2,7 @@ import 'rxjs/add/operator/do';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/observable';
 import {HttpClient} from '@angular/common/http';
-import { Category, KeyNamePair } from './dictionary.model';
+import { Category, KeyNamePair } from './category.model';
 
 @Injectable()
 export class DictionaryService {

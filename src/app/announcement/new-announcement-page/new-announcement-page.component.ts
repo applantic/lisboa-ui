@@ -8,9 +8,10 @@ import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} f
 import {Subject} from 'rxjs/Subject';
 import { DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST} from '../../config';
 import {AnnouncementService} from '../announcement.service';
-import {DeliveryEnum, NewAnnouncement} from '../announcement.model';
-import { Option, Category } from '../../dictionary/dictionary.model';
-import { DictionaryService } from '../../dictionary/dictionary.service';
+import {NewAnnouncement} from '../announcement.model';
+import {Option, Category} from '../../dictionary/category.model';
+import {DictionaryService} from '../../dictionary/dictionary.service';
+import {DeliveryEnum} from '../../dictionary/delivery.model';
 
 @Component({
   selector: 'pt-new-announcement-page',

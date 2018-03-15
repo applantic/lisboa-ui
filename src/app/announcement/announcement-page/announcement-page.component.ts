@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AnnouncementService} from '../announcement.service';
-import {MyAnnouncement, DeliveryEnum, CIRCLE_SHAPE_TITLE_CONFIG, MY_ANNOUNCEMENT} from '../announcement.model';
+import {MyAnnouncement, MY_ANNOUNCEMENT} from '../announcement.model';
 import {CircleIconTitleItem} from '../../shared/components/circle-icon-title/circle-icon-title.component';
+import {DELIVERY_CIRCLE_TITLE_CONFIG, DeliveryEnum} from '../../dictionary/delivery.model';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AnnouncementPageComponent implements OnInit {
   public announcement: MyAnnouncement = MY_ANNOUNCEMENT;
   public deliveryOptions = DeliveryEnum;
 
-  public circleShapeTitleConfig: CircleIconTitleItem[] = CIRCLE_SHAPE_TITLE_CONFIG;
+  public circleShapeTitleConfig: CircleIconTitleItem[] = DELIVERY_CIRCLE_TITLE_CONFIG;
 
   constructor(private route: ActivatedRoute,
               private announcementService: AnnouncementService) {
