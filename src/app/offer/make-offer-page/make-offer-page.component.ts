@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from './offer.service';
-import {DeliveryEnum, MyAnnouncement} from '../../announcemenet/announcement.model';
+import {Announcement, DeliveryEnum} from '../../announcemenet/announcement.model';
 
 @Component({
   selector: 'pt-make-offer-page',
@@ -10,7 +10,7 @@ import {DeliveryEnum, MyAnnouncement} from '../../announcemenet/announcement.mod
   styleUrls: ['./make-offer-page.component.scss']
 })
 export class MakeOfferPageComponent implements OnInit {
-  public announcement: MyAnnouncement;
+  public announcement: Announcement;
   public deliveryOptions = DeliveryEnum;
 
   public makeAnOfferFlag = false;
@@ -26,7 +26,7 @@ export class MakeOfferPageComponent implements OnInit {
     this.makeAnOfferFlag = this.route.snapshot.paramMap.get('makeAnOffer') === 'true';
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.offerService.getAnnouncementDetails(id)
+    this.offerService.getAnnouncementDetail(id)
       .do((announcement) => console.log('announcement: ', announcement))
       .subscribe((announcement) => this.announcement = announcement);
 

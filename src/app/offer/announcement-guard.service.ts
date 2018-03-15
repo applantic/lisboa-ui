@@ -17,7 +17,7 @@ export class AnnouncementGuardService implements CanActivate {
     console.log('getAnnouncementData: ', id);
 
     return this.offerService
-      .getAnnouncementDetails(id)
+      .getAnnouncementDetail(id)
       .map(() => true)
       .catch((error) => {
         this.router.navigate(['/ogloszenia']);
