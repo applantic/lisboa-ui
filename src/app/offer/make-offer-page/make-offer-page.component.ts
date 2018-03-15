@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from './offer.service';
-import {DELIVERY_CIRCLE_TITLE_CONFIG} from '../../dictionary/delivery.model';
-import {PublicAnnouncementDetail} from './offer.model';
+import {DELIVERY_CIRCLE_TITLE_CONFIG, DeliveryEnum} from '../../dictionary/delivery.model';
+import {Offer, PublicAnnouncementDetail} from './offer.model';
 import {CircleIconTitleItem} from '../../shared/components/circle-icon-title/circle-icon-title.component';
-import {DeliveryEnum} from '../../dictionary/delivery.model';
 
 @Component({
   selector: 'pt-make-offer-page',
@@ -21,7 +20,7 @@ export class MakeOfferPageComponent implements OnInit {
 
   public makeAnOfferFlag = false;
   public form: FormGroup;
-  public isOfferSaved = false;
+  public offerNotEditable = false;
 
   constructor(private route: ActivatedRoute,
               private offerService: OfferService,
@@ -33,39 +32,30 @@ export class MakeOfferPageComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
     this.offerService.getAnnouncementDetails(id)
-      .do((announcement) => console.log('announcement: ', announcement))
-      .subscribe((announcement) => this.announcement = announcement);
-
-    this.initForm();
+      .do(announcement => this.announcement = announcement)
+      .switchMap(announcement => this.offerService.findMyOffer(announcement.id))
+      .subscribe(offer => {
+        if (offer != null) {
+          this.offerNotEditable = true;
+        }
+        this.initForm(offer);
+      });
   }
 
-  private initForm() {
+  private initForm(offer: Offer) {
     this.form = this.formBuilder.group({
-      quantity: [{
-        value: '',
-        disabled: this.isOfferSaved,
-      }, [Validators.required]],
-      price: [{
-        value: '',
-        disabled: this.isOfferSaved,
-      }],
-      zipCode: [{
-        value: '',
-        disabled: this.isOfferSaved,
-      }],
-      city: [{
-        value: '',
-        disabled: this.isOfferSaved,
-      }],
+      quantity: [offer != null ? offer.quantity : '', [Validators.required]],
+      price: [offer != null ? offer.price : ''],
+      zipCode: [offer != null ? offer.zipCode : ''],
+      city: [offer != null ? offer.city : ''],
     });
   }
 
-  clickedMakeAnOffer() {
-    this.makeAnOfferFlag = !this.makeAnOfferFlag;
-  }
-
   submitOffer() {
+    this.offerNotEditable = true;
     this.offerService.makeOffer({...this.form.value, announcementId: this.announcement.id})
-      .subscribe(offer => this.isOfferSaved = true);
+      .subscribe(offer => {
+        console.log(offer);
+      });
   }
 }
