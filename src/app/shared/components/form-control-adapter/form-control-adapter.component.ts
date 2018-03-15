@@ -2,18 +2,17 @@ import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
-  selector: 'pt-select-dropdown',
-  templateUrl: './select-dropdown.component.html',
-  styleUrls: ['./select-dropdown.component.scss'],
+  selector: 'pt-form-control-adapter',
+  template: '<ng-content></ng-content>',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectDropdownComponent),
+      useExisting: forwardRef(() => FormControlAdapterComponent),
       multi: true
     }
   ]
 })
-export class SelectDropdownComponent implements ControlValueAccessor {
+export class FormControlAdapterComponent implements ControlValueAccessor {
 
   constructor() {
   }

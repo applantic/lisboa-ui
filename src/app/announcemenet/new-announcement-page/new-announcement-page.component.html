@@ -9,9 +9,9 @@
 
         <div class="form-group">
           <label class="required">Kategoria: </label>
-          <pt-select-dropdown-form formControlName="productKey" #selectDropdownRef>
-            <pt-select-dropdown [options]="categoryList" (selectedOptionEmitter)="selectDropdownRef.setNewValue($event)"></pt-select-dropdown>
-          </pt-select-dropdown-form>
+          <pt-form-control-adapter formControlName="productKey" #selectDropdownRef>
+            <pt-pretty-dropdown [options]="categoryList" (selectedOptionEmitter)="selectDropdownRef.setNewValue($event)"></pt-pretty-dropdown>
+          </pt-form-control-adapter>
         </div>
 
         <div class="form-group price">

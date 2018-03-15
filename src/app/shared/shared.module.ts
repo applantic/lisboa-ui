@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {PtDate} from './pipes/pt-date.pipe';
-import { SelectDropdownComponent } from './components/select-dropdown/select-dropdown.component';
+import { PrettyDropdownComponent } from './components/pretty-dropdown/pretty-dropdown.component';
 import { ClarityModule } from '@clr/angular';
-import { SelectDropdownFromComponent } from './components/select-dropdown-form/select-dropdown-form.component';
+import { FormControlAdapterComponent } from './components/form-control-adapter/form-control-adapter.component';
 
 @NgModule({
   imports: [
@@ -13,14 +13,14 @@ import { SelectDropdownFromComponent } from './components/select-dropdown-form/s
   ],
   declarations: [
     PtDate,
-    SelectDropdownComponent,
-    SelectDropdownFromComponent,
+    PrettyDropdownComponent,
+    FormControlAdapterComponent,
   ],
   exports: [
     ClarityModule,
     PtDate,
-    SelectDropdownComponent,
-    SelectDropdownFromComponent
+    PrettyDropdownComponent,
+    FormControlAdapterComponent
   ]
 })
 
