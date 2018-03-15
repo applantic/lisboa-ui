@@ -104,7 +104,8 @@
             </div>
           </div>
         </section>
-        <section class="form-block" *ngIf="announcement.delivery == deliveryOptions.WITHOUT_DELIVERY || announcement.delivery == deliveryOptions.BOTH_DELIVERIES ">
+        <section class="form-block"
+                 *ngIf="announcement.delivery == deliveryOptions.WITHOUT_DELIVERY || announcement.delivery == deliveryOptions.BOTH_DELIVERIES ">
           <label>Adres</label>
           <div class="form-group row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
@@ -123,6 +124,12 @@
             </div>
           </div>
         </section>
+        <div class="card-right">
+          <button class="btn btn-primary"
+                  *ngIf="makeAnOfferFlag"
+                  (click)="submitOffer()" [disabled]="isOfferSaved">Zatwierdź
+          </button>
+        </div>
       </form>
     </div>
   </div>
@@ -131,7 +138,4 @@
         [ngClass]="{'btn-secondary': makeAnOfferFlag, 'btn-primary': !makeAnOfferFlag}"
         (click)="clickedMakeAnOffer()">{{makeAnOfferFlag ? 'Anuluj' : 'ZŁÓŻ OFERTĘ'}}
 </button>
-<button class="btn btn-primary"
-        *ngIf="makeAnOfferFlag"
-        (click)="submitOffer()" [disabled]="isOfferSaved">Zatwierdź
-</button>
+

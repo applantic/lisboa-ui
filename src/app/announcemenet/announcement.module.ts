@@ -4,13 +4,12 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule} from '@clr/angular';
 
-import {SelectDropdownComponent} from './new-announcement-page/select-dropdown/select-dropdown.component';
-
 import {NewAnnouncementPageComponent} from './new-announcement-page/new-announcement-page.component';
 import {SuccessAnnouncementPageComponent} from './success-announcement-page/success-announcement-page.component';
 import {AnnouncementPageComponent} from './announcement-page/announcement-page.component';
 
 import {AnnouncementService} from './announcement.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -18,6 +17,7 @@ import {AnnouncementService} from './announcement.service';
     ClarityModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([{
       path: 'dodaj',
       component: NewAnnouncementPageComponent,
@@ -32,8 +32,7 @@ import {AnnouncementService} from './announcement.service';
   declarations: [
     NewAnnouncementPageComponent,
     SuccessAnnouncementPageComponent,
-    AnnouncementPageComponent,
-    SelectDropdownComponent
+    AnnouncementPageComponent
   ],
   exports: [],
   providers: [

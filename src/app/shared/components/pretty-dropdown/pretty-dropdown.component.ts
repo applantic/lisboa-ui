@@ -4,11 +4,11 @@ import { Subject } from 'rxjs/Subject';
 import { Category, Product } from '../../../config';
 
 @Component({
-  selector: 'pt-select-dropdown',
-  templateUrl: './select-dropdown.component.html',
-  styleUrls: ['./select-dropdown.component.scss'],
+  selector: 'pt-pretty-dropdown',
+  templateUrl: './pretty-dropdown.component.html',
+  styleUrls: ['./pretty-dropdown.component.scss'],
 })
-export class SelectDropdownComponent {
+export class PrettyDropdownComponent {
   private selectedOption;
   @Input() choseValue = '';
   @Input() placeholder = 'Wybierz';

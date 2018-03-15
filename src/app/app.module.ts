@@ -20,7 +20,7 @@ import {routes} from './routes';
     ClarityModule,
     CommonModule,
     HttpClientModule,
-    RouterModule.forRoot(routes,  { enableTracing: true }),
+    RouterModule.forRoot(routes),
     CoreModule.forRoot(),
     AuthModule.forRoot(),
   ],

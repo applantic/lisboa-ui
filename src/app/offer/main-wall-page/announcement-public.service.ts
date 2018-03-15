@@ -15,7 +15,7 @@ export class AnnouncementPublicService {
   getListAnnouncement(): Observable<AnnouncementPublic[]> {
     this.listAnnouncementLoadedSubject.next(false);
 
-    return this.httpClient.get<any>(`announcement?page=${0}&size=${10}`)
+    return this.httpClient.get<any>(`announcement?page=${0}&size=${10}&sort=createdDateTime,desc`)
       .map((data) => data.content)
       .do((data) => this.listAnnouncementSubject.next(data))
       .do((data) => this.listAnnouncementLoadedSubject.next(true));

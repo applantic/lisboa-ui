@@ -2,15 +2,15 @@
   <form [formGroup]="form" class="card-block">
     <div class="filter-section">
       <span class="filter-label">Produkt:</span>
-      <pt-select-dropdown-form formControlName="productKey" #productSelectRef>
-        <pt-select-dropdown [options]="categoryList" (selectedOptionEmitter)="productSelectRef.setNewValue($event)"></pt-select-dropdown>
-      </pt-select-dropdown-form>
+      <pt-form-control-adapter formControlName="productKey" #productSelectRef>
+        <pt-pretty-dropdown [options]="categoryList" (selectedOptionEmitter)="productSelectRef.setNewValue($event)"></pt-pretty-dropdown>
+      </pt-form-control-adapter>
     </div>
     <div class="filter-section">
       <span class="filter-label">Województwo:</span>
-      <pt-select-dropdown-form formControlName="region" #regionsSelectRef>
-        <pt-select-dropdown [options]="regions" (selectedOptionEmitter)="regionsSelectRef.setNewValue($event)"></pt-select-dropdown>
-      </pt-select-dropdown-form>
+      <pt-form-control-adapter formControlName="region" #regionsSelectRef>
+        <pt-pretty-dropdown [options]="regions" (selectedOptionEmitter)="regionsSelectRef.setNewValue($event)"></pt-pretty-dropdown>
+      </pt-form-control-adapter>
     </div>
   </form>
 </div>
