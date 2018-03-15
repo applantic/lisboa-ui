@@ -77,4 +77,4 @@ export const MY_ANNOUNCEMENT: MyAnnouncement = {
   productKey: 'default',
   deliveryType: DeliveryEnum.WITH_DELIVERY,
   unitType: UnitEnum.KG ,
-}
+};
