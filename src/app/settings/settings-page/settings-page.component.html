@@ -1,3 +1,93 @@
-<p>
-  settings-page works!
-</p>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+          <h3>Ustawienia uzytkownika</h3>
+        </div>
+        <div class="">
+            <h4>Wypełnione dane</h4>
+            <div class="progress" [ngClass]="progressStyle">
+                <progress max="100" [value]="userProgress" data-displayval="40%"></progress>
+            </div>
+        </div>
+      </div>
+      <div class="card-block">
+          <form  [formGroup]="form">
+              <section class="form-block">
+                  <div class="form-group">
+                      <label>Forma prawna</label>
+                      <div class="radio-inline">
+                          <input type="radio" name="type" value="company" id="company" checked (change)="changeCustomerType($event)">
+                          <label for="company">Firma lub organizacja</label>
+                      </div>
+                      <div class="radio-inline">
+                          <input type="radio" name="type" value="private" id="private" (change)="changeCustomerType($event)">
+                          <label for="private">Osoba prywatna</label>
+                      </div>
+                  </div>
+                  <div formGroupName="company" *ngIf="customerIsCompany()">
+                  <div class="form-group">
+                      <label for="companyName">Nazwa firmy</label>
+                      <input type="text" id="companyName" placeholder="Nazwa" formControlName="companyName">
+                  </div>
+                  <div class="form-group">
+                      <label for="nip">NIP</label>
+                      <input type="text" id="nip" placeholder="NIP" formControlName="nip">
+                  </div>
+                </div>
+                <div formGroupName="private" *ngIf="customerIsPrivate()">
+                  <div class="form-group">
+                      <label for="fullName">Imię i Nazwisko</label>
+                      <input type="text" id="fullName" placeholder="Imię Nazwisko" formControlName="fullName">
+                  </div>
+                  <div class="form-group">
+                      <label for="farmerId">Nr. identyfikacyjny</label>
+                      <input type="text" id="farmerId" placeholder="Nr. identyfikacyjny" formControlName="farmerId">
+                  </div>
+                </div>
+                <div formGroupName="base">
+                  <div class="form-group">
+                      <label for="country">Kraj</label>
+                      <input type="text" id="country" placeholder="Kraj" formControlName="country">
+                  </div>
+                  <div class="form-group">
+                      <label for="address">Adres</label>
+                      <input type="text" id="address" placeholder="Adres" formControlName="address">
+                  </div>
+                  <div class="form-group">
+                      <label for="zipCode">Kod pocztowy</label>
+                      <input type="text" id="zipCode" placeholder="Kod pocztowy" formControlName="zipCode">
+                  </div>
+                  <div class="form-group">
+                      <label for="city">Miejscowość</label>
+                      <input type="text" id="city" placeholder="Miejscowość" formControlName="city">
+                  </div>
+                  <div class="form-group">
+                      <label for="phone">Telefon</label>
+                      <input type="tel" id="city" placeholder="Telefon" formControlName="phone">
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" placeholder="Email" formControlName="email">
+                  </div>
+                  <div class="form-group">
+                      <label for="region">Województwo</label>
+                      <input type="text" id="region" placeholder="Województwo" formControlName="region">
+                  </div>
+                </div>
+                  <div formGroupName="private" *ngIf="customerIsPrivate()">
+                      <div class="form-group">
+                          <label for="area">Obszar</label>
+                          <input type="text" id="area" placeholder="Obszar" formControlName="area">
+                      </div>
+                      <div class="form-group">
+                          <label>Najczęściej stosowane uprawy</label>
+                          <div *ngFor="let category of categoryList">
+                          <span class="label clickable" [ngClass]="{'label-success': selectedCategory.indexOf(category.key) > -1}" (click)="addCategory(category.key)">{{category.name}}</span>
+                          </div>
+                      </div>
+                    </div>
+              </section>
+          </form>
+      </div>
+</div>
+

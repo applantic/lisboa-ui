@@ -6,10 +6,20 @@ import {ClarityModule} from '@clr/angular';
 import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {UserProfileComponent} from '../user-profile/user-profile-page/user-profile-page.component';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
+import { DictionaryModule } from '../dictionary/dictionary.module';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    DictionaryModule,
     RouterModule.forChild([{
       path: '',
       component: SettingsPageComponent,
