@@ -12,20 +12,3 @@ export const DELIVERY_TYPE: DeliveryTypeMap = {
   [DeliveryEnum.BOTH_DELIVERIES]: 'do ustalenia',
 };
 
-export interface Product {
-  key: string;
-  name: string;
-}
-
-export interface Category {
-  key: string;
-  name: string;
-  products: Product[];
-}
-
-export interface Option {
-  label: string;
-  value: string;
-  options?: Option[];
-}
-

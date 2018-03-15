@@ -1,18 +1,19 @@
 import 'rxjs/add/operator/do';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/observable';
-
-import {Category} from '../../config';
-
 import {HttpClient} from '@angular/common/http';
+import { Category, KeyNamePair } from './dictionary.model';
 
 @Injectable()
-export class CategoryListService {
+export class DictionaryService {
 
   constructor(private httpClient: HttpClient) {}
 
   getCategoryList(): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`category`)
-      .do((data) => console.log('getCategoryList: ', data));
+    return this.httpClient.get<Category[]>('category');
+  }
+
+  getVovoideshipList(): Observable<KeyNamePair[]> {
+    return this.httpClient.get<KeyNamePair[]>('voivodeship');
   }
 }

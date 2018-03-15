@@ -1,7 +1,5 @@
 import { Component, forwardRef, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { CategoryListService } from '../../services/category-list.service';
 import { Subject } from 'rxjs/Subject';
-import { Category, Product } from '../../../config';
 
 @Component({
   selector: 'pt-select-dropdown',

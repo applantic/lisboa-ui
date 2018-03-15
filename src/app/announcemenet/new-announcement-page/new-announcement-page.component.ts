@@ -6,10 +6,11 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
-import {Category, DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST, Product, Option} from '../../config';
+import { DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST} from '../../config';
 import {AnnouncementService} from '../announcement.service';
 import {DeliveryEnum, NewAnnouncement} from '../announcement.model';
-import { CategoryListService } from '../../shared/services/category-list.service';
+import { Option, Category } from '../../dictionary/dictionary.model';
+import { DictionaryService } from '../../dictionary/dictionary.service';
 
 @Component({
   selector: 'pt-new-announcement-page',
@@ -29,13 +30,13 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private categoryListService: CategoryListService,
+              private dictionaryService: DictionaryService,
               private announcementService: AnnouncementService,
               private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.categoryListService.getCategoryList()
+    this.dictionaryService.getCategoryList()
       .map((item) => transformCategoryList(item))
       .do(list => console.log(list))
       .subscribe((list) => this.categoryList = list);

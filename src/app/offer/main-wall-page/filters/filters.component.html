@@ -9,7 +9,7 @@
     <div class="filter-section">
       <span class="filter-label">Województwo:</span>
       <pt-select-dropdown-form formControlName="region" #regionsSelectRef>
-        <pt-select-dropdown [options]="regions" (selectedOptionEmitter)="regionsSelectRef.setNewValue($event)"></pt-select-dropdown>
+        <pt-select-dropdown [options]="regionsList" (selectedOptionEmitter)="regionsSelectRef.setNewValue($event)"></pt-select-dropdown>
       </pt-select-dropdown-form>
     </div>
   </form>

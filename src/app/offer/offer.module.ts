@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule} from '@clr/angular';
 
 import {SharedModule} from '../shared/shared.module';
-
+import { DictionaryModule } from '../dictionary/dictionary.module';
 import {FiltersComponent} from './main-wall-page/filters/filters.component';
 import {CardComponent} from './main-wall-page/card/card.component';
 
@@ -21,6 +21,7 @@ import {AnnouncementPublicService} from './main-wall-page/announcement-public.se
     ClarityModule,
     SharedModule,
     FormsModule,
+    DictionaryModule,
     ReactiveFormsModule,
     RouterModule.forChild([{
       path: '',
