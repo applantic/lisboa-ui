@@ -4,8 +4,9 @@ import {Injectable} from '@angular/core';
 import {CanActivate, Router, ActivatedRouteSnapshot} from '@angular/router';
 import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/Observable';
-
 import {OfferService} from './make-offer-page/offer.service';
+
+
 
 @Injectable()
 export class AnnouncementGuardService implements CanActivate {
@@ -17,7 +18,7 @@ export class AnnouncementGuardService implements CanActivate {
     console.log('getAnnouncementData: ', id);
 
     return this.offerService
-      .getAnnouncementDetail(id)
+      .getAnnouncementDetails(id)
       .map(() => true)
       .catch((error) => {
         this.router.navigate(['/ogloszenia']);

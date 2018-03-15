@@ -13,6 +13,7 @@ import {MainWallPageComponent} from './main-wall-page/main-wall-page.component';
 import {MakeOfferPageComponent} from './make-offer-page/make-offer-page.component';
 
 import {OfferService} from './make-offer-page/offer.service';
+import {AnnouncementPublicService} from './main-wall-page/announcement-public.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {OfferService} from './make-offer-page/offer.service';
   ],
   exports: [],
   providers: [
-    OfferService
+    OfferService,
+    AnnouncementPublicService
   ]
 })
 
