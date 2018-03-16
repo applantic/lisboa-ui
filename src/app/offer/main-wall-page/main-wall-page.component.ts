@@ -20,13 +20,9 @@ export class MainWallPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.announcementPublicService.getListAnnouncement()
       .takeUntil(this.ngUnsubscribe)
+      .do((announcement) => this.loaded = true)
       .do((announcement) => console.log(announcement))
       .subscribe((announcements) => this.announcements = announcements);
-
-    this.announcementPublicService.listAnnouncementLoadedSubject
-      .takeUntil(this.ngUnsubscribe)
-      .do((loaded) => console.log('loaded: ', loaded))
-      .subscribe((loaded) => this.loaded = loaded);
   }
 
   ngOnDestroy() {
