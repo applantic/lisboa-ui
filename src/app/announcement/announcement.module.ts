@@ -11,12 +11,16 @@ import {SuccessAnnouncementPageComponent} from './success-announcement-page/succ
 import {AnnouncementPageComponent} from './announcement-page/announcement-page.component';
 
 import {AnnouncementService} from './announcement.service';
+import { DictionaryModule } from '../dictionary/dictionary.module';
+import { MyAnnouncementsPageComponent } from './my-announcements-page/my-announcements-page.component';
+import { CardComponent } from './my-announcements-page/card/card.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
     FormsModule,
+    DictionaryModule,
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([{
@@ -26,6 +30,9 @@ import {AnnouncementService} from './announcement.service';
       path: 'dodano',
       component: SuccessAnnouncementPageComponent,
     }, {
+      path: 'moje',
+      component: MyAnnouncementsPageComponent
+    }, {
       path: ':id',
       component: AnnouncementPageComponent,
     }]),
@@ -33,7 +40,9 @@ import {AnnouncementService} from './announcement.service';
   declarations: [
     NewAnnouncementPageComponent,
     SuccessAnnouncementPageComponent,
-    AnnouncementPageComponent
+    AnnouncementPageComponent,
+    MyAnnouncementsPageComponent,
+    CardComponent
   ],
   exports: [],
   providers: [

@@ -1,0 +1,26 @@
+<span class="spinner spinner-lg" *ngIf="!loaded">
+  Loading...
+</span>
+
+<div class="row" *ngIf="loaded">
+  <div class="col-lg-12">
+    <div class="card no-items-info" *ngIf="!announcements.length">
+      <div class="card-block no-announcements-card">
+          <h2 class="no-announcemnets-title">Nie masz jeszcze żadnych ogłoszeń.</h2>
+          <a class="btn" routerLink="/ogloszenia/dodaj">Dodaj Nowe</a>
+      </div>
+    </div>
+    <div *ngIf="announcements.length">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-title">Moje Ogłoszenia:</div>
+        </div>
+      </div>
+      <ul>
+        <li *ngFor="let announcement of announcements">
+          <pt-card [announcement]="announcement"></pt-card>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

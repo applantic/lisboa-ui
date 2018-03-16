@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-block">
+    <span class="card-id">Ogłoszenie nr
+      <b>{{announcement.number || '42'}}</b>
+    </span>
+    <div class="card-title">
+      <a [routerLink]="['/tablica', announcement.id, {makeAnOffer:false}]">
+        <h3 class="announcement-title">{{announcement.product || 'Category'}}</h3>
+      </a>
+      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
+    </div>
+    <div class="card-text">
+      <div class="card-left">
+        <span *ngIf="announcement.remarks">
+          {{announcement.remarks}}
+          <br>
+          <br>
+        </span>
+        <table>
+          <tr>
+            <td class="table-title">Ilość:</td>
+            <td>{{announcement.minQuantity}} {{announcement.unitType || 'kg'}} - {{announcement.maxQuantity}} {{announcement.unitType
+              || 'kg'}}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Okres zapłaty:</td>
+            <td>{{announcement.period || '7 dni' }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Termin dostarczenia:</td>
+            <td>{{announcement.deliveryDate | ptDate }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Kod pocztowy:</td>
+            <td>{{announcement.zipCode}}</td>
+          </tr>
+          <tr *ngIf="announcement.deliveryType !== deliveryOptions.WITH_DELIVERY">
+            <td class="table-title">Zasięg odbioru:</td>
+            <td>{{announcement.deliveryRange}} KM</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card-right">
+        <pt-circle-icon-title [items]="circleShapeTitleConfig" [mainConditionArgument]="announcement.deliveryType"></pt-circle-icon-title>
+
+        <div class="button-container">
+          <a [routerLink]="['/ogloszenia/edytuj', announcement.id]" routerLinkActive="active" class="button btn btn-primary">Edytuj</a>
+          <a [routerLink]="['/ogloszenia/usun', announcement.id]" routerLinkActive="active" class="button btn btn-warning">Usuń</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

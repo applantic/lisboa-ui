@@ -1,0 +1,46 @@
+.card {
+  &-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &-id {
+    opacity: 0.5;
+  }
+}
+
+.button {
+  margin: 0;
+}
+
+.table {
+  &-title {
+    font-weight: 600;
+    padding-right: 15px;
+  }
+}
+
+.announcement {
+  &-title,
+  &-price {
+    margin: 0;
+  }
+
+  &-price {
+    margin-left: 40px;
+    flex-shrink: 0;
+  }
+}
