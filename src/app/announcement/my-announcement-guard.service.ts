@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 import {MyAnnouncementService} from './my-announcement.service';
 
 @Injectable()
-export class AnnouncementGuardService implements CanActivate {
+export class MyAnnouncementGuardService implements CanActivate {
   constructor(private router: Router,
               private myAnnouncementService: MyAnnouncementService) {
   }
@@ -18,6 +18,7 @@ export class AnnouncementGuardService implements CanActivate {
   getMyAnnouncementDetails(id: string): Observable<boolean> {
     if (this.myAnnouncementService.myAnnouncementSubject.value &&
       this.myAnnouncementService.myAnnouncementSubject.value .id === id) {
+      console.log('test', this.myAnnouncementService.myAnnouncementSubject.value)
       return of(true);
     }
 

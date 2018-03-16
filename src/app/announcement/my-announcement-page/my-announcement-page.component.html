@@ -70,14 +70,14 @@
 <div class="row">
   <div class="col-lg-12">
     <ul>
-      <li *ngFor="let offer of announcement.offers">
+      <li *ngFor="let offer of myAnnouncement.offers">
         <div class="card offer">
           <div class="card-block">
             <span class="card-id">Ogłoszenie nr
               <b>{{offer.id|| '42'}}</b>
             </span>
             <div class="card-title">
-              <h3 class="announcement-price">{{offer.price || 1000 }} PLN/{{announcement.unitType || 'kg'}}</h3>
+              <h3 class="announcement-price">{{offer.price || 1000 }} PLN/{{myAnnouncement.unitType || 'kg'}}</h3>
               <a [routerLink]="['/profil', offer.ownerId]"><h3 class="announcement-title">{{offer.ownerUsername}}</h3></a>
             </div>
             <div class="card-text">
@@ -86,7 +86,7 @@
                   <div class="pt-table-column">
                     <div class="pt-table-row">
                       <div class="pt-table-cell">Ilość:</div>
-                      <div class="pt-table-cell">{{offer.quantity}} {{announcement.unitType || 'kg'}}</div>
+                      <div class="pt-table-cell">{{offer.quantity}} {{myAnnouncement.unitType || 'kg'}}</div>
                     </div>
                   </div>
                   <div class="pt-table-column">
@@ -107,7 +107,7 @@
                 <div class="pt-table-row">
                   <pt-circle-icon-title
                     [items]="circleShapeTitleConfig"
-                    [mainConditionArgument]="announcement.deliveryType"
+                    [mainConditionArgument]="myAnnouncement.deliveryType"
                   ></pt-circle-icon-title>
                 </div>
               </div>

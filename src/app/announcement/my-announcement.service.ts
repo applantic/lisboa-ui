@@ -1,4 +1,5 @@
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
@@ -27,8 +28,8 @@ export class MyAnnouncementService {
       .subscribe();
   }
 
-  public clickedUpdateAction(newAnnouncement: NewMyAnnouncement) {
-    this.updateAnnouncement(newAnnouncement)
+  public clickedUpdateAction(newMyAnnouncement: NewMyAnnouncement) {
+    this.updateAnnouncement(newMyAnnouncement)
       .do((data) => this.router.navigate([`/ogloszenia`, data.id]))
       .subscribe();
   }
@@ -38,13 +39,13 @@ export class MyAnnouncementService {
     const {version, id, ownerId} = this.myAnnouncementSubject.value;
     const myAnnouncement = Object.assign({}, {version, id, ownerId}, rest);
 
-    return this.httpClient.put<MyAnnouncement>(`myAnnouncement`, myAnnouncement)
-      .do((data) => this.myAnnouncementSubject.next(data))
+    return this.httpClient.put<MyAnnouncement>(`announcement`, myAnnouncement)
+      .do((data) => this.myAnnouncementSubject.next({...this.myAnnouncementSubject.value, ...data}))
       .do((data) => console.log('updateAnnouncement: ', data));
   }
 
   public addMyNewAnnouncement(newMyAnnouncement: NewMyAnnouncement): Observable<MyAnnouncement> {
-    return this.httpClient.post<MyAnnouncement>(`myAnnouncement`, newMyAnnouncement)
+    return this.httpClient.post<MyAnnouncement>(`announcement`, newMyAnnouncement)
       .do((data) => console.log('addMyNewAnnouncement: ', data));
   }
 

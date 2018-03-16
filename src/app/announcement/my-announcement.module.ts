@@ -16,7 +16,7 @@ import {EditMyAnnouncementPageComponent} from './edit-my-announcement-page/edit-
 import {MyAnnouncementListPageComponent} from './my-announcement-list-page/my-announcement-list-page.component';
 
 import {MyAnnouncementService} from './my-announcement.service';
-import {AnnouncementGuardService} from './my-announcement-guard.service';
+import {MyAnnouncementGuardService} from './my-announcement-guard.service';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import {AnnouncementGuardService} from './my-announcement-guard.service';
     RouterModule.forChild([{
       path: 'edytuj/:id',
       component: EditMyAnnouncementPageComponent,
-      canActivate: [AnnouncementGuardService]
+      canActivate: [MyAnnouncementGuardService]
     }, {
       path: 'dodaj',
       component: NewMyAnnouncementPageComponent,
@@ -41,7 +41,7 @@ import {AnnouncementGuardService} from './my-announcement-guard.service';
     }, {
       path: ':id',
       component: AnnouncementPageComponent,
-      canActivate: [AnnouncementGuardService]
+      canActivate: [MyAnnouncementGuardService]
     }]),
   ],
   declarations: [
@@ -57,7 +57,7 @@ import {AnnouncementGuardService} from './my-announcement-guard.service';
   exports: [],
   providers: [
     MyAnnouncementService,
-    AnnouncementGuardService
+    MyAnnouncementGuardService
   ]
 })
 

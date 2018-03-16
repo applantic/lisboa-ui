@@ -1,3 +1,7 @@
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/takeUntil';
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
@@ -29,11 +33,9 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.myAnnouncementService.myAnnouncementSubject
       .takeUntil(this.ngUnsubscribe)
+      .map((myAnnouncement) => extendOffersMyAnnouncement(myAnnouncement))
       .do((myAnnouncement) => console.log('myAnnouncement: ', myAnnouncement))
       .subscribe((myAnnouncement) => this.myAnnouncement = myAnnouncement);
-      .map((announcement) => extendOffersAnnouncement(announcement))
-      .do((announcement) => console.log('announcement: ', announcement))
-      .subscribe((announcement) => this.announcement = announcement);
   }
 
   ngOnDestroy() {
@@ -46,7 +48,7 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   public acceptOffer(id: string) {
-    this.announcement.offers = this.announcement.offers.map((el) => {
+    this.myAnnouncement.offers = this.myAnnouncement.offers.map((el) => {
       if (el.id === id) {
         el.acceptFlag = AcceptedOfferStateEnum.ACCEPTED;
       }
@@ -57,7 +59,7 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
 
   public discardOffer(id: string) {
     console.log('discardOffer: ', id);
-    this.announcement.offers = this.announcement.offers.filter((el) => el.id !== id);
+    this.myAnnouncement.offers = this.myAnnouncement.offers.filter((el) => el.id !== id);
   }
 
   public clickEnvelopeMessage() {
@@ -65,7 +67,7 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
   }
 }
 
-function extendOffersAnnouncement(myAnnouncement: MyAnnouncement): MyAnnouncement {
+function extendOffersMyAnnouncement(myAnnouncement: MyAnnouncement): MyAnnouncement {
   const newOffers = myAnnouncement.offers
     .map((el) => ({...el, ...{deliveryType: randomValueFromArray<DeliveryEnum>([DeliveryEnum.BOTH_DELIVERIES, DeliveryEnum.WITH_DELIVERY, DeliveryEnum.WITHOUT_DELIVERY])}}))
     .map((el) => ({...el, ...{acceptFlag: randomValueFromArray<AcceptedOfferStateEnum>([AcceptedOfferStateEnum.DISCARD, AcceptedOfferStateEnum.ACCEPTED, AcceptedOfferStateEnum.ACCEPTED, AcceptedOfferStateEnum.INITIAL, AcceptedOfferStateEnum.INITIAL, AcceptedOfferStateEnum.INITIAL])}}))
