@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild, AfterViewInit,} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 import {MyAnnouncementService} from '../my-announcement.service';
 import {MyAnnouncement} from '../my-announcement.model';
 import {MyAnnouncementFormComponent} from '../components/my-announcement-form/my-announcement-form.component';
@@ -15,7 +16,8 @@ export class NewMyAnnouncementPageComponent implements AfterViewInit, OnInit {
 
   myAnnouncement: MyAnnouncement;
 
-  constructor(private locationRouter: Location,
+  constructor(private router: Router,
+              private locationRouter: Location,
               private myAnnouncementService: MyAnnouncementService) {
   }
 
@@ -30,6 +32,8 @@ export class NewMyAnnouncementPageComponent implements AfterViewInit, OnInit {
   }
 
   public clickedSave() {
-    this.myAnnouncementService.clickedSaveAction(this.announcementFormComponent.form.value);
+    this.myAnnouncementService.addMyNewAnnouncement(this.announcementFormComponent.form.value)
+      .do((data) => this.router.navigate([`/ogloszenia/dodano`, data.id]))
+      .subscribe();
   }
 }
