@@ -38,6 +38,7 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dictionaryService.getCategoryList()
+      .takeUntil(this.ngUnsubscribe)
       .map((item) => transformCategoryList(item))
       .do(list => console.log(list))
       .subscribe((list) => this.categoryList = list);
