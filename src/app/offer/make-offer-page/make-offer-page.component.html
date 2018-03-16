@@ -116,15 +116,16 @@
             </div>
           </div>
         </section>
-        <div class="card-right">
-          <button class="btn btn-primary"
-                  *ngIf="!offerNotEditable"
-                  (click)="submitOffer()">Zatwierdź
-          </button>
-        </div>
       </form>
     </div>
   </div>
 </div>
-<button class="btn btn-secondary" routerLink="/tablica">Wróć do tablicy</button>
+<div class="button-container">
+  <a class="btn btn-secondary"
 
+     (click)="ClickBack()">Wróć do tablicy</a>
+  <button class="btn btn-primary"
+          *ngIf="!offerNotEditable"
+          (click)="submitOffer()">Złóż ofertę
+  </button>
+</div>
