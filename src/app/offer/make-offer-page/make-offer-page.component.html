@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="announcement">
   <div class="card-header">
     <span class="card-id">Ogłoszenie nr
       <b>{{announcement.number || '42'}}</b>
@@ -41,9 +41,9 @@
               <div class="pt-table-cell">{{announcement.city || 'Lublin'}}</div>
             </div>
 
-            <div class="pt-table-row" *ngIf="announcement.deliveryType !== deliveryOptions.WITH_DELIVERY">
+            <div class="pt-table-row" *ngIf="announcement?.deliveryType !== deliveryOptions.WITH_DELIVERY">
               <div class="pt-table-cell">Zasięg odbioru:</div>
-              <div class="pt-table-cell">{{announcement.deliveryRange}} KM</div>
+              <div class="pt-table-cell">{{announcement?.deliveryRange}} KM</div>
             </div>
           </div>
         </div>
@@ -71,40 +71,40 @@
     </div>
   </div>
 </div>
-<div class="card" *ngIf="makeAnOfferFlag">
+<div class="card">
   <div class="card-header">
     <h3>Twoja oferta</h3>
   </div>
   <div class="card-block">
     <div class="card-text">
-      <form style="width: 100%;" [formGroup]="form">
+      <form *ngIf="form" style="width: 100%;" [formGroup]="form">
         <section class="form-block">
           <div class="form-group row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
               <label for="quantity">Ilość:</label>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <input class="form-control" type="text" id="quantity" formControlName="quantity">
+              <input class="form-control" type="text" id="quantity" formControlName="quantity" [ptDisableControl]="offerNotEditable"/>
             </div>
           </div>
-          <div class="form-group row" *ngIf="announcement.price == null">
+          <div class="form-group row" *ngIf="announcement?.price == null">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
               <label for="price">Cena:</label>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-              <input class="form-control" type="text" id="price" formControlName="price">
+              <input class="form-control" type="text" id="price" formControlName="price" [ptDisableControl]="offerNotEditable"/>
             </div>
           </div>
         </section>
         <section class="form-block"
-                 *ngIf="announcement.delivery == deliveryOptions.WITHOUT_DELIVERY || announcement.delivery == deliveryOptions.BOTH_DELIVERIES ">
+                 *ngIf="announcement?.deliveryType == deliveryOptions.WITHOUT_DELIVERY || announcement?.deliveryType == deliveryOptions.BOTH_DELIVERIES ">
           <label>Adres</label>
           <div class="form-group row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
               <label for="zipCode">Kod pocztowy:</label>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <input class="form-control" type="text" id="zipCode" formControlName="zipCode">
+              <input class="form-control" type="text" id="zipCode" formControlName="zipCode" [ptDisableControl]="offerNotEditable"/>
             </div>
           </div>
           <div class="form-group row">
@@ -112,22 +112,19 @@
               <label for="city">Miejscowość:</label>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <input class="form-control" type="text" id="city" formControlName="city">
+              <input class="form-control" type="text" id="city" formControlName="city" [ptDisableControl]="offerNotEditable"/>
             </div>
           </div>
         </section>
         <div class="card-right">
           <button class="btn btn-primary"
-                  *ngIf="makeAnOfferFlag"
-                  (click)="submitOffer()" [disabled]="isOfferSaved">Zatwierdź
+                  *ngIf="!offerNotEditable"
+                  (click)="submitOffer()">Zatwierdź
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-<button class="btn"
-        [ngClass]="{'btn-secondary': makeAnOfferFlag, 'btn-primary': !makeAnOfferFlag}"
-        (click)="clickedMakeAnOffer()">{{makeAnOfferFlag ? 'Anuluj' : 'ZŁÓŻ OFERTĘ'}}
-</button>
+<button class="btn btn-secondary" routerLink="/tablica">Wróć do tablicy</button>
 

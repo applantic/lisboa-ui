@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
-import { Option } from '../../../dictionary/dictionary.model';
+import { Option } from '../../../dictionary/category.model';
 import { DictionaryService } from '../../../dictionary/dictionary.service';
 
 @Component({

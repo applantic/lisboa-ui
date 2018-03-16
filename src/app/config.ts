@@ -1,4 +1,4 @@
-import { DeliveryEnum } from './announcement/announcement.model';
+import { DeliveryEnum } from './dictionary/delivery.model';
 
 export interface DeliveryTypeMap {
   [key: string]: string;

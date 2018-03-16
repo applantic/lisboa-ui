@@ -1,4 +1,5 @@
-import {DeliveryType, UnitType} from '../../announcement/announcement.model';
+import {DeliveryType} from '../../dictionary/delivery.model';
+import {UnitType} from '../../dictionary/unit.model';
 
 export interface Offer {
   quantity: number;
@@ -10,6 +11,8 @@ export interface Offer {
 
 export interface PublicAnnouncementDetail {
   id: string;
+  number: string;
+  city: string;
   productKey: string;
   unitType: UnitType;
   price?: number;
