@@ -7,6 +7,7 @@ import {ClarityModule} from '@clr/angular';
 
 import {CoreModule} from './core/core.module';
 import {AuthModule} from './auth/auth.module';
+import {DictionaryModule} from './dictionary/dictionary.module';
 
 import {AppComponent} from './core/containers/app/app.component';
 import {routes} from './routes';
@@ -22,6 +23,7 @@ import {routes} from './routes';
     HttpClientModule,
     RouterModule.forRoot(routes),
     CoreModule.forRoot(),
+    DictionaryModule.forRoot(),
     AuthModule.forRoot(),
   ],
   bootstrap: [AppComponent],
