@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/takeUntil';
 import {Component, OnInit, OnDestroy, ViewChild, AfterViewInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
