@@ -16,7 +16,7 @@ export class OfferService {
 
   getAnnouncementDetails(id: string): Observable<PublicAnnouncementDetail> {
     return this.httpClient.get<PublicAnnouncementDetail>(`announcement/${id}`)
-      .do((data) => console.log('getAnnouncementDetails: ', data));
+      .do((data) => console.log('getMyAnnouncementDetails: ', data));
   }
 
   findMyOffer(announcementId: string): Observable<Offer> {

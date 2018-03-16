@@ -12,17 +12,17 @@ import {MyAnnouncementService} from './my-announcement.service';
 @Injectable()
 export class AnnouncementGuardService implements CanActivate {
   constructor(private router: Router,
-              private announcementService: MyAnnouncementService) {
+              private myAnnouncementService: MyAnnouncementService) {
   }
 
-  getAnnouncementDetails(id: string): Observable<boolean> {
-    if (this.announcementService.myAnnouncementSubject.value &&
-      this.announcementService.myAnnouncementSubject.value .id === id) {
+  getMyAnnouncementDetails(id: string): Observable<boolean> {
+    if (this.myAnnouncementService.myAnnouncementSubject.value &&
+      this.myAnnouncementService.myAnnouncementSubject.value .id === id) {
       return of(true);
     }
 
-    return this.announcementService
-      .getAnnouncementDetails(id)
+    return this.myAnnouncementService
+      .getMyAnnouncementDetails(id)
       .map(() => true)
       .catch((error) => {
         this.router.navigate(['/tablica']);
@@ -32,6 +32,6 @@ export class AnnouncementGuardService implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.getAnnouncementDetails(route.params.id);
+    return this.getMyAnnouncementDetails(route.params.id);
   }
 }

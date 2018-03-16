@@ -1,5 +1,6 @@
 import {UnitType} from '../dictionary/unit.model';
 import {DeliveryEnum, DeliveryType} from '../dictionary/delivery.model';
+import {AcceptedOfferStateEnum} from './my-announcement-page/my-announcement-page.component';
 
 interface CoreMyAnnouncement {
   price?: number;
@@ -33,8 +34,13 @@ export interface MyAnnouncement extends CoreMyAnnouncement {
   ownerId: string;
   offers?: Offers[];
 }
+export interface MockedOffers {
+  acceptFlag: AcceptedOfferStateEnum;
+  hasBadge: boolean;
+  deliveryType: DeliveryType;
+}
 
-export interface Offers {
+export interface Offers extends MockedOffers{
   id: string;
   price: string;
   quantity: string;

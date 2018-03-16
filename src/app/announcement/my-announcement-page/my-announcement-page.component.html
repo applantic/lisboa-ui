@@ -60,8 +60,77 @@
             [mainConditionArgument]="myAnnouncement.deliveryType"
           ></pt-circle-icon-title>
         </div>
-        <button (click)="clickEdit()">Edytuj ogłoszenie</button>
       </div>
     </div>
+    <div class="button-container">
+      <a (click)="clickEdit()" class="button btn btn-secondary">Edytuj ogłoszenie</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <ul>
+      <li *ngFor="let offer of announcement.offers">
+        <div class="card offer">
+          <div class="card-block">
+            <span class="card-id">Ogłoszenie nr
+              <b>{{offer.id|| '42'}}</b>
+            </span>
+            <div class="card-title">
+              <h3 class="announcement-price">{{offer.price || 1000 }} PLN/{{announcement.unitType || 'kg'}}</h3>
+              <a [routerLink]="['/profil', offer.ownerId]"><h3 class="announcement-title">{{offer.ownerUsername}}</h3></a>
+            </div>
+            <div class="card-text">
+              <div class="card-left">
+                <div class="pt-table">
+                  <div class="pt-table-column">
+                    <div class="pt-table-row">
+                      <div class="pt-table-cell">Ilość:</div>
+                      <div class="pt-table-cell">{{offer.quantity}} {{announcement.unitType || 'kg'}}</div>
+                    </div>
+                  </div>
+                  <div class="pt-table-column">
+                    <div class="pt-table-row">
+                      <div class="pt-table-cell">Kod pocztowy:</div>
+                      <div class="pt-table-cell">{{offer.zipCode}}</div>
+                    </div>
+
+                    <div class="pt-table-row">
+                      <div class="pt-table-cell">Miejscowość:</div>
+                      <div class="pt-table-cell">{{offer.city || 'Lublin'}}</div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="card-right">
+                <div class="pt-table-row">
+                  <pt-circle-icon-title
+                    [items]="circleShapeTitleConfig"
+                    [mainConditionArgument]="announcement.deliveryType"
+                  ></pt-circle-icon-title>
+                </div>
+              </div>
+            </div>
+            <div class="button-container">
+              <button type="button" *ngIf="offer.acceptFlag === acceptedOfferStateOptions.INITIAL"
+                      class="btn btn-icon btn-danger" (click)="discardOffer(offer.id)">
+                <clr-icon shape="close"></clr-icon>
+              </button>
+
+              <button type="button" [disabled]="offer.acceptFlag === acceptedOfferStateOptions.ACCEPTED"
+                      class="btn btn-icon btn-success" (click)="acceptOffer(offer.id)">
+                <clr-icon shape="check"></clr-icon>
+              </button>
+              <button type="button" *ngIf="offer.acceptFlag === acceptedOfferStateOptions.ACCEPTED"
+                      class="btn btn-icon btn-primary"
+                      (click)="clickEnvelopeMessage()">
+                <clr-icon shape="envelope" [ngClass]="{'has-badge': offer.hasBadge}"></clr-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

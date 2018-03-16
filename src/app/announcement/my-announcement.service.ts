@@ -22,18 +22,16 @@ export class MyAnnouncementService {
   }
 
   public clickedSaveAction(newMyAnnouncement: NewMyAnnouncement) {
-    this.addNewAnnouncement(newMyAnnouncement)
+    this.addMyNewAnnouncement(newMyAnnouncement)
       .do((data) => this.router.navigate([`/ogloszenia/dodano`, data.id]))
       .subscribe();
   }
 
-  public clickedUpdateAction(newMyAnnouncement: NewMyAnnouncement) {
-
-    this.updateAnnouncement(newMyAnnouncement)
+  public clickedUpdateAction(newAnnouncement: NewMyAnnouncement) {
+    this.updateAnnouncement(newAnnouncement)
       .do((data) => this.router.navigate([`/ogloszenia`, data.id]))
       .subscribe();
   }
-
 
   public updateAnnouncement(newMyAnnouncement: NewMyAnnouncement): Observable<MyAnnouncement> {
     const {period, productKey, deliveryDate, ...rest} = newMyAnnouncement;
@@ -45,15 +43,15 @@ export class MyAnnouncementService {
       .do((data) => console.log('updateAnnouncement: ', data));
   }
 
-  public addNewAnnouncement(newMyAnnouncement: NewMyAnnouncement): Observable<MyAnnouncement> {
+  public addMyNewAnnouncement(newMyAnnouncement: NewMyAnnouncement): Observable<MyAnnouncement> {
     return this.httpClient.post<MyAnnouncement>(`myAnnouncement`, newMyAnnouncement)
-      .do((data) => console.log('addNewAnnouncement: ', data));
+      .do((data) => console.log('addMyNewAnnouncement: ', data));
   }
 
-  public getAnnouncementDetails(id: string): Observable<MyAnnouncement> {
+  public getMyAnnouncementDetails(id: string): Observable<MyAnnouncement> {
     return this.httpClient.get<any>(`myannouncement/${id}`)
       .do((data) => this.myAnnouncementSubject.next(data))
-      .do((data) => console.log('getAnnouncementDetails: ', data));
+      .do((data) => console.log('getMyAnnouncementDetails: ', data));
   }
 
   public getMyAnnouncementList(): Observable<MyAnnouncement[]> {

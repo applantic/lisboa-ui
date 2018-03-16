@@ -1,6 +1,6 @@
 @import '~scss/base';
 
-:host{
+:host {
   .card {
     &-title {
       display: flex;
@@ -13,7 +13,7 @@
     }
 
     &-left {
-      flex: 1;
+      flex: 4;
     }
 
     &-right {
@@ -22,9 +22,10 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-end;
+      flex: 1;
     }
 
-    h3{
+    h3 {
       margin-top: 0;
     }
 
@@ -32,13 +33,24 @@
       @include responsive-text-size('description');
       opacity: 0.5;
     }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button, a.button, button.button {
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
   }
 
-  .pt-table{
+  .pt-table {
     display: flex;
     flex-wrap: wrap;
 
-    &-column{
+    &-column {
       flex: 0 0 100%;
 
       @include respond-above('large') {
@@ -46,21 +58,69 @@
       }
     }
 
-    &-row{
+    &-row {
       display: flex;
       flex: 1;
 
       padding: 5px 0;
     }
 
-    &-cell{
+    &-cell {
       flex: 1;
 
-      &:first-of-type{
+      &:first-of-type {
         font-weight: 500;
         max-width: 150px;
       }
     }
+  }
+
+  .card.offer {
+    .card-block {
+      text-align: right;
+    }
+    .card-title {
+      h3:first-of-type{
+        margin-left: 0;
+      }
+
+    }
+
+    .card-id {
+
+    }
+
+    .card-text {
+      text-align: left;
+    }
+
+    .card-left {
+      order: 1;
+
+      @include respond-above('large') {
+        order: 3;
+      }
+    }
+
+    .card-right {
+      align-items: flex-start;
+      order: 2
+    }
+
+    .pt-table {
+
+      &-column {
+
+        @include respond-above('large') {
+
+        }
+      }
+
+      &-row {
+
+      }
+    }
+
   }
 
   .announcement {
@@ -72,16 +132,6 @@
     &-price {
       margin-left: 40px;
       flex-shrink: 0;
-    }
-  }
-  .button-container{
-    display: flex;
-    justify-content: flex-end;
-
-    button{
-      &:last-of-type{
-        margin-right: 0;
-      }
     }
   }
 }
