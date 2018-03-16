@@ -4,23 +4,6 @@
     margin: 0 auto;
   }
 
-  textarea {
-    resize: none;
-  }
-
-  .delivery, .price {
-
-    &__range-sub-label {
-      text-align: right;
-    }
-
-    &__range-input {
-      padding: 0;
-    }
-
-  }
-
-
   .button-container{
     display: flex;
     justify-content: flex-end;

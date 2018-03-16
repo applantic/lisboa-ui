@@ -1,0 +1,74 @@
+<form>
+  <section [formGroup]="form" class="form-block">
+    <div class="form-group">
+      <label class="required">Produkt: </label>
+      <pt-form-control-adapter formControlName="productKey" #selectDropdownRef>
+        <pt-pretty-dropdown [options]="categoryList" placeholder="Wybierz produkt" (selectedOptionEmitter)="selectDropdownRef.setNewValue($event)"></pt-pretty-dropdown>
+      </pt-form-control-adapter>
+    </div>
+
+    <div class="form-group price">
+      <label for="gForm_1">Cena:</label>
+      <input type="text" id="gForm_1" placeholder="Np. 30" formControlName="price">
+      <span>PLN</span>
+    </div>
+
+    <div class="form-group price">
+      <label for="gForm_1">Ilość:</label>
+      <div class="delivery__range-sub-label">
+        <label for="gForm_2">MIN: </label>
+      </div>
+      <div class="delivery__range-input">
+        <input class="form-control" type="text" id="gForm_2" formControlName="minQuantity">
+      </div>
+      <div class="delivery__range-sub-label">
+        <label for="gForm_3">MAX: </label>
+      </div>
+      <div class="delivery__range-input">
+        <input class="form-control" type="text" id="gForm_3" formControlName="maxQuantity">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Termin płatnosci:</label>
+      <div class="select form-control">
+        <select id="exampleSelect2" formControlName="period">
+          <option value="default">Wybierz termin</option>
+          <option *ngFor="let period of periodList" value="period">{{period}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gForm_4">Opis:</label>
+      <textarea id="gForm_4" rows="5" class="form-control" formControlName="remarks"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Delivery:</label>
+      <div *ngFor="let delivery of deliveryType; let i = index">
+        <div class="radio-inline">
+          <input type="radio" id="{{delivery.id}}" value='{{delivery.id}}' name="deliveryType" formControlName="deliveryType">
+          <label for="{{delivery.id}}">{{delivery.labelName}} </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group delivery">
+      <label for="gForm_5">ZipCode:</label>
+      <input class="form-control" type="text" id="gForm_5" placeholder="Wprowadź wartość" formControlName="zipCode">
+
+      <div class="delivery__range-sub-label" *ngIf="!deliveryFlag">
+        <label for="gForm_6">Do: </label>
+      </div>
+
+      <div class="delivery__range-input" *ngIf="!deliveryFlag">
+        <input class="form-control" type="text" id="gForm_6" placeholder="Wprowadź wartość" formControlName="deliveryRange">
+      </div>
+    </div>
+    <div class="form-group delivery">
+      <label>Data dostawy</label>
+      <input type="date" clrDate formControlName="deliveryDate">
+    </div>
+  </section>
+</form>

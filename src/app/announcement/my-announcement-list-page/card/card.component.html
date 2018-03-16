@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-block">
+    <span class="card-id">Ogłoszenie nr
+      <b>{{myAnnouncement.number || '42'}}</b>
+    </span>
+    <div class="card-title">
+      <a [routerLink]="['/tablica', myAnnouncement.id, {makeAnOffer:false}]">
+        <h3 class="announcement-title">{{myAnnouncement.product || 'Category'}}</h3>
+      </a>
+      <h3 class="announcement-price">{{myAnnouncement.price}} PLN/{{myAnnouncement.unitType || 'kg'}}</h3>
+    </div>
+    <div class="card-text">
+      <div class="card-left">
+        <span *ngIf="myAnnouncement.remarks">
+          {{myAnnouncement.remarks}}
+          <br>
+          <br>
+        </span>
+        <table>
+          <tr>
+            <td class="table-title">Ilość:</td>
+            <td>{{myAnnouncement.minQuantity}} {{myAnnouncement.unitType || 'kg'}} - {{myAnnouncement.maxQuantity}} {{myAnnouncement.unitType
+              || 'kg'}}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Okres zapłaty:</td>
+            <td>{{myAnnouncement.period || '7 dni' }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Termin dostarczenia:</td>
+            <td>{{myAnnouncement.deliveryDate | ptDate }}</td>
+          </tr>
+          <tr>
+            <td class="table-title">Kod pocztowy:</td>
+            <td>{{myAnnouncement.zipCode}}</td>
+          </tr>
+          <tr *ngIf="myAnnouncement.deliveryType !== deliveryOptions.WITH_DELIVERY">
+            <td class="table-title">Zasięg odbioru:</td>
+            <td>{{myAnnouncement.deliveryRange}} KM</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card-right">
+        <pt-circle-icon-title [items]="circleShapeTitleConfig" [mainConditionArgument]="myAnnouncement.deliveryType"></pt-circle-icon-title>
+
+        <div class="button-container">
+          <a [routerLink]="['/ogloszenia', myAnnouncement.id]" routerLinkActive="active" class="button btn btn-primary">Zobacz</a>
+          <a [routerLink]="['/ogloszenia/usun', myAnnouncement.id]" routerLinkActive="active" class="button btn btn-warning">Usuń</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

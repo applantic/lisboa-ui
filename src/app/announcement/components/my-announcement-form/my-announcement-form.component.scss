@@ -1,0 +1,18 @@
+:host {
+
+  textarea {
+    resize: none;
+  }
+
+  .delivery, .price {
+
+    &__range-sub-label {
+      text-align: right;
+    }
+
+    &__range-input {
+      padding: 0;
+    }
+
+  }
+}

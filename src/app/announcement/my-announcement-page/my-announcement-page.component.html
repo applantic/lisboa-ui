@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-header">
     <span class="card-id">Ogłoszenie nr
-      <b>{{announcement.number || '42'}}</b>
+      <b>{{myAnnouncement.number || '42'}}</b>
     </span>
     <div class="card-title">
-      <h3 class="announcement-title">{{announcement.product || 'Category'}}</h3>
-      <h3 class="announcement-price">{{announcement.price}} PLN/{{announcement.unitType || 'kg'}}</h3>
+      <h3 class="announcement-title">{{myAnnouncement.product || 'Category'}}</h3>
+      <h3 class="announcement-price">{{myAnnouncement.price}} PLN/{{myAnnouncement.unitType || 'kg'}}</h3>
     </div>
   </div>
   <div class="card-block">
@@ -15,37 +15,37 @@
           <div class="pt-table-column">
             <div class="pt-table-row">
               <div class="pt-table-cell">Ilość:</div>
-              <div class="pt-table-cell">{{announcement.minQuantity}} {{announcement.unitType || 'kg'}} -
-                {{announcement.maxQuantity}} {{announcement.unitType || 'kg'}}
+              <div class="pt-table-cell">{{myAnnouncement.minQuantity}} {{myAnnouncement.unitType || 'kg'}} -
+                {{myAnnouncement.maxQuantity}} {{myAnnouncement.unitType || 'kg'}}
               </div>
             </div>
 
             <div class="pt-table-row">
               <div class="pt-table-cell">Okres zapłaty:</div>
-              <div class="pt-table-cell">{{announcement.period || '7 dni' }}</div>
+              <div class="pt-table-cell">{{myAnnouncement.period || '7 dni' }}</div>
             </div>
 
             <div class="pt-table-row">
               <div class="pt-table-cell">Termin dostarczenia:</div>
-              <div class="pt-table-cell">{{announcement.deliveryDate | ptDate }}</div>
+              <div class="pt-table-cell">{{myAnnouncement.deliveryDate | ptDate }}</div>
             </div>
           </div>
           <div class="pt-table-column">
             <div class="pt-table-row">
               <div class="pt-table-cell">Kod pocztowy:</div>
-              <div class="pt-table-cell">{{announcement.zipCode}}</div>
+              <div class="pt-table-cell">{{myAnnouncement.zipCode}}</div>
             </div>
 
             <div class="pt-table-row">
               <div class="pt-table-cell">Miejscowość:</div>
-              <div class="pt-table-cell">{{announcement.city || 'Lublin'}}</div>
+              <div class="pt-table-cell">{{myAnnouncement.city || 'Lublin'}}</div>
             </div>
 
           </div>
         </div>
         <div class="pt-table-row">
           <div class="pt-table-cell">Uwagi:</div>
-          <div class="pt-table-cell">{{announcement.remarks || '
+          <div class="pt-table-cell">{{myAnnouncement.remarks || '
             The Flexbox Layout (Flexible Box) module (currently a W3C Last Call Working Draft) aims at providing a more
             efficient way to lay out, align and distribute space among items in a container, even when their size is
             unknown and/or dynamic (thus the word "flex").
@@ -57,9 +57,10 @@
         <div class="pt-table-row">
           <pt-circle-icon-title
             [items]="circleShapeTitleConfig"
-            [mainConditionArgument]="announcement.deliveryType"
+            [mainConditionArgument]="myAnnouncement.deliveryType"
           ></pt-circle-icon-title>
         </div>
+        <button (click)="clickEdit()">Edytuj ogłoszenie</button>
       </div>
     </div>
   </div>

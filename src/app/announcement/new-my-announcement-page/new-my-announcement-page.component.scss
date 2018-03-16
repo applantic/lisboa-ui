@@ -1,0 +1,17 @@
+:host {
+  section {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .button-container{
+    display: flex;
+    justify-content: flex-end;
+
+    button{
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Edytuj ogłoszenie</h1>
+  </div>
+  <div class="card-block">
+    <pt-my-announcement-form
+      [formMyAnnouncement]="myAnnouncement"
+    ></pt-my-announcement-form>
+  </div>
+</div>
+<div class="button-container">
+  <a
+    class="btn btn-secondary"
+    (click)="clickBack()">
+    Wróć
+  </a>
+  <button
+    class="btn btn-primary"
+    (click)="clickedUpdate()">
+    Zaaktualizuj ogłoszenie
+  </button>
+</div>
