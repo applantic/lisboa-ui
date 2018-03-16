@@ -3,6 +3,7 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Location} from '@angular/common';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Subject} from 'rxjs/Subject';
@@ -31,6 +32,7 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private locationRouter: Location,
               private dictionaryService: DictionaryService,
               private announcementService: AnnouncementService,
               private formBuilder: FormBuilder) {
@@ -49,6 +51,17 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  public ClickBack() {
+    //TODO: handle event when client intializated view another page than main-wall
+    this.locationRouter.back();
+  }
+
+  public clickedSave() {
+    this.announcementService.addNewAnnouncement((this.form.value as NewAnnouncement))
+      .do((data) => this.router.navigate([`/ogloszenia/dodano`, {id: data.id}], {relativeTo: this.route}))
+      .subscribe();
   }
 
   private initForm() {
@@ -75,12 +88,6 @@ export class NewAnnouncementPageComponent implements OnInit, OnDestroy {
 
   private actualDeliveryFlag(deliveryTypeKey: DeliveryEnum) {
     this.deliveryFlag = deliveryTypeKey === DeliveryEnum.WITH_DELIVERY;
-  }
-
-  public clickedSave() {
-    this.announcementService.addNewAnnouncement((this.form.value as NewAnnouncement))
-      .do((data) => this.router.navigate([`/ogloszenia/dodano`, {id: data.id}], {relativeTo: this.route}))
-      .subscribe();
   }
 }
 
