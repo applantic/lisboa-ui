@@ -1,4 +1,3 @@
-import 'rxjs/add/operator/takeUntil';
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';

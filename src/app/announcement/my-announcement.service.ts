@@ -25,7 +25,7 @@ export class MyAnnouncementService {
 
   public getMyAnnouncementDetails(id: string): Observable<MyAnnouncement> {
     return this.httpClient.get<any>(`myannouncement/${id}`)
-      .do((data) => this.myAnnouncementSubject = data)
+      .do((data) => this.myAnnouncementSubject.next(data))
       .do((data) => console.log('getMyAnnouncementDetails: ', data));
   }
 

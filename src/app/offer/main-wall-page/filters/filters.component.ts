@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-import { Option } from '../../../dictionary/category.model';
-import { DictionaryService } from '../../../dictionary/dictionary.service';
+import 'rxjs/add/operator/takeUntil';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {Subject} from 'rxjs/Subject';
+import {Option} from '../../../dictionary/category.model';
+import {DictionaryService} from '../../../dictionary/dictionary.service';
 
 @Component({
   selector: 'pt-filters',
@@ -16,7 +17,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private dictionaryService: DictionaryService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.dictionaryService.getCategoryList()
