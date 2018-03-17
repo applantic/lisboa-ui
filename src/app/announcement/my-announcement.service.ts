@@ -24,13 +24,13 @@ export class MyAnnouncementService {
   }
 
   public getMyAnnouncementDetails(id: string): Observable<MyAnnouncement> {
-    return this.httpClient.get<any>(`myannouncement/${id}`)
+    return this.httpClient.get<any>(`my/announcement/${id}`)
       .do((data) => this.myAnnouncementSubject.next(data))
       .do((data) => console.log('getMyAnnouncementDetails: ', data));
   }
 
   public getMyAnnouncementList(): Observable<MyAnnouncement[]> {
-    return this.httpClient.get<any>(`myannouncement?page=${0}&size=${10}&sort=createdDateTime,desc`)
+    return this.httpClient.get<any>(`my/announcement?page=${0}&size=${10}&sort=createdDateTime,desc`)
       .map((data) => (data.content as MyAnnouncement[]))
       .do((data) => console.log('getMyAnnouncementList: ', data));
   }
