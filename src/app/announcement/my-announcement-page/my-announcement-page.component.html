@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="button-container">
-      <a (click)="clickEdit()" class="button btn btn-secondary">Edytuj ogłoszenie</a>
+      <a [routerLink]="['/ogloszenia/edytuj', myAnnouncement.id]" class="button btn btn-secondary">Edytuj ogłoszenie</a>
     </div>
   </div>
 </div>

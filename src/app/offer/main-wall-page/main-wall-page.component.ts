@@ -1,5 +1,4 @@
-import 'rxjs/add/operator/takeUntil';
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {AnnouncementPublic} from './announcement-public.model';
 import {AnnouncementPublicService} from './announcement-public.service';
@@ -9,7 +8,7 @@ import {AnnouncementPublicService} from './announcement-public.service';
   templateUrl: './main-wall-page.component.html',
   styleUrls: ['./main-wall-page.component.scss']
 })
-export class MainWallPageComponent implements OnInit, OnDestroy {
+export class MainWallPageComponent implements OnInit {
   public announcements: AnnouncementPublic[] = [];
   public loaded = false;
 
@@ -19,18 +18,7 @@ export class MainWallPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.announcementPublicService.getListAnnouncement()
-      .takeUntil(this.ngUnsubscribe)
-      .do((announcement) => console.log(announcement))
+      .do((announcement) => this.loaded = true)
       .subscribe((announcements) => this.announcements = announcements);
-
-    this.announcementPublicService.listAnnouncementLoadedSubject
-      .takeUntil(this.ngUnsubscribe)
-      .do((loaded) => console.log('loaded: ', loaded))
-      .subscribe((loaded) => this.loaded = loaded);
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 }

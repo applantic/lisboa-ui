@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/takeUntil';
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
@@ -9,7 +9,7 @@ import {DELIVERY_TYPE, DeliveryTypeMap, PERIOD_LIST} from '../../../config';
 import {DictionaryService} from '../../../dictionary/dictionary.service';
 import {MyAnnouncementService} from '../../my-announcement.service';
 import {Category, Option} from '../../../dictionary/category.model';
-import {FormMyAnnouncement, INIT_FORM_MY_ANNOUNCEMENT} from '../../my-announcement.model';
+import {Announcement, INIT_FORM_MY_ANNOUNCEMENT} from '../../my-announcement.model';
 
 @Component({
   selector: 'pt-my-announcement-form',
@@ -17,7 +17,7 @@ import {FormMyAnnouncement, INIT_FORM_MY_ANNOUNCEMENT} from '../../my-announceme
   styleUrls: ['./my-announcement-form.component.scss']
 })
 export class MyAnnouncementFormComponent implements OnInit, OnDestroy {
-  @Input() formMyAnnouncement: FormMyAnnouncement;
+  @Input() model: Announcement;
 
   public categoryList: Option[];
   public periodList = PERIOD_LIST;
@@ -38,7 +38,10 @@ export class MyAnnouncementFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.initForm({...INIT_FORM_MY_ANNOUNCEMENT, ...this.formMyAnnouncement});
+    this.initForm({...INIT_FORM_MY_ANNOUNCEMENT, ...this.model});
+    this.dictionaryService.getCategoryList()
+      .map(transformCategories)
+      .subscribe(list => this.categoryList = list);
   }
 
   ngOnDestroy() {
@@ -46,19 +49,19 @@ export class MyAnnouncementFormComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  private initForm(formMyAnnouncement2: FormMyAnnouncement) {
+  private initForm(model: Announcement) {
 
     this.form = this.formBuilder.group({
-      productKey: [formMyAnnouncement2.productKey, [Validators.required]],
-      price: [formMyAnnouncement2.price],
-      minQuantity: [formMyAnnouncement2.minQuantity],
-      maxQuantity: [formMyAnnouncement2.maxQuantity],
-      period: [formMyAnnouncement2.period],
-      remarks: [formMyAnnouncement2.remarks],
-      deliveryType: [formMyAnnouncement2.deliveryType, [Validators.required, validateType]],
-      deliveryDate: [formMyAnnouncement2.deliveryDate],
-      deliveryRange: [formMyAnnouncement2.deliveryRange],
-      zipCode: [formMyAnnouncement2.zipCode]
+      productKey: [model.productKey, [Validators.required]],
+      price: [model.price],
+      minQuantity: [model.minQuantity],
+      maxQuantity: [model.maxQuantity],
+      period: [model.period],
+      remarks: [model.remarks],
+      deliveryType: [model.deliveryType, [Validators.required, validateType]],
+      deliveryDate: [model.deliveryDate],
+      deliveryRange: [model.deliveryRange],
+      zipCode: [model.zipCode]
     });
 
     this.actualDeliveryFlag(this.form.get('deliveryType').value);
@@ -74,16 +77,27 @@ export class MyAnnouncementFormComponent implements OnInit, OnDestroy {
   }
 }
 
+function transformCategories(categories) {
+  return categories.map(item => ({
+    value: item.key,
+    label: item.name,
+    options: item.products && transformKeyNamePair(item.products)
+  }));
+}
+
+function transformKeyNamePair(list) {
+  return list.map(item => ({
+    value: item.key,
+    label: item.name
+  }));
+}
+
 function validateType(control: AbstractControl): ValidationErrors | null {
   if (!Object.keys(DELIVERY_TYPE).some((key) => key === control.value)) {
     return {validUrl: true};
   } else {
     return null;
   }
-}
-
-function mapToCategoryList(categoryList: Category[]): Category[] {
-  return Object.keys(categoryList).map((id) => Object.assign({}, categoryList[id], {id}));
 }
 
 function mapToDeliveryTypeList(deliveryTypeMap: DeliveryTypeMap): DeliveryTypeItem[] {

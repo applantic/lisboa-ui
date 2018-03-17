@@ -1,5 +1,4 @@
-import { Component, forwardRef, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'pt-pretty-dropdown',

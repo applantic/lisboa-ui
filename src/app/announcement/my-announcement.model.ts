@@ -16,7 +16,7 @@ interface CoreMyAnnouncement {
   paymentDate?: string;
 }
 
-export interface FormMyAnnouncement extends CoreMyAnnouncement{
+export interface Announcement extends CoreMyAnnouncement {
   productKey: string;
 }
 
@@ -40,7 +40,7 @@ export interface MockedOffers {
   deliveryType: DeliveryType;
 }
 
-export interface Offers extends MockedOffers{
+export interface Offers extends MockedOffers {
   id: string;
   price: string;
   quantity: string;
@@ -51,7 +51,7 @@ export interface Offers extends MockedOffers{
   ownerUsername: string;
 }
 
-export const INIT_FORM_MY_ANNOUNCEMENT: FormMyAnnouncement = {
+export const INIT_FORM_MY_ANNOUNCEMENT: Announcement = {
   productKey: 'default',
   price: undefined,
   minQuantity: undefined,

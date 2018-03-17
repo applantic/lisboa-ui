@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
-import { Option } from '../../../dictionary/category.model';
+import {KeyNamePair, Option} from '../../../dictionary/category.model';
 import { DictionaryService } from '../../../dictionary/dictionary.service';
 
 @Component({
@@ -16,15 +16,16 @@ export class FiltersComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private dictionaryService: DictionaryService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.dictionaryService.getCategoryList()
-      .map(transformCategoryList)
+      .map(transformCategories)
       .subscribe((list) => this.categoryList = list);
 
     this.dictionaryService.getVovoideshipList()
-      .map(transformRegionsList)
+      .map(transformKeyNamePair)
       .subscribe((list) => this.regionsList = list);
 
     this.initForm();
@@ -50,18 +51,17 @@ export class FiltersComponent implements OnInit, OnDestroy {
   private loadFilteredValues(data) {
     console.log('Load new values for', data);
   }
-
 }
 
-function transformCategoryList(list) {
-  return list.map(item => ({
+function transformCategories(categories) {
+  return categories.map(item => ({
     value: item.key,
     label: item.name,
-    options: item.products && transformCategoryList(item.products)
+    options: item.products && transformKeyNamePair(item.products)
   }));
 }
 
-function transformRegionsList(list) {
+function transformKeyNamePair(list) {
   return list.map(item => ({
     value: item.key,
     label: item.name

@@ -43,10 +43,6 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  public clickEdit() {
-    this.myAnnouncementService.clickedEditAction(this.myAnnouncement.id);
-  }
-
   public acceptOffer(id: string) {
     this.myAnnouncement.offers = this.myAnnouncement.offers.map((el) => {
       if (el.id === id) {
