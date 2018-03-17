@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
 
-import {SettingsModule} from '../settings/settings.module';
+import { AccountModule } from '../account/account.module';
 import {OfferModule} from '../offer/offer.module';
 import {UserProfileModule} from '../user-profile/user-profile.module';
 import {AnnouncementModule} from '../announcement/my-announcement.module';
@@ -14,7 +14,7 @@ import {FooterComponent} from './dashboard-page/footer/footer.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     ClarityModule,
     RouterModule.forChild([{
       path: '',
@@ -26,8 +26,8 @@ import {FooterComponent} from './dashboard-page/footer/footer.component';
           loadChildren: () => OfferModule,
         },
         {
-          path: 'ustawienia',
-          loadChildren: () => SettingsModule,
+          path: 'konto',
+          loadChildren: () => AccountModule,
         },
         {
           path: 'profil',

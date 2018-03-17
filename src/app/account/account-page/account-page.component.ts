@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import { DictionaryService } from '../../dictionary/dictionary.service';
 import {Category} from '../../dictionary/category.model';
+import { Account } from './account.model';
+import { AccountService } from './account.service';
 
 @Component({
-  selector: 'pt-settings-page',
-  templateUrl: './settings-page.component.html',
-  styleUrls: ['./settings-page.component.scss']
+  selector: 'pt-account-page',
+  templateUrl: './account-page.component.html',
+  styleUrls: ['./account-page.component.scss']
 })
-export class SettingsPageComponent implements OnInit {
+export class AccountPageComponent implements OnInit {
   public customerType =  'company';
   public userProgress: Number = 0;
   public progressStyle = 'danger';
@@ -16,7 +18,7 @@ export class SettingsPageComponent implements OnInit {
   public categoryList: Category[];
   public selectedCategory = new Array<String>();
 
-  constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService) { }
+  constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private accountService: AccountService) { }
 
   ngOnInit() {
     this.initForm();
@@ -53,7 +55,7 @@ export class SettingsPageComponent implements OnInit {
     this.selectedCategory = [];
   }
 
-  private changeUserProgressSettings(data: any): void {
+  private changeUserProgressAccount(data: any): void {
     const numberOfElements: number = this.getNumberOfElements();
     const numberOfCompletedElements: number = this.getNumberOfCompletedElements(data);
     this.userProgress =  Math.floor(numberOfCompletedElements / numberOfElements * 100);
@@ -93,6 +95,16 @@ export class SettingsPageComponent implements OnInit {
     }
   }
 
+  public changeAccount(): void {
+    console.log('form: ' + this.form.value);
+    const account: Account = {...this.form.value.company, ...this.form.value.private, ...this.form.value.base,
+      ...{customerType: this.form.value.customerType }};
+    this.accountService.changeAccount(account)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
   private initForm() {
     this.form = this.formBuilder.group({
       customerType: [''],
@@ -118,7 +130,7 @@ export class SettingsPageComponent implements OnInit {
     });
 
     this.form.valueChanges
-    .do((data) => this.changeUserProgressSettings(data))
+    .do((data) => this.changeUserProgressAccount(data))
     .do(() => this.changeProgressStyle())
     .subscribe((data) => console.log('data: ' + data));
   }
