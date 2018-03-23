@@ -69,7 +69,7 @@ export class MyAnnouncementFormComponent implements OnInit, OnDestroy {
     this.form.valueChanges
       .takeUntil(this.ngUnsubscribe)
       .do((data) => this.actualDeliveryFlag(data.deliveryType))
-      .subscribe((data) => console.log('this form: ', data));
+      .subscribe();
   }
 
   private actualDeliveryFlag(deliveryTypeKey: DeliveryEnum) {

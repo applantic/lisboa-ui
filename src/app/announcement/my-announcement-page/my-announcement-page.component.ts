@@ -34,7 +34,6 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
     this.myAnnouncementService.myAnnouncementSubject
       .takeUntil(this.ngUnsubscribe)
       .map((myAnnouncement) => extendOffersMyAnnouncement(myAnnouncement))
-      .do((myAnnouncement) => console.log('myAnnouncement: ', myAnnouncement))
       .subscribe((myAnnouncement) => this.myAnnouncement = myAnnouncement);
   }
 
@@ -54,7 +53,7 @@ export class AnnouncementPageComponent implements OnInit, OnDestroy {
   }
 
   public discardOffer(id: string) {
-    console.log('discardOffer: ', id);
+
     this.myAnnouncement.offers = this.myAnnouncement.offers.filter((el) => el.id !== id);
   }
 

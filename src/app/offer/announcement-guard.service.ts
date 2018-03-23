@@ -15,8 +15,6 @@ export class AnnouncementGuardService implements CanActivate {
   }
 
   getAnnouncementData(id: string): Observable<boolean> {
-    console.log('getAnnouncementData: ', id);
-
     return this.offerService
       .getAnnouncementDetails(id)
       .map(() => true)

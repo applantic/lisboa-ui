@@ -49,9 +49,7 @@ export class MakeOfferPageComponent implements OnInit {
   public submitOffer() {
     this.offerNotEditable = true;
     this.offerService.makeOffer({...this.form.value, announcementId: this.announcement.id})
-      .subscribe(offer => {
-        console.log(offer);
-      });
+      .subscribe();
   }
 
   private initForm(offer: Offer) {

@@ -24,7 +24,6 @@ export class AccountPageComponent implements OnInit {
     this.initForm();
     this.dictionaryService.getCategoryList()
     .map((item) => this.mapToCategoryList(item))
-    .do(list => console.log(list))
     .subscribe((list) => this.categoryList = list);
   }
 
@@ -96,13 +95,11 @@ export class AccountPageComponent implements OnInit {
   }
 
   public changeAccount(): void {
-    console.log('form: ' + this.form.value);
+
     const account: Account = {...this.form.value.company, ...this.form.value.private, ...this.form.value.base,
       ...{customerType: this.form.value.customerType }};
     this.accountService.changeAccount(account)
-    .subscribe(resp => {
-      console.log(resp);
-    });
+    .subscribe();
   }
 
   private initForm() {
@@ -132,7 +129,7 @@ export class AccountPageComponent implements OnInit {
     this.form.valueChanges
     .do((data) => this.changeUserProgressAccount(data))
     .do(() => this.changeProgressStyle())
-    .subscribe((data) => console.log('data: ' + data));
+    .subscribe();
   }
 
 }

@@ -27,7 +27,6 @@ export class EditMyAnnouncementPageComponent implements AfterViewInit, OnInit, O
   ngOnInit() {
     this.myAnnouncementService.myAnnouncementSubject
       .takeUntil(this.ngUnsubscribe)
-      .do((myAnnouncement) => console.log('myAnnouncement: ', myAnnouncement))
       .subscribe((myAnnouncement) => this.myAnnouncement = myAnnouncement);
   }
 
